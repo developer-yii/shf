@@ -9,13 +9,12 @@
 @endsection
 @section('content')
 
-<form id="verify-product" method="POST">
-    @csrf
+
     <div class="check-bg-wrap">
         <div class="check-bg">
             <img src="{{ $baseUrl }}img/check-bg.png" alt="">
         </div>
-            <button type="submit" class="button blue">Verify</button>
+            <button type="submit" form="verify-product" class="button blue">Verify</button>
     </div>
     <div class="x-elem x-elem-check">
         <img src="{{ $baseUrl }}img/x-elem.png" alt="">
@@ -28,15 +27,17 @@
             Easy compliance. Check if your product is legit.
         </p>
         <div class="check-btns">
+            <form id="verify-product" method="POST">
+                @csrf
             <!-- <a href="" class="button white">Type your productcode</a> -->
             <input type="text" name="product_code" class="product-code"
                 placeholder="Type your product code">
             
                 <div id="review_recaptcha" style="margin-left:8rem; margin-top:2rem;"></div>
-            
+            </form>
         </div>
     </div>
-</form>
+
 @endsection
 @section('js')
 <script type="text/javascript">
