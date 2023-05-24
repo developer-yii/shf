@@ -15,8 +15,13 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.home');
 });
+
+Route::get('check/product',function(){
+    return view('frontend.check-product');
+})->name('check.product');
+
 Route::get('logout-user',function(Request $request){
     Auth::logout();
 
@@ -30,6 +35,8 @@ Route::get('logout-user',function(Request $request){
 })->name('logoutuser');
 
 Auth::routes();
+
+
 
 include_once 'admin.php';
 

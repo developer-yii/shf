@@ -14,9 +14,8 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Project-X</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                            <li class="breadcrumb-item active">Code list</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
+                            <li class="breadcrumb-item active"><a href="{{ route('admin.code.list') }}">Code list</a></li>
                         </ol>
                     </div>
                     <h4 class="page-title">Code list</h4>
