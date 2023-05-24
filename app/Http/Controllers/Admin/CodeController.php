@@ -31,7 +31,7 @@ class CodeController extends Controller
     public function codecreate(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'code' => ['required','max:30']
+            'code' => ['required','unique:product_codes,code' ,'max:30']
         ]);
 
         if($validator->fails()){

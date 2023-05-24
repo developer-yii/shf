@@ -176,7 +176,6 @@
         <script src="{{$baseUrl}}assets/js/app.min.js"></script>
 
         <!-- third party js -->
-        <script src="{{$baseUrl}}assets/js/vendor/apexcharts.min.js"></script>
         <script src="{{$baseUrl}}assets/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
         <script src="{{$baseUrl}}assets/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
         <!-- third party js ends -->
@@ -186,7 +185,6 @@
         <script src="{{$baseUrl}}assets/js/vendor/dataTables.bootstrap4.js"></script>
         <script src="{{$baseUrl}}assets/js/vendor/dataTables.responsive.min.js"></script>
         <script src="{{$baseUrl}}assets/js/vendor/responsive.bootstrap4.min.js"></script>
-        <script src="{{$baseUrl}}assets/js/pages/demo.dashboard.js"></script>
         @yield('js')
         <!-- end demo js-->
     </body>

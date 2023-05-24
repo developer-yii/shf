@@ -34,7 +34,7 @@
                                 <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addproductcode"
                                     style="margin-bottom:1em;">Add Code</button>
                             </div>
-                            <div class="col-8">
+                            <div class="col-10">
                                 <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#showimport"
                                     style="margin-bottom:1em; float: right;">Import Excel</a>
                             </div>
@@ -75,7 +75,7 @@
 
                 <div class="modal-body">
                     <div class="text-center mt-2 mb-4">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Code<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title"><span id="exampleModalLabel">Add Code</span><button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button></h5>
                     </div>

@@ -29,9 +29,6 @@
 
         <!--- Sidemenu -->
         <ul class="metismenu side-nav">
-
-            <li class="side-nav-title side-nav-item">Navigation</li>
-
             
             <li class="side-nav-item">
                 <a href="{{ route('admin.adminHome') }}" class="side-nav-link">
@@ -39,8 +36,6 @@
                     <span> Dashboard </span>
                 </a>
             </li>
-
-            <li class="side-nav-title side-nav-item">Products</li>
 
             <li class="side-nav-item">
                 <a href="{{ route('admin.code.list') }}" class="side-nav-link">

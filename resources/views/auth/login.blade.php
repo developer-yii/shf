@@ -27,7 +27,7 @@
 
                 <div class="form-group">
                     <label for="emailaddress">Email address</label>
-                    <input class="form-control" type="email" id="email"
+                    <input class="form-control @error('email') is-invalid @enderror" type="email" id="email"
                         name="email" placeholder="Enter your email" value="{{ old('email') }}">
 
                     @error('email')
@@ -44,7 +44,7 @@
                     @endif    
                     <label for="password">Password</label>
                     <div class="input-group input-group-merge">
-                        <input type="password" id="password" class="form-control" placeholder="Enter your password" name="password"> 
+                        <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter your password" name="password"> 
                         <div class="input-group-append" data-password="false">
                             <div class="input-group-text">
                                 <span class="password-eye"></span>

@@ -115,18 +115,18 @@ $(document).ready(function(){
 
     $('#addproductcode').on('hidden.bs.modal',function(e){
         $('#createcode')[0].reset();
-        $('.error').html("");
+        $('#createcode .error').html("");
         $('#createcode input').each(function(index,value){
             $(this).removeClass('is-invalid');
         });
         $('.code-id').val("");
         $('#addproductcode').find('button[type="submit"]').html("Add Code");
-        $('#addproductcode').find('.modal-title').html("Add Code");
+        $('#addproductcode').find('#exampleModalLabel').html("Add Code");
     });
 
     $('#showimport').on('hidden.bs.modal', function(e){
         $('#importcode')[0].reset();
-        $('.error').html("");
+        $('#importcode .error').html("");
         $('#importcode input').each(function(index,value){
             $(this).removeClass('is-invalid');
         });  
@@ -147,7 +147,7 @@ $(document).ready(function(){
                 $('#addproductcode').modal('show');
                 $('#code').val(data.code);
                 $('#addproductcode').find('button[type="submit"]').html("Update Code");
-                $('#addproductcode').find('.modal-title').html("Update Code");
+                $('#addproductcode').find('#exampleModalLabel').html("Update Code");
             }
         });
     });
