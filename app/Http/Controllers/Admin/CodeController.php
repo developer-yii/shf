@@ -12,6 +12,7 @@ use App\Jobs\ExcelImportCode;
 use App\Imports\ProductCodeImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 
 class CodeController extends Controller
 {
@@ -117,7 +118,7 @@ class CodeController extends Controller
             $allProductCode = ProductCode::select('code')->pluck('code')->toArray();        
             $chunkImportedCodes = [];
             foreach ($rows[0] as $row) {
-                if(isset($row[0]) && !empty($row[0]) && $row[0]){
+                if(isset($row[0]) && !empty($row[0]) && $row[0] && strtolower($row[0]) != "code"){
                     $productCode = $row[0];
                     if (in_array($productCode, $allProductCode) || in_array($productCode, $chunkImportedCodes)) {
                         $duplicateRows++;
@@ -148,5 +149,12 @@ class CodeController extends Controller
        return redirect()->back()->with('error','No file uploaded!');
         
 
+    }
+
+    public function downloadsamplefile()
+    {
+        $file = storage_path('app/public/Sample.xlsx');
+
+        return Response::download($file);
     }
 }

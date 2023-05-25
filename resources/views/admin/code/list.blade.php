@@ -90,6 +90,7 @@
                                 id="error-code"></span>    
                         </div>
 
+                      
                         <div class="form-group text-center">
                             <button class="btn btn-primary" type="submit">Add Code</button>
                         </div>
@@ -122,7 +123,10 @@
                                 <span class="text-danger error invalid-feedback error-excelfile"
                                 id="error-excelfile"></span>    
                         </div>
-
+                        <div class="from-group">
+                            <label for="samplefile"><strong>Note : </strong><a href="{{ route('admin.download.samplefile') }}" >Download Sample Code File</a></label>
+                             
+                        </div>
                         <div class="form-group text-center">
                             <button class="btn btn-primary" type="submit">Import Code</button>
                         </div>

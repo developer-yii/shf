@@ -13,4 +13,5 @@ Route::namespace('Admin')
     Route::post('/code/detail','CodeController@codedetail')->name('code.detail');
     Route::post('/code/delete','CodeController@codedelete')->name('code.delete');
     Route::post('/code/import','CodeController@codeimport')->name('code.import');
+    Route::get('/download/samplefile','CodeController@downloadsamplefile')->name('download.samplefile');
 });
