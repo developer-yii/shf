@@ -1,6 +1,7 @@
 
 @php
     $baseUrl = asset('frontend')."/";
+    $baseUrlbackend = asset('backend')."/";
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +22,10 @@
   <link rel="icon" href="{{ $baseUrl }}favicon.ico" type="image/x-icon" />
 
   <script src="https://unpkg.com/phosphor-icons"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <link rel="stylesheet" href="{{ $baseUrl }}css/main.css" />
+  <link href="{{$baseUrlbackend}}assets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style" />
+        <link href="{{$baseUrlbackend}}assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style" />
   @yield('css')
 </head>
 
@@ -29,7 +33,8 @@
     <div class="main-wrap">
         @yield('content')
     </div>
-
+    @yield('modal')
+    
   <!-- Header Starts -->
   <!-- <header id="header"></header> -->
   <!-- Header Ends -->
@@ -51,6 +56,7 @@
    <script src="{{$baseUrl}}js/app.min.js"></script>
    <script src="{{$baseUrl}}js/jquery-jvectormap-1.2.2.min.js"></script>
    <script src="{{$baseUrl}}js/jquery-jvectormap-world-mill-en.js"></script>
+   <script src="{{$baseUrlbackend}}assets/js/pages/demo.toastr.js"></script>
     @yield('js')
    <!-- third party js ends -->
 

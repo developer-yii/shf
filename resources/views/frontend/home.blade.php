@@ -19,7 +19,7 @@
       <h3>OUR AWESOME WEBSITE</h3>
       <div class="hor-line"></div>
 
-      <a href="{{ route('check.product') }}" class="button">CHECK PRODUCT CODE</a>
+      <a href="{{ route('view') }}" class="button">CHECK PRODUCT CODE</a>
       <p>UNTIL WE HAVE DONE ALL <br />
         CHANGES FOR LEBANON</p>
     </div>

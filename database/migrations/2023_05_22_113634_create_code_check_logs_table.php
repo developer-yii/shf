@@ -15,7 +15,7 @@ class CreateCodeCheckLogsTable extends Migration
     {
         Schema::create('code_check_logs', function (Blueprint $table) {
             $table->id();
-            $table->integer('code_id');
+            $table->string('code_id');
             $table->integer('user_id')->nullable();
             $table->timestamps();
         });

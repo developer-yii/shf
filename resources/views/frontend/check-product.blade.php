@@ -19,7 +19,7 @@
     <div class="x-elem x-elem-check">
         <img src="{{ $baseUrl }}img/x-elem.png" alt="">
     </div>
-   
+
     <div class="check-txt">
         <h2>Simple To Check
             Your Product</h2>
@@ -39,6 +39,30 @@
     </div>
 
 @endsection
+
+@section('modal')
+
+<!-- Standard modal -->
+
+<div id="standard-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:115%;background: none;
+        box-shadow: none;">
+            <div class="modal-header" style="border: 0;">
+                <div class="elements-wrap">
+                    <div class="message-box green">
+                        
+                    </div>
+            
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+@endsection
 @section('js')
 <script type="text/javascript">
     var review_recaptcha_widget;
@@ -51,6 +75,9 @@
     };      
 </script>
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+<script>
+    var checkproduct = "{{ route('check.code') }}";
+</script>
 <script src="{{ $baseUrl}}js/check-product.js"></script>
 
 @endsection

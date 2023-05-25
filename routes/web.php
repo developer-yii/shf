@@ -18,9 +18,8 @@ Route::get('/', function () {
     return view('frontend.home');
 });
 
-Route::get('check/product',function(){
-    return view('frontend.check-product');
-})->name('check.product');
+Route::get('check/product','ProductCheckController@view')->name('view');
+Route::post('check/product','ProductCheckController@checkcode')->name('check.code');
 
 Route::get('logout-user',function(Request $request){
     Auth::logout();
