@@ -55,7 +55,6 @@
                     </div>
             
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             
         </div><!-- /.modal-content -->
