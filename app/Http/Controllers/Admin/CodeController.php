@@ -151,10 +151,4 @@ class CodeController extends Controller
 
     }
 
-    public function downloadsamplefile()
-    {
-        $file = storage_path('app/public/Sample.xlsx');
-
-        return Response::download($file);
-    }
 }

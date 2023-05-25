@@ -124,7 +124,7 @@
                                 id="error-excelfile"></span>    
                         </div>
                         <div class="from-group">
-                            <label for="samplefile"><strong>Note : </strong><a href="{{ route('admin.download.samplefile') }}" >Download Sample Code File</a></label>
+                            <label for="samplefile"><strong>Note : </strong><a href="{{ asset('samplefile/productsample.xlsx') }}" download>Download Sample Code File</a></label>
                              
                         </div>
                         <div class="form-group text-center">
