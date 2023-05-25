@@ -8,7 +8,8 @@ $(document).ready(function(){
     $('#verify-product').on('submit', function(e){
         e.preventDefault();
         $this = $(this);
-
+        $('.message-box').empty();
+        $('#standard-modal').find('.message-box').removeClass('message-box red').addClass('message-box green');
         $.ajax({
             type : "POST",
             url : checkproduct,
