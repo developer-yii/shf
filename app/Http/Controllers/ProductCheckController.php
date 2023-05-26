@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\ReCaptcha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ProductCode;
@@ -17,10 +18,15 @@ class ProductCheckController extends Controller
 
     public function checkcode(Request $request){
         
+        $message = [
+            'g-recaptcha-response.required' => 'please select captcha code',
+            'product_code.required' => 'product code is required'
+        ];   
+
         $validator = Validator::make($request->all(),[
             'product_code' => ['required','max:30'],
-            'g-recaptcha-response' => ['required']
-        ]);
+            'g-recaptcha-response' => ['required', new ReCaptcha]
+        ], $message);
 
         if($validator->fails()){
             $result = [
