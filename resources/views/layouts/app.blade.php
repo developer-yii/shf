@@ -31,6 +31,9 @@
     </head>
 
     <body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+        <div class="ajax-loader d-none">
+            {{-- <img src="{{ $baseUrl }}assets/images/loader.gif" class="img-responsive" /> --}}
+          </div>
         <!-- Begin page -->
         <div class="wrapper">
           @include('admin.include.left-sidebar')

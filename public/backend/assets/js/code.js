@@ -66,23 +66,25 @@ $(document).ready(function(){
             $(this).removeClass('is-invalid');
         });
         $('#importcode .error').show();
-        var insertdata = new FormData($('#importcode')[0]);
+        var insertdata = new FormData(this);
         var $this = $(this);
-
+        var $modalContent = $('#showimport').find('.modal-content');
+        $('.ajax-loader').removeClass('d-none');
         $.ajax({
             type : "POST",
             url : importcode,
             data : insertdata,
-            contentType : false,
-            processData : false,
-            cache : false,
-            async : false,
-
+            dataType: 'json',
+            cache:false,
+            contentType: false,
+            processData: false,
             beforeSend : function(){
+                $('#showimport').modal('hide');
                 $($this).find('button[type="submit"]').prop('disabled',true);
             },
             success : function(result){
-                
+                // $loader.addClass('d-none');
+                $('.ajax-loader').addClass('d-none');
                 $($this).find('button[type="submit"]').prop('disabled',false);
                 if(result.status == true){
                     $this[0].reset();
@@ -175,9 +177,9 @@ $(document).ready(function(){
 
     var codetable = $('#code_datatable').DataTable({
         processing : true,
-        serveSide : true,
+        serverSide : true,
         bStateSave: true,
-
+        pageLength: 25,
         ajax : {
             type : "GET",
             url : codelist,

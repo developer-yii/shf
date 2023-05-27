@@ -6,8 +6,15 @@
 @extends('layouts.app')
 
 @section('title', 'Code')
+@section('css')
+<link href="{{$baseUrl}}assets/css/custom.css" rel="stylesheet" type="text/css" />
+@endsection
 @section('content')
+<style>
+    
+</style>
 
+    
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -65,7 +72,6 @@
         <!-- end row-->
 
     </div>
-
 @endsection
 @section('modal')
     <div id="addproductcode" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -102,7 +108,6 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-     
      <div id="showimport" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -118,11 +123,11 @@
                         <input type="hidden" name="user_id" value="{{ $userid }}">
                         <div class="form-group">
                             <label for="username">Choose File</label>
-                            <input class="form-control" type="file" id="excelfile" name="excelfile"
-                                placeholder="Enter Maximum of 30 digit code here...">
-                                <span class="text-danger error invalid-feedback error-excelfile"
-                                id="error-excelfile"></span>    
+                            <input class="form-control" type="file" id="excelfile" name="excelfile" placeholder="Enter Maximum of 30 digit code here...">
+                            <span class="text-danger error invalid-feedback error-excelfile" id="error-excelfile">
+                            </span>  
                         </div>
+                        
                         <div class="from-group">
                             <label for="samplefile"><strong>Note : </strong><a href="{{ asset('samplefile/productsample.xlsx') }}" download>Download Sample Code File</a></label>
                              

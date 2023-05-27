@@ -41,6 +41,7 @@ $(document).ready(function(){
                     }
                 }
                 else{
+                    grecaptcha.reset();
                     var errorMessage = "";
                     $.each(result.error, function(key, value){
                         errorMessage += value +"<br>"; 
