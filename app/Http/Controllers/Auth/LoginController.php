@@ -60,15 +60,23 @@ class LoginController extends Controller
 
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $user = Auth::user();
-            if(($user->role == '1') || ($user->role == '2')){
+            if(($user->role == '1') || ($user->role == '2'))
+            {
                 return redirect()->route('admin.adminHome');
-            }else{
-                return redirect('/');
             }
-        }else {
-            
-             
+            if($user->role == '3')
+            {
+                return redirect()->route('user.userHome');
+            }
+        }
+        else 
+        {  
             return redirect('login')->withInput()->with('error','The Password is wrong.');
+        }
     }
-}
+    public function logout(Request $request) 
+    {
+      Auth::logout();
+      return redirect('/home')->with('message','You have been successfully logout!');
+    }
 }
