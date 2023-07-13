@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('frontend.home');
 });
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('user.userHome');
+
 Route::get('check/product','ProductCheckController@view')->name('view');
 Route::post('check/product','ProductCheckController@checkcode')->name('check.code');
 
@@ -33,10 +35,11 @@ Route::get('logout-user',function(Request $request){
         : redirect()->route('login')->with('message','You have been successfully logout!');
 })->name('logoutuser');
 
-Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
+Auth::routes();
 
 
 include_once 'admin.php';
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
