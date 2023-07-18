@@ -1,7 +1,7 @@
 
 @php
     $baseUrl = asset('backend')."/";
-    $username = Auth::user()->name;
+    $username = Auth::user()->first_name;
 @endphp
 <!-- Topbar Start -->
 <div class="navbar-custom">
