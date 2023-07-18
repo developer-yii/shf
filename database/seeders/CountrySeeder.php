@@ -14,7 +14,7 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
-        $sql = public_path('importsql\countries.sql');        
+        $sql = public_path('importsql/countries.sql');        
           
         $db = [
             'username' => env('DB_USERNAME'),
