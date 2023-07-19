@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Country;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class CountrySeeder extends Seeder
 {
@@ -14,17 +16,12 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
-        $sql = public_path('importsql/countries.sql');        
-          
-        $db = [
-            'username' => env('DB_USERNAME'),
-            'password' => env('DB_PASSWORD'),
-            'host' => env('DB_HOST'),
-            'database' => env('DB_DATABASE')
-        ];
-  
-        exec("mysql --user={$db['username']} --password={$db['password']} --host={$db['host']} --database {$db['database']} < $sql");
-  
-        \Log::info('SQL Import Done');
+        $filePath = database_path('countries.sql');
+        $sql = File::get($filePath);
+
+        // Execute the SQL query
+        DB::statement($sql);       
+
+        \Log::info('SQL file executed successfully.');
     }
 }
