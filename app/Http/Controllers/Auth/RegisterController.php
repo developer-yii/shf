@@ -92,7 +92,7 @@ class RegisterController extends Controller
                         $message->to($user->email);
                         $message->subject('Email Verification Mail');
                     });  
-           /* return redirect()->route('register')->with('message','Verification link sent! Please check your registered email and verify your email'); */
+           
             Session::flash('verify', 'A verification link has been send to '.$user->email.'.
                             Please check an email and click on the included link to
                             verify your email.');
@@ -125,10 +125,14 @@ class RegisterController extends Controller
 
                 if ($verifyUser->save()) 
                 {
-                    Mail::send('emails.accountActivationEmail', ['user' => $verifyUser], function($message) use($verifyUser){
-                        $message->to('admin@gmail.com');
-                        $message->subject('Account Activation Mail');
-                    });
+                    $users = User::roleType2()->get();
+                    foreach($users as $user)
+                    {
+                        Mail::send('emails.accountActivationEmail', ['user' => $verifyUser], function($message) use($verifyUser, $user){
+                            $message->to($user->email);
+                            $message->subject('Account Activation Mail');
+                        });
+                    }
 
                     /*return redirect("register")->with('message','Your e-mail is verified successfully. you will get mail when your account is activated.');*/
                     Session::flash('verify', 'Your e-mail is verified successfully. you will get mail when your account is activated.');
