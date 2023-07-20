@@ -7,6 +7,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -50,6 +52,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+
         $this->validateLogin($request);
 
         if ($this->hasTooManyLoginAttempts($request)) {
@@ -58,15 +61,24 @@ class LoginController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-            $user = Auth::user();
+        $user = User::where('email', $request->email)->first();
+        $password = $request->input('password');
+        if($user && Hash::check($password, $user->password))
+        {
+            
             if(($user->role == '1') || ($user->role == '2'))
-            {
+            {  
+                $user = Auth::login($user);                                       
                 return redirect()->route('admin.adminHome');
             }
-            if($user->role == '3')
+            if($user->role == '3' && $user->is_active == '1')
+            {   
+                $user = Auth::login($user);                                       
+                return redirect()->route('user.userHome');               
+            }
+            else
             {
-                return redirect()->route('user.userHome');
+                return redirect('login')->withInput()->with('error','Your Account is not Activated');
             }
         }
         else 
