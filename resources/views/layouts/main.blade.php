@@ -41,7 +41,7 @@ $baseUrl = asset('backend')."/";
         <!-- end page -->
 
         <footer class="footer footer-alt">
-            <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+            <script>document.write(new Date().getFullYear())</script> ©{{ env('APP_NAME') }}
         </footer>
 
         <!-- bundle -->
