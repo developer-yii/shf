@@ -22,7 +22,7 @@ class UsersSeeder extends Seeder
                 [
                 'name'=>'Admin User',
                 'email'=>'admin2@gmail.com',
-                'role'=>3,
+                'role'=>2,
                 'password'=> bcrypt('12345678'),
                 ]
                 ];
