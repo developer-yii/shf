@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Message;
 
 class LoginController extends Controller
 {
@@ -68,13 +69,13 @@ class LoginController extends Controller
             
             if(($user->role == '1') || ($user->role == '2'))
             {  
-                $user = Auth::login($user);                                       
+                $user = Auth::login($user);
                 return redirect()->route('admin.adminHome');
             }
             if($user->role == '3' && $user->is_active == '1')
             {   
                 $user = Auth::login($user);                                       
-                return redirect()->route('user.userHome');               
+                return redirect()->route('user.Home');               
             }
             else
             {
