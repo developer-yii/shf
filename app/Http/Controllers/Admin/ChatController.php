@@ -176,7 +176,7 @@ class ChatController extends Controller
 
                 $result = ['status' => true,'message' => '', 'data'=>$chat];
 
-                //Mail::to($userDetails->email)->send(new ChatNotificationEmail($chat));
+                Mail::to($userDetails->email)->send(new ChatNotificationEmail($chat));
             }
             else 
             {

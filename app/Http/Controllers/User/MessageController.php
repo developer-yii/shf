@@ -170,7 +170,7 @@ class MessageController extends Controller
                     $notification->save();
 
                     $chat->receiver_name=$userDetails->first_name." ".$userDetails->last_name; 
-                    //Mail::to($userDetails->email)->send(new ChatNotificationEmail($chat));    
+                    Mail::to($userDetails->email)->send(new ChatNotificationEmail($chat));    
                 }                
 
             }
@@ -250,7 +250,7 @@ class MessageController extends Controller
                 $chat->receiver_name=$userDetails->first_name." ".$userDetails->last_name;
                 $chat->chat_message= $savedMessage->title;
                 $chat->created_date=Carbon::now()->format('d-m-Y H:i:s');
-                //Mail::to($userDetails->email)->send(new ChatNotificationEmail($chat));    
+                Mail::to($userDetails->email)->send(new ChatNotificationEmail($chat));    
             }
 
             return redirect()->route('user.message')->with('message', 'Message Create successfully.');   
