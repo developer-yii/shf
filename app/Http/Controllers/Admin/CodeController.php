@@ -19,11 +19,10 @@ class CodeController extends Controller
     public function codelist(Request $request)
     {
         if($request->ajax()){
-            $data = ProductCode::select('product_codes.*','users.name as user_name')
+            $data = ProductCode::select('product_codes.*','users.first_name as user_name')
                                  ->leftjoin('users','product_codes.added_by','=','users.id');
             return DataTables::eloquent($data)
-                                ->make(true); 
-                                                    
+                                ->make(true);                                                     
             }
             
         return view('admin.code.list');

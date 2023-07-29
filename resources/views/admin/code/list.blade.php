@@ -6,15 +6,9 @@
 @extends('layouts.app')
 
 @section('title', 'Code')
-@section('css')
-<link href="{{$baseUrl}}assets/css/custom.css" rel="stylesheet" type="text/css" />
-@endsection
-@section('content')
-<style>
-    
-</style>
 
-    
+@section('content')
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">

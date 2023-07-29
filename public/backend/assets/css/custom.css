@@ -26,3 +26,13 @@ position: relative;
 top:50%;
 left:50%;
 }
+
+.unread-noti 
+{    
+  background-color: #f3f5fb;
+}
+
+.card-body-notification
+{
+  padding: 0.5rem;
+}

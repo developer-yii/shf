@@ -15,4 +15,13 @@ Route::namespace('Admin')
     Route::post('/code/import','CodeController@codeimport')->name('code.import');
     Route::get('/download/samplefile','CodeController@downloadsamplefile')->name('download.samplefile');
    Route::get('/account-activate/{id}', 'AdminController@activateAccount')->name('account-activate'); 
+
+   //message
+   Route::get('/message','MessageController@index')->name('message');   
+   Route::post('/change_status', 'MessageController@change_status')->name('message.change_status');
+   Route::get('/view-message', 'ChatController@viewchat')->name('view_chat');
+   Route::post('/addchat', 'ChatController@addchat')->name('chat.message');
+   Route::get('/fetch-data', 'ChatController@fetchData')->name('chat.fetchData');
+   Route::post('/messages/mark-as-read', 'ChatController@markAsRead')->name('messages.mark_as_read');
+      
 });

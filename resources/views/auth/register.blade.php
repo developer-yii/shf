@@ -35,7 +35,7 @@
 
                 <div class="form-group">
                     <label for="last_name">{{ __('Last Name') }}</label>
-                    <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" autocomplete="last_name" {{ $errors->has('first_name') ? 'autofocus' : '' }}>
+                    <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" autocomplete="last_name" {{ $errors->has('last_name') ? 'autofocus' : '' }}>
 
                     @error('last_name')
                         <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
 
                 <div class="form-group">
                     <label for="email">{{ __('Email Address') }}</label>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" {{ $errors->has('first_name') ? 'autofocus' : '' }}>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" {{ $errors->has('email') ? 'autofocus' : '' }}>
 
                     @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
 
                 <div class="form-group">
                     <label for="phone_number">{{ __('Phone Number') }}</label>
-                    <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" autocomplete="phone_number" {{ $errors->has('first_name') ? 'autofocus' : '' }}>
+                    <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" autocomplete="phone_number" {{ $errors->has('phone_number') ? 'autofocus' : '' }}>
 
                     @error('phone_number')
                         <span class="invalid-feedback" role="alert">
@@ -67,7 +67,7 @@
                 </div>
                 <div class="form-group">
                     <label for="country" class="form-label">Select Country:</label>
-                    <select id="country" name="country" class="form-control @error('country') is-invalid @enderror" {{ $errors->has('first_name') ? 'autofocus' : '' }}>
+                    <select id="country" name="country" class="form-control @error('country') is-invalid @enderror" {{ $errors->has('country') ? 'autofocus' : '' }}>
                         <option value="" class="d-none">Select Country</option>
                         @foreach ($countries as $country)
                             <option value="{{$country->id}}" {{ old('country') == $country->id ? 'selected' : '' }}>{{$country->name}}</option>
@@ -83,7 +83,7 @@
                 <div class="form-group">
                     <label for="password">{{ __('Password') }}</label>
                     <div class="input-group input-group-merge">
-                        <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter your password" name="password" {{ $errors->has('first_name') ? 'autofocus' : '' }}> 
+                        <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter your password" name="password" {{ $errors->has('password') ? 'autofocus' : '' }}> 
                         <div class="input-group-append" data-password="false">
                             <div class="input-group-text">
                                 <span class="password-eye"></span>
@@ -99,7 +99,7 @@
 
                 <div class="form-group">
                     <label for="password-confirm">{{ __('Confirm Password') }}</label>                    
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password" {{ $errors->has('first_name') ? 'autofocus' : '' }}>                    
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password" {{ $errors->has('password-confirm') ? 'autofocus' : '' }}>                    
                 </div>
 
 

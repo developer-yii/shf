@@ -1,5 +1,7 @@
 @php
     $baseUrl = asset('backend')."/";
+    $username = Auth::user()->first_name;
+    $userrole = Auth::user()->role;
 @endphp
 
 <!DOCTYPE html>
@@ -27,6 +29,7 @@
         <link href="{{$baseUrl}}assets/css/vendor/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
         <link href="{{$baseUrl}}assets/css/vendor/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
         <link href="{{$baseUrl}}assets/css/vendor/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="{{$baseUrl}}assets/css/custom.css" rel="stylesheet" type="text/css" />
         @yield('css')
     </head>
 
@@ -56,7 +59,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                                <script>document.write(new Date().getFullYear())</script> ©{{ env('APP_NAME')}}
                             </div>
                             <div class="col-md-6">
                                 <div class="text-md-right footer-links d-none d-md-block">
@@ -188,6 +191,26 @@
         <script src="{{$baseUrl}}assets/js/vendor/dataTables.bootstrap4.js"></script>
         <script src="{{$baseUrl}}assets/js/vendor/dataTables.responsive.min.js"></script>
         <script src="{{$baseUrl}}assets/js/vendor/responsive.bootstrap4.min.js"></script>
+        <script src="{{$baseUrl}}user/js/jquery.slimscroll.js"></script>
+        @if($userrole== 1 || $userrole == 2)
+        <script type="text/javascript">            
+            var viewAllUrl="{{ route('admin.message') }}";  
+            var viewChat="{{ route('admin.view_chat') }}"; 
+             var chatstatus = "{{ route('admin.messages.mark_as_read') }}";
+        </script>        
+        @else
+        <script type="text/javascript">            
+             var viewAllUrl="{{ route('user.message') }}";  
+             var viewChat="{{ route('user.view_chat') }}";             
+             var chatstatus = "{{ route('user.messages.mark_as_read') }}";
+        </script>
+        @endif        
+        <script type="text/javascript">
+            var getNotificationUrl = "{{ route('notification.getNotification') }}";            
+            var readAllUrl="{{ route('notification.readAll') }}";            
+        </script>
+        <script src="{{$baseUrl}}assets/js/chat.js"></script>
+        <!-- <script src="{{$baseUrl}}assets/js/notification.js"></script> -->
         @yield('js')
         <!-- end demo js-->
     </body>
