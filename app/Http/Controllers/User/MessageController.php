@@ -237,7 +237,7 @@ class MessageController extends Controller
             $savedMessage = Message::find($message->id);
             
             $chat = new Chat;
-            $user=User::where('role', '2')->get();
+            $user=User::whereIn('role', [1,2])->get();
             foreach($user as $userDetails)
             {
                 $notification=new Notification;
