@@ -38,6 +38,13 @@
                 </li>
 
                 <li class="side-nav-item">
+                    <a href="{{ route('admin.user') }}" class="side-nav-link">
+                        <i class="uil-home-alt"></i>
+                        <span> User </span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item">
                     <a href="{{ route('admin.code.list') }}" class="side-nav-link">
                         <i class="uil-calender"></i>
                         <span> Code </span>
