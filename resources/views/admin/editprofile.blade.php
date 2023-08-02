@@ -14,10 +14,10 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
-                            <li class="breadcrumb-item active">User Update</li>
+                            <li class="breadcrumb-item active">Update Profile</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">User Update</h4>
+                    <h4 class="page-title">Update Profile</h4>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body col-8">                                                            
-                        <form method="post" class="" id="update_user_form">
+                        <form method="post" class="" id="update_profile">
                             @csrf
                             <input type="hidden" name="id" value="{{ $data->id }}">
                             <div class="form-group mb-3 form-input">
@@ -68,7 +68,7 @@
                                 </select>
                                 <span class="error text-danger"></span>     
                             </div>
-
+                            @if($data->role == 1 || $data->role == 2)
                             <div class="form-group mb-3 form-input">
                                 <label for="role" class="form-label">User Role <span class="text-danger">*</span></label>
                                 <select name="role" id="role" class="form-control">
@@ -88,10 +88,11 @@
                                 </select>                                
                                 <span class="error text-danger"></span>     
                             </div>
+                            @endif
                                                      
                             <div class="form-group text-center">
                                 <button class="btn btn-primary" type="submit">Update</button>
-                                <a href="{{ route('admin.user') }}" class="btn btn-danger" type="submit">Cancel</a>
+                                <a href="{{ route('profile') }}" class="btn btn-danger" type="submit">Cancel</a>
                             </div>
                         </form>                        
                     </div>
@@ -101,11 +102,10 @@
     </div>
 @endsection
 @section('js')
-<script>   
-    var userList = "{{ route('admin.user.list') }}";  
-    var userupdate = "{{ route('admin.user.update') }}";    
+<script>         
+    var updateprofile = "{{ route('profile.update') }}";    
 </script>
-<script src="{{$baseUrl}}admin/js/user.js"></script>
+<script src="{{$baseUrl}}admin/js/custom.js"></script>
 @endsection
 
 

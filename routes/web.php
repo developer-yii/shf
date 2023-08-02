@@ -22,13 +22,17 @@ Route::get('/', function () {
 // for Email verification
 Route::get('/verify-account/{token}', 'Auth\RegisterController@verifyAccount')->name('verify-account');
 
+Route::get('check/product','ProductCheckController@view')->name('view');
+Route::post('check/product','ProductCheckController@checkcode')->name('check.code');       
+
 //frontend
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['verified_email'])->group(function () 
     {
-        Route::get('/home', 'HomeController@index')->name('user.userHome');        
-        Route::get('check/product','ProductCheckController@view')->name('view');
-        Route::post('check/product','ProductCheckController@checkcode')->name('check.code');           
+        Route::get('/home', 'HomeController@index')->name('user.userHome');    
+        Route::get('/profile', 'HomeController@profile')->name('profile');               
+        Route::get('/profile/edit/{id}', 'HomeController@edit')->name('profile.edit');
+        Route::post('/profile/update','HomeController@update')->name('profile.update');
                
     });
     

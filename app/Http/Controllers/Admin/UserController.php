@@ -92,7 +92,18 @@ class UserController extends Controller
     public function delete(Request $request)
     {
         $user = User::find($request->id);
-        //$user->deleted_at = null;
+        
+        /*$messages = $user->messages;
+        foreach($messages as $message)
+        {
+            // $chats = $message->chats->each->delete();
+            //$notifications = $message->notifications->each->delete();
+            $message->delete();
+        }*/
+        
+        /*
+        echo "<pre>";
+        print_r($user);*/
         $user->delete();
         $msg = "Records Delete successfully";
         $result = ["status" => true, "message" => $msg];
@@ -167,17 +178,6 @@ class UserController extends Controller
             }
         }
         return response()->json($result);
-
-
-
-
-
-
-
-
-
-        
-
        
     }
 
