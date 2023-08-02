@@ -7,14 +7,17 @@ Route::namespace('Admin')
 ->as('admin.')
 ->prefix('admin')
 ->group(function(){
-    Route::get('/home','DashboardController@adminHome')->name('adminHome');    
+    Route::get('/home','DashboardController@adminHome')->name('adminHome');
+
+
+    //code    
     Route::get('/code/list','CodeController@codelist')->name('code.list');
     Route::post('/code/create','CodeController@codecreate')->name('code.create');
     Route::post('/code/detail','CodeController@codedetail')->name('code.detail');
     Route::post('/code/delete','CodeController@codedelete')->name('code.delete');
     Route::post('/code/import','CodeController@codeimport')->name('code.import');
     Route::get('/download/samplefile','CodeController@downloadsamplefile')->name('download.samplefile');
-   Route::get('/account-activate/{id}', 'AdminController@activateAccount')->name('account-activate'); 
+    Route::get('/account-activate/{id}', 'AdminController@activateAccount')->name('account-activate'); 
 
    //message
    Route::get('/message','MessageController@index')->name('message');   
@@ -33,13 +36,7 @@ Route::namespace('Admin')
         Route::post('/delete','UserController@delete')->name('user.delete');
         Route::post('update', 'UserController@update')->name('user.update');
 
-        // Route::get('/get', 'EmployeeController@get')->name('employee.list');     
-        // Route::get('/create', 'EmployeeController@viewemp')->name('employee.viewemp');
-        // Route::post('/add', 'EmployeeController@add')->name('employee.add');
-        // Route::get('/edit', 'EmployeeController@edit')->name('employee.edit');
-        // Route::get('/view', 'EmployeeController@view')->name('employee.view');
-        // Route::post('update', 'EmployeeController@update')->name('employee.update');
-        // Route::post('/delete', 'EmployeeController@delete')->name('employee.delete');
+       
     });
       
 });

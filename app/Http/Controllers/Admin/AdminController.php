@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Auth;
 use App\Models\User;
+use App\Models\Country;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -21,8 +23,6 @@ class AdminController extends Controller
         {
             if($verifyUser->email_verified_at) 
             {
-                /*echo "<pre>";
-                print_r($verifyUser); exit;*/
                 if($verifyUser->is_active==0)
                 {
                     $verifyUser->is_active = 1;
@@ -56,4 +56,5 @@ class AdminController extends Controller
         Session::flash('verify', 'Sorry Email cannot be identified.');
         return view("messages");              
     }
+
 }

@@ -23,28 +23,6 @@
         ],        
     });
 
-/*$('#update_user_form').submit(function(event) 
-{
-    event.preventDefault();    
-    $('.error').html("");
-    var id = $(this).attr('data-id');
-    $.ajax({
-        url:userupdate + '?id=' + id,
-        type: 'POST',        
-        dataType: 'json',
-                success: function(response) 
-                {
-                    
-                    $('#user_datatable').DataTable().ajax.reload();
-                },
-                error: function(error) {
-                    alert("something wrong");
-                }
-    });
-});*/
-
-
-
 $('#update_user_form').submit(function(event) 
 {
     event.preventDefault();
