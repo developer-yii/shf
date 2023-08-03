@@ -25,12 +25,15 @@ class UserController extends Controller
             
             return DataTables::of($data)
                                 ->addColumn('action', function ($data) {
-                return '<a href="'.route('admin.user.view', 'id='.$data->id).'" class="btn btn-sm btn-primary mr-1"  data-id="'.$data->id.'"><i class="mdi mdi-eye"></i></a><a href="'.route('admin.user.edit', 'id='.$data->id).'" class="btn btn-sm btn-primary mr-1"  data-id="'.$data->id.'"><i class="mdi mdi-pencil"></i></a></a><a href="javascript:void(0);" class="btn btn-sm btn-primary mr-1 delete-user"  data-id="'.$data->id.'"><i class="mdi mdi-delete"></i></a>';
-            })
-
-            
-            ->editColumn("role", function ($data) {
-                    $role_type = "";
+                return '<a href="'.route('admin.user.view', 'id='.$data->id).'" class="btn btn-sm btn-warning mr-1"  data-id="'.$data->id.'" title="View"><i class="mdi mdi-eye"></i></a><a href="'.route('admin.user.edit', 'id='.$data->id).'" class="btn btn-sm btn-info mr-1"  data-id="'.$data->id.'"><i class="mdi mdi-pencil" title="Edit"></i></a></a><a href="javascript:void(0);" class="btn btn-sm btn-danger mr-1 delete-user"  data-id="'.$data->id.' "title="Delete"><i class="mdi mdi-delete"></i></a>';
+            })  
+            ->editColumn("user_name", function ($data) {
+                    
+                    return $data->first_name." ".$data->last_name;
+                    
+                })          
+            ->editColumn("role_lable", function ($data) {
+                    
                     if ($data->role) {
                         if($data->role == 1)
                         {
@@ -46,7 +49,29 @@ class UserController extends Controller
                         }
                     }
                 })
-            ->rawColumns(['action','role'])
+            ->editColumn("email_verified", function ($data) {                   
+                    
+                    if($data->email_verified_at != Null)
+                    {
+                        return '<span class="m-4 text-success font-20"><i class="mdi mdi-check-bold"></i></span>';
+                    }                        
+                    else
+                    {
+                        return '<span class="m-4 text-danger font-20"><i class="mdi mdi-close-thick"></i></span>';
+                    }                    
+                })
+            ->editColumn("status", function ($data) {                   
+                    
+                    if($data->is_active == 1)
+                    {
+                        return "Active";
+                    }                        
+                    else
+                    {
+                        return "Inactive";
+                    }                    
+                })
+            ->rawColumns(['action','role_lable','email_verified', 'status'])
             ->toJson();              
         }
     }
@@ -75,11 +100,21 @@ class UserController extends Controller
             //email-verification status
             if($data->email_verified_at != Null )
             {
-               $data->email_verification = "Complete" ;
+               $data->email_verification = '<span class="text-success font-20"><i class="mdi mdi-check-bold"></i></span>' ;
             }
             else
             {
-                $data->email_verification = "Pending" ;   
+                $data->email_verification = '<span class="text-danger font-20"><i class="mdi mdi-close-thick"></i></span>';
+            }
+
+            //user active status
+            if($data->is_active == 1 )
+            {
+               $data->status = '<span class="badge badge-success-lighten">Active</span>';
+            }
+            else
+            {
+                $data->status = '<span class="badge badge-danger-lighten">Inactive</span>';   
             }
            
             return view("admin.user.view", ['data' => $data]);
@@ -92,18 +127,7 @@ class UserController extends Controller
     public function delete(Request $request)
     {
         $user = User::find($request->id);
-        
-        /*$messages = $user->messages;
-        foreach($messages as $message)
-        {
-            // $chats = $message->chats->each->delete();
-            //$notifications = $message->notifications->each->delete();
-            $message->delete();
-        }*/
-        
-        /*
-        echo "<pre>";
-        print_r($user);*/
+     
         $user->delete();
         $msg = "Records Delete successfully";
         $result = ["status" => true, "message" => $msg];
@@ -148,8 +172,7 @@ class UserController extends Controller
             'email' => ['required','string','email','max:255','unique:users,email,' . $user->id],
             'phone_number' => ['required', 'unique:users,phone_number,' . $user->id],
             'role' => ['required'],
-            'country' => ['required'],
-            'userstatus' => ['required'],
+            'country' => ['required'],            
         );
         $validator = Validator::make($request->all(), $rules);
         
@@ -164,7 +187,10 @@ class UserController extends Controller
             $user->email = $request->input('email');
             $user->phone_number = $request->input('phone_number');
             $user->role = $request->input('role');
-            $user->is_active = $request->input('userstatus');
+            if(isset($request->userstatus))
+            {                
+                $user->is_active = $request->input('userstatus');
+            }
             $user->country_id = $request->input('country');
             
             

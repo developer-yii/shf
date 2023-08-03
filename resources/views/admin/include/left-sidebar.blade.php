@@ -39,7 +39,7 @@
 
                 <li class="side-nav-item">
                     <a href="{{ route('admin.user') }}" class="side-nav-link">
-                        <i class="uil-home-alt"></i>
+                        <i class="uil-users-alt"></i>
                         <span> User </span>
                     </a>
                 </li>
@@ -53,7 +53,7 @@
 
                 <li class="side-nav-item">
                     <a href="{{ route('admin.message') }}" class="side-nav-link">
-                        <i class="uil-message"></i>
+                        <i class="mdi mdi-message-bulleted"></i>
                         <span> Message </span>
                     </a>
                 </li>
@@ -69,7 +69,7 @@
             
                 <li class="side-nav-item">
                     <a href="{{ route('user.message') }}" class="side-nav-link">
-                        <i class="uil-message"></i>
+                        <i class="mdi mdi-message-bulleted"></i>
                         <span> Message </span>
                     </a>
                 </li>

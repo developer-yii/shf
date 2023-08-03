@@ -34,11 +34,12 @@
                                 <table id="user_datatable" class="table dt-responsive nowrap w-100">
                                     <thead>
                                         <tr>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
+                                            <th>Name</th>                                            
                                             <th>Email</th>
                                             <th>Phone No.</th>
                                             <th>User Type</th>
+                                            <th>Email Verified</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>

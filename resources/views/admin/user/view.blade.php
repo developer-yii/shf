@@ -89,12 +89,20 @@
                                  <div class="col-md-6">
                                     <div class="row">
                                        <div class="col-md-6"><label>Email Varification</label>:</div>
-                                       <div class="col-md-6">{{ $data->email_verification }}</div>
+                                       <div class="col-md-6">{!! $data->email_verification !!}</div>
                                     </div>
                                  </div>
                             </div>
 
-
+                            <div class="row">
+                                 <div class="col-md-6">
+                                    <div class="row">
+                                       <div class="col-md-6"><label>Status</label>:</div>
+                                       <div class="col-md-6">{!! $data->status !!}</div>
+                                    </div>
+                                 </div>
+                            </div>
+                            
                         </div> <!-- end tab-content-->
                     </div> <!-- end card body-->
                 </div> <!-- end card -->

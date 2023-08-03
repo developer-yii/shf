@@ -59,7 +59,7 @@
                             </div>
 
                             <div class="form-group form-input">
-                                <label for="country" class="form-label">Select Country:</label>                                
+                                <label for="country" class="form-label">Select Country <span class="text-danger">*</span></label>                                
 
                                 <select id="country" name="country" class="form-control @error('country') is-invalid @enderror" {{ $errors->has('country') ? 'autofocus' : '' }}>
                                     @foreach ($countries as $country)
@@ -80,8 +80,16 @@
                             </div>
 
                             <div class="form-group mb-3 form-input">
-                                <label for="userstatus" class="form-label">User status <span class="text-danger">*</span></label>
-                                <select name="userstatus" id="userstatus" class="form-control">
+                                <label for="userstatus" class="form-label">User status</label>
+                                @php
+                                $class="";
+                                if($data->email_verified_at == null)
+                                {
+                                    $class = "disabled";
+                                }
+                                @endphp
+
+                                <select name="userstatus" id="userstatus" class="form-control" {{ $class }} >
                                     @foreach($statusMap as $statusId => $userstatus)
                                         <option value="{{ $statusId }}" @if($data->is_active == $statusId) selected @endif>{{ $userstatus }}</option>
                                     @endforeach
