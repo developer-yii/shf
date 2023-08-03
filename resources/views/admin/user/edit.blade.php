@@ -103,7 +103,8 @@
 @section('js')
 <script>   
     var userList = "{{ route('admin.user.list') }}";  
-    var userupdate = "{{ route('admin.user.update') }}";    
+    var userupdate = "{{ route('admin.user.update') }}"; 
+    var redirectroute = "{{ route('admin.user') }}";    
 </script>
 <script src="{{$baseUrl}}admin/js/user.js"></script>
 @endsection
