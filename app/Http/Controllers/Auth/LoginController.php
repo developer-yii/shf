@@ -10,6 +10,8 @@ use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Message;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -72,21 +74,66 @@ class LoginController extends Controller
                 $user = Auth::login($user);
                 return redirect()->route('admin.adminHome');
             }
-            if($user->role == '3' && $user->is_active == '1')
+            if($user->role == '3' && $user->is_active == '1' && $user->email_verified_at != null)
             {   
                 $user = Auth::login($user);                                       
                 return redirect()->route('user.Home');               
             }
+            if($user->role == '3' && $user->email_verified_at == null)
+            {
+                $email=$user->email;
+                $verificationLink = route('resend.verification', ['email' => $email]);
+                $errorMsg = 'Please Verify your email <a href="'.$verificationLink.'" style="color:white; text-decoration:underline;font-weight:bold;">Verify Email</a>'; 
+                return redirect('login')->withInput()->with('error', $errorMsg);
+            }
             else
             {
-                return redirect('login')->withInput()->with('error','Your Account is not Activated');
+                return redirect('login')->withInput()->with('error','Your account is not activated');
             }
         }
         else 
         {  
-            return redirect('login')->withInput()->with('error','The Password is wrong.');
+            return redirect('login')->withInput()->with('error','The password is wrong.');
         }
     }
+    public function resendVerification(Request $request)
+    {             
+        $user = User::where('email', $request->email)->first(); 
+        
+        if(isset($user->id) && $user->id != Null)
+        {
+            $email=$user->email;
+            Mail::send('emails.emailVerificationEmail', ['user' => $user], function($message) use($user){
+                        $message->to($user->email);
+                        $message->subject('Email Verification Mail');
+                    });          
+           
+            return redirect()->route('send.verification', $email);            
+        }
+        else
+        {
+            return redirect('login')->withInput()->with('error','Invalid Email');
+        }        
+    }
+
+    public function varificationsend(Request $request)
+    {
+        $email=$request->email;
+        $user = User::where('email', $request->email)->first(); 
+        if($user)
+        {
+            Session::flash('verify', 'A verification link has been send to '.$email.'.
+                                Please check an email and click on the included link to
+                                verify your email.');
+            return view("messages", compact('email'));
+        }
+        else
+        {
+            Session::flash('verify', 'Invalid Email');
+            return view("messages");
+        }
+    }
+
     public function logout(Request $request) 
     {
       Auth::logout();
