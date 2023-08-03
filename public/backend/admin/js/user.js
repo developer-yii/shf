@@ -14,11 +14,23 @@
             url : userList,
         },
         columns : [
-            { data : 'first_name'},
-            { data : 'last_name'},
+            { data : 'user_name', name: 'first_name'},
             { data : 'email'},
             { data : 'phone_number'},
-            { data: 'role', name: 'role'},            
+            { data: 'role_lable', name: 'role'},            
+            { data: 'email_verified', name: 'email_verified_at'},            
+            {
+                name : 'is_active',
+                data : 'status',
+                sortable: true,
+                render: function(_,_, full) {
+                    if(full['is_active']==1){
+                        return '<span class="badge badge-success-lighten">'+full['status']+'</span>';
+                    }else{
+                        return '<span class="badge badge-danger-lighten">'+full['status']+'</span>';
+                    }
+                },
+            },           
             { data: 'action', name: 'action', orderable: false }            
         ],        
     });
