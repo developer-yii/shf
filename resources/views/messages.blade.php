@@ -12,15 +12,15 @@
                 <span><img src="{{ $baseUrl }}assets/images/logo.png" alt="" height="18"></span>
             </a>
         </div>
-        <div class="card-body p-4">
-            <div class="card-body p-4">
+        
+            <div class="card-body">
                             
                 <div class="text-center m-auto">
                     <img src="{{ $baseUrl }}assets/images/mail_sent.svg" alt="mail sent image" height="64" />
                     @if(Session::has('verify'))                        
                         <h4 class="text-dark-50 text-center mt-4 fw-bold"></h4> 
                         <p class="text-muted mb-4">                        
-                            {{ Session::get('verify') }} 
+                            {{ Session::get('verify') }}                             
                         </p>
                     @endif                    
                 </div>
@@ -28,14 +28,14 @@
                 <form action="{{ route('frontend.home') }}">
                     <div class="mb-0 text-center">
                         <button class="btn btn-primary" type="submit"><i class="mdi mdi-home me-1"></i> Back to Home</button>
+                        @if(isset($email))
+                        <a href="{{ route('resend.verification', ['email' => $email]) }}" class="btn btn-primary" type="submit"><i class="mdi mdi-mail me-1"></i> Resend Mail</a>
+                        @endif
                     </div>
                 </form>
 
             </div>
-
-          
-            
-        </div> <!-- end card-body -->
+        
     </div>
 
 @endsection

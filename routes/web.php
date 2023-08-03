@@ -21,6 +21,8 @@ Route::get('/', function () {
 
 // for Email verification
 Route::get('/verify-account/{token}', 'Auth\RegisterController@verifyAccount')->name('verify-account');
+Route::get('/resend/verification/{email}', 'Auth\LoginController@resendVerification')->name('resend.verification');
+Route::get('/send/verification/{email}', 'Auth\LoginController@varificationsend')->name('send.verification');
 
 Route::get('check/product','ProductCheckController@view')->name('view');
 Route::post('check/product','ProductCheckController@checkcode')->name('check.code');       
@@ -57,8 +59,6 @@ Route::namespace('User')
     Route::post('/messages/mark-as-read', 'MessageController@markAsRead')->name('messages.mark_as_read');
     
 });
-
-
 
 Route::get('logout-user',function(Request $request){
     Auth::logout();
