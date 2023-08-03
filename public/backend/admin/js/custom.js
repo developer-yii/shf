@@ -26,6 +26,7 @@ $('#update_profile').submit(function(event)
             {
                 toastr.success(result.message);
                 $('.error').html("");
+                window.location.href = redirectroute;
             }
 
             else if(result.status == false && result.validationError == true)

@@ -103,7 +103,8 @@
 @endsection
 @section('js')
 <script>         
-    var updateprofile = "{{ route('profile.update') }}";    
+    var updateprofile = "{{ route('profile.update') }}"; 
+    var redirectroute = "{{ route('profile') }}";   
 </script>
 <script src="{{$baseUrl}}admin/js/custom.js"></script>
 @endsection
