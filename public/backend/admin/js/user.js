@@ -14,6 +14,7 @@
             url : userList,
         },
         columns : [
+            { data : 'id', name : 'id', visible : false},
             { data : 'user_name', name: 'first_name'},
             { data : 'email'},
             { data : 'phone_number'},

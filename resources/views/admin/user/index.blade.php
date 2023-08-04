@@ -34,6 +34,7 @@
                                 <table id="user_datatable" class="table dt-responsive nowrap w-100">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>                                            
                                             <th>Name</th>                                            
                                             <th>Email</th>
                                             <th>Phone No.</th>
