@@ -40,7 +40,7 @@
                 <li class="side-nav-item">
                     <a href="{{ route('admin.user') }}" class="side-nav-link">
                         <i class="uil-users-alt"></i>
-                        <span> User </span>
+                        <span> User Management</span>
                     </a>
                 </li>
 
@@ -48,6 +48,36 @@
                     <a href="{{ route('admin.code.list') }}" class="side-nav-link">
                         <i class="uil-calender"></i>
                         <span> Code </span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item">
+                    <a href="javascript: void(0);" class="side-nav-link">
+                        <i class="uil-briefcase"></i>
+                        <span> Products</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="side-nav-second-level" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('admin.product') }}"><i class="uil-briefcase"></i> Product List</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.productart') }}"><i class="uil uil-notebooks"></i> Product Art</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.producttarget') }}"><i class="uil uil-notebooks"></i> Product Target</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.productuse') }}"><i class="uil-calender"></i> Product Use</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+ 
+                <li class="side-nav-item">
+                    <a href="{{ route('order') }}" class="side-nav-link">
+                        <i class="uil-calender"></i>
+                        <span> Order Management </span>
                     </a>
                 </li>
 
@@ -64,6 +94,20 @@
                     <a href="{{ route('user.Home') }}" class="side-nav-link">
                         <i class="uil-home-alt"></i>
                         <span> Dashboard </span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item">
+                    <a href="{{ route('user.product') }}" class="side-nav-link">
+                        <i class="uil-briefcase"></i>
+                        <span> Product List</span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item">
+                    <a href="{{ route('order') }}" class="side-nav-link">
+                        <i class="uil-calender"></i>
+                        <span> Orders</span>
                     </a>
                 </li>
             

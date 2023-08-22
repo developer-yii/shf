@@ -35,10 +35,8 @@
                                     style="margin-bottom:1em;">Add Code</button>
                             </div>
                             <div class="col-10">
-                                <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#showimport"
-                                    style="margin-bottom:1em; float: right;">Import Excel</a>
+                                <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#showimport" style="margin-bottom:1em; float: right;">Import Excel</button>
                             </div>
-
                         </div>
                         <h4 class="header-title">Product Code List</h4>
                         <div class="tab-content">
