@@ -32,13 +32,13 @@ class ProductController extends Controller
                                 ->addColumn('action', function ($data) {
                 return '<a href="javascript:void(0);" class="btn btn-sm btn-info mr-1 edit-product"  data-id="'.$data->id.'" data-toggle="modal" data-target="#addproduct"><i class="mdi mdi-pencil" title="Edit"></i></a></a><a href="javascript:void(0);" class="btn btn-sm btn-danger mr-1 delete-product"  data-id="'.$data->id.' "title="Delete"><i class="mdi mdi-delete"></i></a>';
             })
-            ->addColumn('image_full_path', function ($row) {
+            ->addColumn('image', function ($row) {
                 return $row->getImageUrl();
             }) 
              ->addColumn('hidden_value', function ($data) {
                 return '<input type="hidden" class="hidden-value" value="'.$data->id.'">';
             })
-            ->rawColumns(['action', 'hidden_value','image_full_path'])
+            ->rawColumns(['action', 'hidden_value','image'])
             ->toJson();
         }
     }
@@ -75,18 +75,6 @@ class ProductController extends Controller
                 $product->tension = $request->input('tension');
                 $product->quantity = $request->input('quantity');
                 
-                // if(request()->hasfile('product_image'))
-                // {
-
-                //     $image_path = public_path("product_images/".$product->image);
-                //     if (file_exists($image_path))
-                //     {
-                //        unlink($image_path);
-                //     }              
-                //     $product->image = time().'.'.request()->product_image->getClientOriginalExtension();
-                //     request()->product_image->move(public_path('product_images'), $product->image);
-                // }
-
                 if ($request->hasFile('product_image') && $request->product_image)
                 {
                     //delete old file
@@ -135,12 +123,6 @@ class ProductController extends Controller
                     $result = ['status' => false, 'error' => $validator->errors(),'data' => ''];
                     return response()->json($result);
                 }
-
-                /*if(request()->hasfile('product_image'))
-                {
-                    $imageName = time().'.'.request()->product_image->getClientOriginalExtension();
-                    request()->product_image->move(public_path('product_images'), $imageName);
-                }*/
 
                 if ($request->hasFile('product_image') && $request->product_image)
                 {
