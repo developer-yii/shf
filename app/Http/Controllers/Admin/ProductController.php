@@ -111,9 +111,7 @@ class ProductController extends Controller
                     'product_arts.*' => 'exists:product_arts,id',
                     'product_target' => 'required|array',
                     'product_target.*' => 'exists:product_targets,id',
-                    'product_use_id' => 'required|exists:product_targets,id',
-                    'volume' => 'required|string|max:255',
-                    'tension' => 'required|string|max:255',
+                    'product_use_id' => 'required|exists:product_targets,id',                    
                     'quantity' => 'required|integer',
                     'product_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
                 ]);
@@ -131,7 +129,7 @@ class ProductController extends Controller
                     $extension = $request->file("product_image")->getClientOriginalExtension();
                     $filename = "product_image".uniqid() . "_" . time() . "." . $extension;
                     \Storage::disk("local")->put($dir . $filename,\File::get($request->file("product_image")));
-                    $product->image = $filename;
+                    
                 }
                 
                 $product = new Product();
@@ -141,7 +139,7 @@ class ProductController extends Controller
                 $product->total_volume = $request->input('volume');
                 $product->tension = $request->input('tension');
                 $product->quantity = $request->input('quantity');        
-                $product->image = $imageName;
+                $product->image = $filename;                
                 $product->save();
 
                 // Attach product arts and targets
