@@ -41,6 +41,15 @@ Route::middleware(['auth'])->group(function () {
     //Notofication
         Route::get('/notification','NotificationController@notification')->name('notification.getNotification');
         Route::get('/clearall', 'NotificationController@readAll')->name('notification.readAll');
+
+    //order management
+    Route::group(['prefix' => 'orders'], function () {
+        Route::get('/index','OrderController@index')->name('order');  
+        Route::get('/get','OrderController@get')->name('order.list');
+        Route::post('/change_status', 'OrderController@change_status')->name('order.change_status');
+        Route::get('/detail', 'OrderController@detail')->name('order.detail');
+     
+    }); 
 });
 
 Route::namespace('User')
@@ -57,7 +66,21 @@ Route::namespace('User')
     Route::post('/addchat', 'MessageController@addchat')->name('chat.message');
     Route::get('/fetch-data', 'MessageController@fetchData')->name('chat.fetchData');
     Route::post('/messages/mark-as-read', 'MessageController@markAsRead')->name('messages.mark_as_read');
-    
+
+     Route::prefix('user')->group(function () {
+            Route::group(['prefix' => 'product'], function () {
+                Route::get('/index', 'ProductController@index')->name('product');  
+                Route::get('/detail/{id}', 'ProductController@detail')->name('product.detail');
+
+                //Order Module
+                Route::get('/cart', 'CartController@cart')->name('cart');
+                Route::get('/add-to-cart', 'CartController@addToCart')->name('add.to.cart');
+                Route::patch('/update-cart', 'CartController@update')->name('update.cart');
+                Route::delete('/remove-from-cart', 'CartController@remove')->name('remove.from.cart');
+                Route::get('/checkout', 'CartController@checkout')->name('checkout');
+                Route::get('/order/{id}', 'CartController@orderSummary')->name('summary');
+            });            
+        });
 });
 
 Route::get('logout-user',function(Request $request){

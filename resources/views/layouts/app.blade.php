@@ -1,5 +1,6 @@
 @php
     $baseUrl = asset('backend')."/";
+    $jsUrl = asset('frontend/js/user')."/";
     $username = Auth::user()->first_name;
     $userrole = Auth::user()->role;
 @endphp
@@ -188,14 +189,27 @@
         <script src="{{$baseUrl}}assets/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
         <!-- third party js ends -->
 
+        <script type="text/javascript">
+            function showFlash(element, msg, type) {
+                $('.error-message').html(msg)
+                if (type == 'error') {
+                    $('#danger-alert-modal').modal('show');
+                } else {
+                    $('#success-alert-modal').modal('show');
+                }
+               
+            }
+            
+        </script>
+
         <!-- demo app -->
         <script src="{{$baseUrl}}assets/js/vendor/jquery.dataTables.min.js"></script>
         <script src="{{$baseUrl}}assets/js/vendor/dataTables.bootstrap4.js"></script>
         <script src="{{$baseUrl}}assets/js/vendor/dataTables.responsive.min.js"></script>
         <script src="{{$baseUrl}}assets/js/vendor/responsive.bootstrap4.min.js"></script>
         <script src="{{$baseUrl}}user/js/jquery.slimscroll.js"></script>
-        <script src="{{$baseUrl}}assets/js/toastr.js?time()"></script>
-        <script src="{{$baseUrl}}assets/js/sweetalert2.js?time()"></script>
+        <script src="{{$baseUrl}}assets/js/toastr.js?{{time()}}"></script>
+        <script src="{{$baseUrl}}assets/js/sweetalert2.js?{{time()}}"></script>
         @if($userrole== 1 || $userrole == 2)
         <script type="text/javascript">            
             var viewAllUrl="{{ route('admin.message') }}";  
@@ -214,6 +228,13 @@
             var readAllUrl="{{ route('notification.readAll') }}";            
         </script>
         <script src="{{$baseUrl}}assets/js/chat.js"></script>
+        <script>
+            var addToCart = "{{ route('user.add.to.cart') }}"; 
+            var updateCart = "{{ route('user.update.cart') }}"; 
+            var removeCartItem = "{{ route('user.remove.from.cart') }}";
+            var checkoutOrder = "{{ route('user.checkout') }}";
+        </script>
+        <script src="{{$jsUrl}}cart.js"></script>
         <!-- <script src="{{$baseUrl}}assets/js/notification.js"></script> -->
         @yield('js')
         <!-- end demo js-->

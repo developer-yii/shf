@@ -27,6 +27,43 @@ Route::namespace('Admin')
    Route::get('/fetch-data', 'ChatController@fetchData')->name('chat.fetchData');
    Route::post('/messages/mark-as-read', 'ChatController@markAsRead')->name('messages.mark_as_read');
 
+   //product arts
+   Route::group(['prefix' => 'product-arts'], function () {
+        Route::get('/index','ProductArtController@index')->name('productart');  
+        Route::get('/get','ProductArtController@get')->name('productart.list');
+        Route::post('/create','ProductArtController@create')->name('productart.create');
+        Route::post('/detail','ProductArtController@detail')->name('productart.detail');
+        Route::post('/delete','ProductArtController@delete')->name('productart.delete');
+   }); 
+
+   //product Target
+   Route::group(['prefix' => 'product-targets'], function () {
+        Route::get('/index','ProductTargetController@index')->name('producttarget');  
+        Route::get('/get','ProductTargetController@get')->name('producttarget.list');
+        Route::post('/create','ProductTargetController@create')->name('producttarget.create');
+        Route::post('/detail','ProductTargetController@detail')->name('producttarget.detail');
+        Route::post('/delete','ProductTargetController@delete')->name('producttarget.delete');
+   }); 
+
+   //product Uses 
+   Route::group(['prefix' => 'product-use'], function () {
+        Route::get('/index','ProductUseController@index')->name('productuse');  
+        Route::get('/get','ProductUseController@get')->name('productuse.list');
+        Route::post('/create','ProductUseController@create')->name('productuse.create');
+        Route::post('/detail','ProductUseController@detail')->name('productuse.detail');
+        Route::post('/delete','ProductUseController@delete')->name('productuse.delete');
+   }); 
+
+   //product management
+   Route::group(['prefix' => 'products'], function () {
+        Route::get('/index','ProductController@index')->name('product');  
+        Route::get('/get','ProductController@get')->name('product.list');
+        Route::post('/create','ProductController@create')->name('product.create');
+        Route::post('/detail','ProductController@detail')->name('product.detail');
+        Route::post('/delete','ProductController@delete')->name('product.delete');
+   }); 
+
+
    //user
    Route::group(['prefix' => 'user'], function () {
         Route::get('/index','UserController@index')->name('user');
@@ -35,8 +72,6 @@ Route::namespace('Admin')
         Route::get('/edit','UserController@edit')->name('user.edit');
         Route::post('/delete','UserController@delete')->name('user.delete');
         Route::post('update', 'UserController@update')->name('user.update');
-
        
     });
-      
 });

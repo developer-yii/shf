@@ -1,15 +1,25 @@
-
 @php
     $baseUrl = asset('backend')."/";
+    $cartImageUrl = asset('product_images');
+    $user_role = Auth::user()->role;
 @endphp
 <!-- Topbar Start -->
 <div class="navbar-custom">
     <ul class="list-unstyled topbar-right-menu float-right mb-0">
+        @if($user_role == 3)
+        <li class="dropdown notification-list topbar-dropdown">
+            <div id="cartsection">
+                @include('include.cart')
+            </div>
+        </li>
+        @endif
+
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false" >
                 <i class="dripicons-bell noti-icon"></i>                    
                    <div id="noti_count">  </div>
-            </a>
+            </a>            
+
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
                 <div class="dropdown-item noti-title">                        
                     <h5 class="m-0">
