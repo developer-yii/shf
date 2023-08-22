@@ -20,7 +20,7 @@
         @foreach($products as $product)
             <div class="col-sm-6 col-lg-3">
                 <div class="card">
-                    <img src="{{ $baseUrl }}/{{ $product->image }}" class="card-img-top product-img" alt="{{ $product->name }}" title="{{ $product->name }}">
+                    <img src="{{ $product->getImageUrl() }}" class="card-img-top product-img" alt="{{ $product->name }}" title="{{ $product->name }}">
                     <div class="card-body text-center product">
                         <h5 class="card-title">{{ $product->name }} - {{ $product->tension}}</h5>
                         <h5 class="card-title"> <i class="mdi mdi-currency-inr"></i>{{ $product->price}} / {{ $product->total_volume}}</h5>

@@ -1,6 +1,6 @@
 @php
     $baseUrl = asset('backend')."/";
-    $cartImageUrl = asset('product_images');
+    $cartImageUrl = asset('storage/product_images');
     $user_role = Auth::user()->role;
 @endphp
 <!-- Topbar Start -->

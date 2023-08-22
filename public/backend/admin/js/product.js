@@ -20,20 +20,17 @@ $(document).ready(function(){
             url : productList,
         },
         columns : [
-            /*{ data : 'id', name : 'id'},*/
             {
                 data: 'image',
                 render: function(data, type, row, meta) 
                 {
-                    var imageUrl = data ? imgUrl + '/' + data : imgUrl + '/image_not_available.jpg';
-                    return '<img src="' + imageUrl + '" class="img-thumbnail" width="75" height="75"/>';
+                    return '<img src="' + data + '" class="img-thumbnail" width="75" height="75"/>';
                 },
                 orderable: false
             },
             { data : 'name', name: 'name'},
             { data : 'price', name: 'price'},
-            { data : 'quantity', name: 'quantity'},
-            /*{ data: 'action', name: 'action', orderable: false }*/      
+            { data : 'quantity', name: 'quantity'},            
             {
             searchable:false,
             orderable:false,
@@ -130,6 +127,8 @@ $(document).ready(function(){
                 $('#volume').val(data.total_volume); // Assuming you have an input field with id 'volume'
                 $('#tension').val(data.tension); // Assuming you have an input field with id 'tension'
                 $('#quantity').val(data.quantity);
+                $('#hidden_image').val(data.image);
+                
 
                 var selectedArts = data.arts.map(function(art) {
                     return art.id;

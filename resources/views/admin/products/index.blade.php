@@ -78,6 +78,7 @@
                         @csrf
                         <div class="form-group form-input">
                             <input type="hidden" name="product_id" class="product-id">
+                            <input type="hidden" name="hidden_image" class="hidden_image">
                         </div>
 
                         <div class="row">

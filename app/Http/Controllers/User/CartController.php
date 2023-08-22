@@ -46,7 +46,7 @@ class CartController extends Controller
 
         session()->put('cart', $cart);
 
-        $cartImageUrl = asset('product_images');
+        $cartImageUrl = asset('storage/product_images');
         
         $cartHtml = view('include.cart', compact('cart', 'cartImageUrl'))->render();
         
@@ -67,7 +67,7 @@ class CartController extends Controller
             $cart = session()->get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
             session()->put('cart', $cart);
-            $cartImageUrl = asset('product_images');
+            $cartImageUrl = asset('storage/product_images');
         
             $cartHtml = view('include.cart', compact('cart', 'cartImageUrl'))->render();
             
@@ -112,8 +112,7 @@ class CartController extends Controller
                     'order_id' => $order->id,
                     'product_id' => $orderDetail['id'],
                     'quantity' => $orderDetail['quantity'],
-                    'price' => $orderDetail['price'],
-                    'image' => $orderDetail['image'],
+                    'price' => $orderDetail['price'],                    
                 ]);
 
                 $totalPrice += $orderDetail['price'] * $orderDetail['quantity'];
@@ -147,7 +146,7 @@ class CartController extends Controller
         //$orderDetail = OrderDetail::where('order_id', $order->id)->get();
         $orderDetail = DB::table('order_details')
             ->join('products', 'order_details.product_id', '=', 'products.id')
-            ->select('order_details.*', 'products.name')
+            ->select('order_details.*', 'products.name', 'products.image')
             ->where('order_details.order_id', $order->id)
             ->get();
 

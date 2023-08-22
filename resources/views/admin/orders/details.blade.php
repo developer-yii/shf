@@ -1,6 +1,6 @@
 @php
 $userid = Auth::user()->id;
-$imageUrl = asset('product_images')."/";
+$imageUrl = asset('storage/product_images');
 $baseUrl = asset('backend')."/";
 @endphp
 
