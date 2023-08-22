@@ -22,5 +22,16 @@ class Product extends Model
     {
         return static::with(['arts', 'targets'])->findOrFail($id);
     }
+    public function getImageUrl()
+    {
+        if($this->image)
+        {
+            if(\Storage::disk('local')->exists("public/product_images/" . $this->image)) 
+            {
+                return asset('storage/product_images')."/".$this->image;
+            }
+        }
+        return asset('img/image_not_available.png');
+    }
     
 }

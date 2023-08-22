@@ -31,11 +31,14 @@ class ProductController extends Controller
             return DataTables::of($data)
                                 ->addColumn('action', function ($data) {
                 return '<a href="javascript:void(0);" class="btn btn-sm btn-info mr-1 edit-product"  data-id="'.$data->id.'" data-toggle="modal" data-target="#addproduct"><i class="mdi mdi-pencil" title="Edit"></i></a></a><a href="javascript:void(0);" class="btn btn-sm btn-danger mr-1 delete-product"  data-id="'.$data->id.' "title="Delete"><i class="mdi mdi-delete"></i></a>';
+            })
+            ->addColumn('image_full_path', function ($row) {
+                return $row->getImageUrl();
             }) 
              ->addColumn('hidden_value', function ($data) {
                 return '<input type="hidden" class="hidden-value" value="'.$data->id.'">';
             })
-            ->rawColumns(['action', 'hidden_value'])
+            ->rawColumns(['action', 'hidden_value','image_full_path'])
             ->toJson();
         }
     }
@@ -72,18 +75,29 @@ class ProductController extends Controller
                 $product->tension = $request->input('tension');
                 $product->quantity = $request->input('quantity');
                 
-                if(request()->hasfile('product_image'))
+                // if(request()->hasfile('product_image'))
+                // {
+
+                //     $image_path = public_path("product_images/".$product->image);
+                //     if (file_exists($image_path))
+                //     {
+                //        unlink($image_path);
+                //     }              
+                //     $product->image = time().'.'.request()->product_image->getClientOriginalExtension();
+                //     request()->product_image->move(public_path('product_images'), $product->image);
+                // }
+
+                if ($request->hasFile('product_image') && $request->product_image)
                 {
-                
-                    //$image_path = "./product_images/".$product->image; 
-                    //$image_path = asset("product_images/".$product->image);
-                    $image_path = public_path("product_images/".$product->image);
-                    if (file_exists($image_path))
-                    {
-                       unlink($image_path);
-                    }              
-                    $product->image = time().'.'.request()->product_image->getClientOriginalExtension();
-                    request()->product_image->move(public_path('product_images'), $product->image);
+                    //delete old file
+                     \Storage::delete('public/product_images/'.$request->hidden_image);
+
+                    //insert new file
+                    $dir = "public/product_images/";
+                    $extension = $request->file("product_image")->getClientOriginalExtension();
+                    $filename = "product_image".uniqid() . "_" . time() . "." . $extension;
+                    \Storage::disk("local")->put($dir . $filename,\File::get($request->file("product_image")));
+                    $product->image = $filename;
                 }
 
                 if($product->save())
@@ -101,8 +115,7 @@ class ProductController extends Controller
                 return response()->json($result);
             }
             else
-            {
-               
+            {               
                 $validator = Validator::make($request->all(), [
                     'name' => 'required|string|max:255|unique:products,name',
                     'price' => 'required|numeric',
@@ -123,10 +136,20 @@ class ProductController extends Controller
                     return response()->json($result);
                 }
 
-                if(request()->hasfile('product_image'))
+                /*if(request()->hasfile('product_image'))
                 {
                     $imageName = time().'.'.request()->product_image->getClientOriginalExtension();
                     request()->product_image->move(public_path('product_images'), $imageName);
+                }*/
+
+                if ($request->hasFile('product_image') && $request->product_image)
+                {
+                    //insert new file
+                    $dir = "public/product_images/";
+                    $extension = $request->file("product_image")->getClientOriginalExtension();
+                    $filename = "product_image".uniqid() . "_" . time() . "." . $extension;
+                    \Storage::disk("local")->put($dir . $filename,\File::get($request->file("product_image")));
+                    $product->image = $filename;
                 }
                 
                 $product = new Product();

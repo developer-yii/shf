@@ -75,7 +75,7 @@
                         </div>
 
                         <div class="form-group form-input">
-                            <label for="username">Product Target</label>
+                            <label for="username">Product Target<span class="text-danger">*</span></label>
                             <input class="form-control" type="text" id="name" name="name"
                                 placeholder="Enter product target here...">
                                 <span class="text-danger error"></span>    

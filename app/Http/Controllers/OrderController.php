@@ -20,7 +20,7 @@ class OrderController extends Controller
 {
     public function index(Request $request)
     {
-        $orders = Order::select('orders.id as order_id', 'users.first_name', 'users.last_name', 'order_details.product_id', 'order_details.quantity', 'order_details.price', 'order_details.image')
+        $orders = Order::select('orders.id as order_id', 'users.first_name', 'users.last_name', 'order_details.product_id', 'order_details.quantity', 'order_details.price')
         ->join('users', 'orders.user_id', '=', 'users.id')
         ->join('order_details', 'orders.id', '=', 'order_details.order_id')
         ->get();
@@ -137,9 +137,9 @@ class OrderController extends Controller
         if($order)
         {            
             $orderDetail = OrderDetail::join('products', 'order_details.product_id', '=', 'products.id')
-                ->select('order_details.*', 'products.name')
+                ->select('order_details.*', 'products.name', 'products.image')
                 ->where('order_details.order_id', $order->id)
-                ->get();
+                ->get(); 
 
             $user = User::join('countries', 'users.country_id', '=', 'countries.id')
                 ->where('users.id', $order->user_id)

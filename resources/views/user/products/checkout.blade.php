@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @php
-    $baseUrl = asset('product_images')."/";
+    $baseUrl = asset('storage/product_images');
 @endphp
 @section('title','User | Dashboard')
 @section('content')
