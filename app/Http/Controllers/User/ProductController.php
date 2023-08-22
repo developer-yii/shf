@@ -28,8 +28,16 @@ class ProductController extends Controller
     public function detail(Request $request)
     { 
         $product = Product::getProductDetail($request->id);
-        $cart = session()->get('cart', []);        
-        return view('user.products.detail',['product'=>$product, 'cart'=>$cart]);       
+
+        if($product)
+        {
+            $cart = session()->get('cart', []);        
+            return view('user.products.detail',['product'=>$product, 'cart'=>$cart]);       
+        }
+        else
+        {            
+            return redirect()->back();
+        }
     }
     
 }

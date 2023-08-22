@@ -20,7 +20,7 @@ class Product extends Model
     
     public static function getProductDetail($id)
     {
-        return static::with(['arts', 'targets'])->findOrFail($id);
+        return static::with(['arts', 'targets'])->find($id);
     }
     public function getImageUrl()
     {

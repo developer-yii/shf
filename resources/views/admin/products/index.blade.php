@@ -5,7 +5,7 @@
 
 @extends('layouts.app')
 
-@section('title','Admin | Product Uses')
+@section('title','Admin | Product List')
 @section('content')
 
     <div class="container-fluid">
@@ -77,7 +77,7 @@
                     <form class="pl-3 pr-3" id="add_product" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group form-input">
-                            <input type="hidden" name="product_id" class="product-id">
+                            <input type="hidden" name="product_id" class="product-id" id="product-id">
                             <input type="hidden" name="hidden_image" class="hidden_image">
                         </div>
 

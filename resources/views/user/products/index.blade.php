@@ -23,7 +23,7 @@
                     <img src="{{ $product->getImageUrl() }}" class="card-img-top product-img" alt="{{ $product->name }}" title="{{ $product->name }}">
                     <div class="card-body text-center product">
                         <h5 class="card-title">{{ $product->name }} - {{ $product->tension}}</h5>
-                        <h5 class="card-title"> <i class="mdi mdi-currency-inr"></i>{{ $product->price}} / {{ $product->total_volume}}</h5>
+                        <h5 class="card-title"> <i class="mdi mdi-currency-eur"></i>{{ $product->price}} / {{ $product->total_volume}}</h5>
                         <a href="{{ route('user.product.detail', ['id' => $product->id]) }}" class="btn view-cart-button btn-info">View Details</a>
                         
                         @php
