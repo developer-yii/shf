@@ -74,7 +74,7 @@ $(document).ready(function(){
                 $($this).find('button[type="submit"]').prop('disabled',false);
                 if(result.status == true)
                 {
-                    $this[0].reset();                        
+                    $this[0].reset();                 
                     toastr.success(result.message);
                     $('#addproduct').modal('hide');                    
                     $('#product_datatable').DataTable().ajax.reload();                    
@@ -100,13 +100,15 @@ $(document).ready(function(){
 
      $('#addproduct').on('hidden.bs.modal',function(e){
         $('#add_product')[0].reset();
+        $('#product_arts').val(null).trigger('change');
+        $('#product_target').val(null).trigger('change');
         $('#add_product .error').html("");
         $('#add_product input').each(function(index,value){
             $(this).removeClass('is-invalid');
         });
-        $('.product-target-id').val("");
+        $('.product_id').val("");
         $('#addproduct').find('button[type="submit"]').html("Save");
-        $('#addproduct').find('#exampleModalLabel').html("Add Product Use");
+        $('#addproduct').find('#exampleModalLabel').html("Add Product");
     });
 
     $('body').on('click','.edit-product',function()
@@ -120,7 +122,7 @@ $(document).ready(function(){
             data : {id : id},
             dataType : 'json',
             success : function(data){
-                console.log(data);
+                
                 $('#addproduct').modal('show');
                 $('#name').val(data.name);
                 $('#price').val(data.price); // Assuming you have an input field with id 'price'
@@ -147,7 +149,7 @@ $(document).ready(function(){
                 $('#product_use_id option[value="' + use_id + '"]').prop('selected', true);
 
                 $('#addproduct').find('button[type="submit"]').html("Update");
-                $('#addproduct').find('#exampleModalLabel').html("Edit Product Use");
+                $('#addproduct').find('#exampleModalLabel').html("Edit Product");
             }
         });
     });

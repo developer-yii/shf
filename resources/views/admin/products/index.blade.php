@@ -69,7 +69,7 @@
                 <div class="modal-body">
 
                     <div class="text-center mt-2 mb-4">
-                        <h5 class="modal-title"><span id="exampleModalLabel">Add Product123</span>
+                        <h5 class="modal-title"><span id="exampleModalLabel">Add Product</span>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button></h5>
