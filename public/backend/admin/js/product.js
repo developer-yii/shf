@@ -13,8 +13,7 @@ $(document).ready(function(){
     var producttargettable = $('#product_datatable').DataTable({
         processing : true,
         serverSide : true,
-        pageLength: 25,
-        order: [[1, 'desc']], 
+        pageLength: 25,         
         ajax : {
             type : "GET",
             url : productList,
@@ -106,7 +105,7 @@ $(document).ready(function(){
         $('#add_product input').each(function(index,value){
             $(this).removeClass('is-invalid');
         });
-        $('.product_id').val("");
+        $('#product-id').val("");
         $('#addproduct').find('button[type="submit"]').html("Save");
         $('#addproduct').find('#exampleModalLabel').html("Add Product");
     });

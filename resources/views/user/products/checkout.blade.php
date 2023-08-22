@@ -47,7 +47,7 @@
                                                             <td>
                                                                 <img src="{{ $baseUrl }}/{{ $details->image }}" alt="contact-img" title="contact-img" class="rounded me-2" height="48">
                                                                 <p class="m-0 d-inline-block align-middle">
-                                                                    <a href="{{ route('user.product.detail', $details->id) }}" class="text-body fw-semibold">{{ $details->name }}</a>
+                                                                    <a href="{{ route('user.product.detail', $details->product_id) }}" class="text-body fw-semibold">{{ $details->name }}</a>
                                                                     <br>
                                                                     <small>{{ $details->quantity }} x <i class="mdi mdi-currency-eur"></i>{{ $details->price }}</small>
                                                                 </p>

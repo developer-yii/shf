@@ -103,7 +103,7 @@ $baseUrl = asset('backend')."/";
                                 @endphp
                                 <tr>
                                     <td><img src="{{ $imageUrl }}/{{ $details['image'] }}" alt="contact-img" title="contact-img" class="rounded me-2" height="48"></td>
-                                    <td><a href="{{ route('user.product.detail', $details['id']) }}" class="text-body fw-semibold">{{ $details['name'] }}</a></td>
+                                    <td><a href="{{ route('user.product.detail', $details['product_id']) }}" class="text-body fw-semibold">{{ $details['name'] }}</a></td>
                                     <td>{{ $details['quantity'] }}</td>
                                     <td><i class="mdi mdi-currency-eur"></i>{{ $details['price'] }}</td>
                                     <td><i class="mdi mdi-currency-eur"></i>{{ $details['price'] * $details['quantity'] }}</td>

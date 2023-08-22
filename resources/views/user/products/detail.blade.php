@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@php
-    $baseUrl = asset('product_images')."/";
+@php    
+    $baseUrl = asset('storage/product_images');
 @endphp
 @section('title','User | Dashboard')
 @section('content')
@@ -35,7 +35,7 @@
                                 <!-- Product description -->
                                 <div class="mt-4">
                                     <h6 class="font-14">Price:</h6>
-                                    <h3> <i class="mdi mdi-currency-inr"></i>{{ $product['price'] }}</h3>
+                                    <h3><i class="mdi mdi-currency-eur"></i>{{ $product['price'] }}</h3>
                                 </div>
 
                                 <!-- Quantity -->
