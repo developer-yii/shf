@@ -49,11 +49,11 @@
                                                                 <p class="m-0 d-inline-block align-middle">
                                                                     <a href="{{ route('user.product.detail', $details->product_id) }}" class="text-body fw-semibold">{{ $details->name }}</a>
                                                                     <br>
-                                                                    <small>{{ $details->quantity }} x <i class="mdi mdi-currency-eur"></i>{{ $details->price }}</small>
+                                                                    <small>{{ $details->quantity }} x <i class="uil uil-dollar-alt"></i>{{ $details->price }}</small>
                                                                 </p>
                                                             </td>
                                                             <td class="text-end">
-                                                                <i class="mdi mdi-currency-eur"></i>{{ $details->price * $details->quantity }}
+                                                                <i class="uil uil-dollar-alt"></i>{{ $details->price * $details->quantity }}
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -62,7 +62,7 @@
                                                                 <h5 class="m-0">Total:</h5>
                                                             </td>
                                                             <td class="text-end fw-semibold">
-                                                                <i class="mdi mdi-currency-eur"></i>{{ $total }}
+                                                                <i class="uil uil-dollar-alt"></i>{{ $total }}
                                                             </td>
                                                         </tr>
                                                     @endif

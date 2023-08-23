@@ -13,14 +13,18 @@ use App\Imports\ProductCodeImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\DB;
 
 class CodeController extends Controller
 {
     public function codelist(Request $request)
     {
         if($request->ajax()){
-            $data = ProductCode::select('product_codes.*','users.first_name as user_name')
-                                 ->leftjoin('users','product_codes.added_by','=','users.id');
+            
+
+            $data = ProductCode::select('product_codes.*', \DB::raw('CONCAT(users.first_name, " ", users.last_name) as username'))
+        ->leftJoin('users', 'product_codes.added_by', '=', 'users.id');
+
             return DataTables::eloquent($data)
                                 ->make(true);                                                     
             }

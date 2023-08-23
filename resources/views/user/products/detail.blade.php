@@ -35,7 +35,7 @@
                                 <!-- Product description -->
                                 <div class="mt-4">
                                     <h6 class="font-14">Price:</h6>
-                                    <h3><i class="mdi mdi-currency-eur"></i>{{ $product['price'] }}</h3>
+                                    <h3><i class="uil uil-dollar-alt"></i>{{ $product['price'] }}</h3>
                                 </div>
 
                                 <!-- Quantity -->

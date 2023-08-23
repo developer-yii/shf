@@ -37,13 +37,11 @@
                                     <tbody>
                                         @php 
                                             $total = 0;
-                                            $total_qty = 0
                                         @endphp
                                         @if(session('cart'))
                                             @foreach(session('cart') as $id => $details)
                                                 @php 
                                                     $total += $details['price'] * $details['quantity'];
-                                                    $total_qty += $details['quantity'];
                                                 @endphp
                                                 <tr data-id="{{ $id }}">
                                                     <td>
@@ -56,11 +54,11 @@
                                                             </small>
                                                         </p>
                                                     </td>
-                                                    <td><i class="mdi mdi-currency-eur"></i>{{ $details['price'] }}</td>
+                                                    <td><i class="uil uil-dollar-alt"></i>{{ $details['price'] }}</td>
                                                     <td>
                                                         <input type="number" min="1" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" data-product-id="{{ $details['id'] }}" />
                                                     </td>
-                                                    <td><i class="mdi mdi-currency-eur"></i>{{ $details['price'] * $details['quantity'] }}</td>
+                                                    <td><i class="uil uil-dollar-alt"></i>{{ $details['price'] * $details['quantity'] }}</td>
                                                     <td>
                                                         <button class="btn btn-danger btn-sm remove-from-cart"><i class="mdi mdi-delete"></i></button>                                  
                                                     </td>
@@ -96,12 +94,8 @@
                                         <tbody>
                                             <tr>
                                                 <td>Grand Total :</td>
-                                                <td><i class="mdi mdi-currency-eur"></i>{{ $total }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Total Quantity :</td>
-                                                <td>{{ $total_qty }}</td>
-                                            </tr>
+                                                <td><i class="uil uil-dollar-alt"></i>{{ $total }}</td>
+                                            </tr>                                           
                                         </tbody>
                                     </table>
                                 </div>

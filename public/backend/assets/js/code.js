@@ -187,7 +187,7 @@ $(document).ready(function(){
         columns : [
             { data : 'id', name:'product_codes.id'},
             { data : 'code', name:'product_codes.code'},
-            { data : 'user_name', name: 'users.user_name'},
+            { data : 'username', name: 'users.first_name'},
             { data : 'created_at',name:'product_codes.created_at',
               render: function(data, type, row) {
                 var formattedDate = moment(data).format('D-M-Y h:mm A');
