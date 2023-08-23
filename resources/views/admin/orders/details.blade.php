@@ -92,21 +92,19 @@ $baseUrl = asset('backend')."/";
                             </thead>
                             <tbody>
                                 @php 
-                                    $total = 0;
-                                    $total_qty = 0
+                                    $total = 0;                                    
                                 @endphp
                                 
                                 @foreach($orderDetail as $id => $details)
                                 @php 
                                     $total += $details['price'] * $details['quantity'];
-                                    $total_qty += $details['quantity'];
                                 @endphp
                                 <tr>
                                     <td><img src="{{ $imageUrl }}/{{ $details['image'] }}" alt="contact-img" title="contact-img" class="rounded me-2" height="48"></td>
                                     <td><a href="{{ route('user.product.detail', $details['product_id']) }}" class="text-body fw-semibold">{{ $details['name'] }}</a></td>
                                     <td>{{ $details['quantity'] }}</td>
-                                    <td><i class="mdi mdi-currency-eur"></i>{{ $details['price'] }}</td>
-                                    <td><i class="mdi mdi-currency-eur"></i>{{ $details['price'] * $details['quantity'] }}</td>
+                                    <td><i class="uil uil-dollar-alt"></i>{{ $details['price'] }}</td>
+                                    <td><i class="uil uil-dollar-alt"></i>{{ $details['price'] * $details['quantity'] }}</td>
                                 </tr>
                                 @endforeach  
 
@@ -135,12 +133,8 @@ $baseUrl = asset('backend')."/";
                             <tbody>
                                 <tr>
                                     <td>Grand Total :</td>
-                                    <td><i class="mdi mdi-currency-eur"></i>{{ $total }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Total Quantity :</td>
-                                    <td>{{ $total_qty }}</td>
-                                </tr>                                
+                                    <td><i class="uil uil-dollar-alt"></i>{{ $total }}</td>
+                                </tr>                               
                             </tbody>
                         </table>
                     </div>

@@ -31,7 +31,7 @@ $(document).ready(function(){
             {
                 data: 'total_amount',
                 render: function(data) {
-                    return '<i class="mdi mdi-currency-eur"></i>' + data; 
+                    return '<i class="uil uil-dollar-alt"></i>' + data; 
                 }
             },
             /*{ data : 'total_amount'},*/

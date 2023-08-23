@@ -12,7 +12,7 @@
                         @foreach((array) session('cart') as $id => $details)
                             @php $total += $details['price'] * $details['quantity'] @endphp
                         @endforeach
-                        Total: <span class="text-info"><i class="mdi mdi-currency-eur"></i> {{ $total }}</span>
+                        Total: <span class="text-info"><i class="uil uil-dollar-alt"></i> {{ $total }}</span>
                     
                 </a>
             </span>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="flex-grow-1 text-truncate ms-2 ml-2">
                     <h5 class="noti-item-title fw-semibold font-14">{{ $details['name'] }} </h5>
-                    <span class="price text-info"> <i class="mdi mdi-currency-eur"></i>{{ $details['price'] }}</span> x <span class="count"> Qty {{ $details['quantity'] }} = <i class="mdi mdi-currency-eur"></i>{{ $details['price'] * $details['quantity'] }}</span>
+                    <span class="price text-info"> <i class="uil uil-dollar-alt"></i>{{ $details['price'] }}</span> x <span class="count"> Qty {{ $details['quantity'] }} = <i class="uil uil-dollar-alt"></i>{{ $details['price'] * $details['quantity'] }}</span>
                 </div>
                 <!-- <span class="float-right text-muted remove-from-cart"><i class="mdi mdi-close"></i></span> -->
             </div>
