@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ProductCode;
+use App\Models\ImportFile;
+use App\Models\FileCode;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 use App\Jobs\ExcelImportCode;
@@ -13,77 +15,18 @@ use App\Imports\ProductCodeImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\DB;
 
 class CodeController extends Controller
 {
     public function codelist(Request $request)
     {
-        if($request->ajax()){
-            
-
-            $data = ProductCode::select('product_codes.*', \DB::raw('CONCAT(users.first_name, " ", users.last_name) as username'))
-        ->leftJoin('users', 'product_codes.added_by', '=', 'users.id');
-
-            return DataTables::eloquent($data)
-                                ->make(true);                                                     
-            }
-            
+        if($request->ajax())
+        {
+            $data = ProductCode::query();
+            return DataTables::eloquent($data)->toJson();
+        }            
         return view('admin.code.list');
-    }
-
-    public function codecreate(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'code' => ['required','unique:product_codes,code' ,'max:30']
-        ]);
-
-        if($validator->fails()){
-            $result = [
-                'status' => false,
-                'error' => $validator->errors(),
-                'data' => ''
-            ];
-
-            return response()->json($result);
-        }
-
-        $userid = Auth::user()->id;
-        $update_id = (isset($request->code_id) && !empty($request->code_id)) ? $request->code_id : "";
-
-        $insert_data = [];
-        $insert_data['code'] = $request->code;
-        $insert_data['added_by'] = $userid;
-        $insert_data['updated_at'] = ($update_id != "") ? NOW() : "";
-
-        if($update_id){
-            $update = ProductCode::where('id',$update_id)->update($insert_data);
-        }else{
-            $insert = ProductCode::create($insert_data);
-        }
-
-        $result = [
-            'status' => true,
-            'message' => ($update_id == "") ? 'Code added successfully!' : 'Code updated successfully',
-        ];
-
-        return response()->json($result);
-    }
-
-    public function codedetail(Request $request){
-        $data = ProductCode::where('id',$request->id)->first();
-
-        return response()->json($data);
-    }
-
-    public function codedelete(Request $request)
-    {
-        $delete =  ProductCode::where('id',$request->id)->delete();
-
-        $result = ["message" => "Product code deleted successfully!"];
-
-        return response()->json($result);
-    }
+    }   
 
     public function codeimport(Request $request)
     {
@@ -91,7 +34,8 @@ class CodeController extends Controller
             'excelfile' => ['required','file','mimes:xls,xlsx']
         ]);
 
-        if($validator->fails()){
+        if($validator->fails())
+        {
             $result = [
                 'status' => false,
                 'error' => $validator->errors(),
@@ -101,55 +45,114 @@ class CodeController extends Controller
             return response()->json($result);
         }
 
-        if ($request->hasFile('excelfile')) {
+        if ($request->hasFile('excelfile')) 
+        {
             $file = $request->file('excelfile');
-            $filePath = $file->store('temp');
 
-            // ExcelImportCode::dispatch(storage_path('app/' . $filePath))->onQueue('imports');
+            $uploaded_file_name = $file->getClientOriginalName();           
 
+            //insert new file
+            $dir = "public/imported_code_files/";           
+            
+            $extension = $request->file("excelfile")->getClientOriginalExtension();
+            $filename = uniqid() . "_" . time() . "." . $extension;
+
+            $filePath = $dir.$filename;
+            \Storage::disk("local")->put($filePath,\File::get($request->file("excelfile")));
+            
             ini_set('max_execution_time', 180);
             $userid = Auth::user()->id;
             $import = new ProductCodeImport();
             $rows = Excel::toArray($import, $filePath);
+
             $successfulRows = 0;
             $duplicateRows = 0;
+            $totalCodesInFile = 0;
             
             $insertArray = [];
+            $duplicateArray = [];
             $index = 0;
             $date = date('Y-m-d H:i:s');
-
-            $allProductCode = ProductCode::select('code')->pluck('code')->toArray();        
+            
+            $allProductCode = ProductCode::pluck('id', 'code')->toArray();
+            
             $chunkImportedCodes = [];
-            foreach ($rows[0] as $row) {
-                if(isset($row[0]) && !empty($row[0]) && $row[0] && strtolower($row[0]) != "code"){
-                    $productCode = $row[0];
-                    if (in_array($productCode, $allProductCode) || in_array($productCode, $chunkImportedCodes)) {
+            foreach ($rows[0] as $row) 
+            {                
+                if(isset($row[0]) && !empty($row[0]) && $row[0] && strtolower($row[0]) != "code")
+                {
+                    $totalCodesInFile++;
+                    $productCode = $row[0];                   
+                    if (array_key_exists($productCode, $allProductCode) || in_array($productCode, $chunkImportedCodes)) {
+                        if (isset($allProductCode[$productCode])) 
+                        {
+                            $duplicateArray[$productCode] = $allProductCode[$productCode];
+                        }
                         $duplicateRows++;
-                    } else {
-                        $insertArray[$index][] = ['code' => $productCode, 'added_by' => $userid, 'created_at' => $date, 'updated_at' => $date];
+                    }
+                    else 
+                    {
+                        $insertArray[$index][] = ['code' => $productCode, 'created_at' => $date, 'updated_at' => $date];
                         $chunkImportedCodes[] = $productCode;
                         $successfulRows++;
-                        if (count($insertArray[$index]) == 1000) {                        
+                        if (count($insertArray[$index]) == 1000) 
+                        {              
                             $index++;
                         }
                     }
                 }
             }
-            foreach ($insertArray as $list)
-            {            
-                ProductCode::insert($list);            
-            }
-            // Delete the temporary file
-            Storage::disk("local")->delete($filePath);
+
+            if($totalCodesInFile > 0)
+            {
+                $import_file = new ImportFile();
+                $import_file->name = $filename;
+                $import_file->uploaded_file_name = $uploaded_file_name;
+                $import_file->added_by = Auth::user()->id;
+                $import_file->codes_imported = $totalCodesInFile;            
+                $import_file->save();
+                
+                foreach ($duplicateArray as $list2)
+                {
+                    $duplicate_code = new FileCode();
+                    $duplicate_code->import_file_id = $import_file->id;
+                    $duplicate_code->product_code_id = $list2;
+                    $duplicate_code->save();
+                }           
+                
+                foreach ($insertArray as $list)
+                {   
+                    //ProductCode::insert($list); 
+                    foreach ($list as $codeData) 
+                    {
+                        $productCode = new ProductCode();
+                        $productCode->code = $codeData['code'];
+                        $productCode->save();
+                        
+                        $new_code = new FileCode();
+                        $new_code->import_file_id = $import_file->id;
+                        $new_code->product_code_id = $productCode->id;
+                        $new_code->save();                    
+                    }           
+                }
+
                 $result = [
                     'status' => true,
-                    'message' => ($duplicateRows == 0) ? $successfulRows.' Product code imported successfully' : $successfulRows.' Product code imported successfully! and '.$duplicateRows.' Product code found duplicate',
+                    'message' => 'Product code imported successfully',
                 ];
-        
                 return response()->json($result);
             }
+            else
+            {
+                \Storage::disk("local")->delete($filePath);
+                $result = ["error" => "Your file is Empty"];
+                return response()->json($result, 404);
+            }
 
-       return redirect()->back()->with('error','No file uploaded!');
+            
+        }
+
+        return redirect()->back()->with('error','No file uploaded!');
         
 
     }

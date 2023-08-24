@@ -45,6 +45,13 @@
                 </li>
 
                 <li class="side-nav-item">
+                    <a href="{{ route('admin.file.list') }}" class="side-nav-link">
+                        <i class="uil-calender"></i>
+                        <span> Imported File </span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item">
                     <a href="{{ route('admin.code.list') }}" class="side-nav-link">
                         <i class="uil-calender"></i>
                         <span> Code </span>

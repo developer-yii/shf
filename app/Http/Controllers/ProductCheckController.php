@@ -6,6 +6,7 @@ use App\Rules\ReCaptcha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ProductCode;
+use App\Models\FileCode;
 use App\Models\CodeCheckLog;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,7 @@ class ProductCheckController extends Controller
     }
 
     public function checkcode(Request $request){
-        
+
         $message = [
             'g-recaptcha-response.required' => 'please select captcha code',
             'product_code.required' => 'product code is required'
@@ -35,37 +36,64 @@ class ProductCheckController extends Controller
             ];
             return response()->json($result);
         }
+        
         if(Auth::user()){
-        $userid = Auth::user()->id;
+            $userid = Auth::user()->id;
         }
 
-        $findproduct = ProductCode::where('code',$request->product_code)->first();
-        if(empty($findproduct)){
+        $code_id = ProductCode::where('code',$request->product_code)->first();
+        if(empty($code_id))
+        {
             $result = [
                 'status' => true,
                 'data' => 'notfound'
             ];
             return response()->json($result);
         }
-        $checked_on = $findproduct->code_checked_on;
 
-        if(!empty($findproduct) && $checked_on == null){
-            $update = ProductCode::where('id' ,$findproduct->id)
-                                    ->update(['code_checked_on'=>NOW()]);
-       
+        $findproducts = FileCode::where('product_code_id', $code_id->id)
+                        ->where('code_checked_on', null)->get();
+
+        if(!empty($findproducts) && $findproducts->count() > 0)
+        {    
+            foreach($findproducts as $findproduct)
+            {
+                $checked_on = $findproduct->code_checked_on;
+               $update = FileCode::where('id' ,$findproduct->id)
+                    ->update(['code_checked_on'=>NOW()]);
+
+                $createlog = CodeCheckLog::create([
+                    'code_id' => $request->product_code,
+                    'user_id' => (isset($userid)) ? $userid : null
+                ]);      
+
+                $result = [
+                    'status' => true,
+                    'data' => $findproduct,
+                    'checktime' => 'first'                    
+                ];
+                
+                return response()->json($result);                
+                break;
+            }
         }
+        else
+        {
+            $findproducts = FileCode::where('product_code_id', $code_id->id)
+                        ->first();
 
-        $createlog = CodeCheckLog::create([
-            'code_id' => $request->product_code,
-            'user_id' => (isset($userid)) ? $userid : null
-        ]);
+            $createlog = CodeCheckLog::create([
+                    'code_id' => $request->product_code,
+                    'user_id' => (isset($userid)) ? $userid : null
+                ]);
 
-        $result = [
-            'status' => true,
-            'data' => $findproduct,
-            'checktime' => ($checked_on == null) ? 'first' : 'second'
-        ];
+            $result = [
+                'status' => true,
+                'data' => $findproducts,
+                'checktime' => 'second'
+            ];
 
-        return response()->json($result);
+            return response()->json($result); 
+        }
     }
 }
