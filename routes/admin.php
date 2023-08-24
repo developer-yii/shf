@@ -9,12 +9,12 @@ Route::namespace('Admin')
 ->group(function(){
     Route::get('/home','DashboardController@adminHome')->name('adminHome');
 
+     //code    
+    Route::get('/file/list','ImportFileController@list')->name('file.list');
+    Route::post('/file/delete','ImportFileController@delete')->name('file.delete');    
 
     //code    
-    Route::get('/code/list','CodeController@codelist')->name('code.list');
-    Route::post('/code/create','CodeController@codecreate')->name('code.create');
-    Route::post('/code/detail','CodeController@codedetail')->name('code.detail');
-    Route::post('/code/delete','CodeController@codedelete')->name('code.delete');
+    Route::get('/code/list','CodeController@codelist')->name('code.list');    
     Route::post('/code/import','CodeController@codeimport')->name('code.import');
     Route::get('/download/samplefile','CodeController@downloadsamplefile')->name('download.samplefile');
     Route::get('/account-activate/{id}', 'AdminController@activateAccount')->name('account-activate'); 

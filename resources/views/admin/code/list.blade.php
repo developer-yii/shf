@@ -30,26 +30,22 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-2">
-                                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addproductcode"
-                                    style="margin-bottom:1em;">Add Code</button>
+                            <div class="col-4">
+                                <h4 class="header-title">Product Code List</h4>
                             </div>
-                            <div class="col-10">
+                            <div class="col-8">
                                 <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#showimport" style="margin-bottom:1em; float: right;">Import Excel</button>
                             </div>
                         </div>
-                        <h4 class="header-title">Product Code List</h4>
+                        
                         <div class="tab-content">
                             <div class="tab-pane show active" id="basic-datatable-preview">
                                 <table id="code_datatable" class="table dt-responsive nowrap w-100">
                                     <thead>
                                         <tr>
                                             <th>Sr. No.</th>
-                                            <th>Code Id</th>
-                                            <th>Added By</th>
+                                            <th>Code Id</th>                                            
                                             <th>Created Date</th>
-                                            <th>Code Checked On</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                 </table>
@@ -66,40 +62,7 @@
     </div>
 @endsection
 @section('modal')
-    <div id="addproductcode" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-body">
-                    <div class="text-center mt-2 mb-4">
-                    <h5 class="modal-title"><span id="exampleModalLabel">Add Code</span><button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button></h5>
-                    </div>
-                    <form class="pl-3 pr-3" id="createcode">
-                        @csrf
-                        <input type="hidden" name="user_id" value="{{ $userid }}">
-                        <input type="hidden" name="code_id" class="code-id">
-                        <div class="form-group">
-                            <label for="username">Code</label>
-                            <input class="form-control" type="text" id="code" name="code"
-                                placeholder="Enter Maximum of 30 digit code here...">
-                                <span class="text-danger error invalid-feedback error-code"
-                                id="error-code"></span>    
-                        </div>
-
-                      
-                        <div class="form-group text-center">
-                            <button class="btn btn-primary" type="submit">Add Code</button>
-                        </div>
-
-                    </form>
-
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
+    
      <div id="showimport" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -138,10 +101,7 @@
 @section('js')
 
 <script>
-    var codelist = "{{ route('admin.code.list') }}";
-    var createcode = "{{ route('admin.code.create') }}";
-    var getcode = "{{ route('admin.code.detail') }}";
-    var deletecode = "{{ route('admin.code.delete') }}";
+    var codelist = "{{ route('admin.code.list') }}";    
     var importcode = "{{ route('admin.code.import') }}"
 </script>
 <script src="{{$baseUrl}}assets/js/code.js"></script>
