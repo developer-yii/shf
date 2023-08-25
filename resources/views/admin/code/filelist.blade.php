@@ -41,10 +41,10 @@
                                     <thead>
                                         <tr>
                                             <th>Sr. No.</th>
-                                            <th>File Name</th>                                            
-                                            <th>Added By</th>                                            
-                                            <th>Created Date</th>                                           
-                                            <th>download</th>                                           
+                                            <th>File Name</th>
+                                            <th>Total Code</th>
+                                            <th>Added By</th>
+                                            <th>Created Date</th>                       
                                             <th>Action</th>
                                         </tr>
                                     </thead>
