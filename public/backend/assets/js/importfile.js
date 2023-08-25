@@ -17,6 +17,7 @@ $(document).ready(function(){
             columns : [
                 { data : 'id', name:'id'},
                 { data : 'uploaded_file_name', name:'uploaded_file_name'},
+                { data : 'codes_imported'},
                 { data : 'username', name:'users.first_name'},
                 { data : 'created_at',name:'created_at',
                 render: function(data, type, row) {
