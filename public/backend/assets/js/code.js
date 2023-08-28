@@ -86,13 +86,14 @@ $(document).ready(function(){
         processing : true,
         serverSide : true,
         bStateSave: true,
+        order: [[0, 'desc']], 
         pageLength: 25,
         ajax : {
             type : "GET",
             url : codelist,
         },
         columns : [
-            { data : 'id', name:'id'},
+            { data : 'id'},
             { data : 'code', name:'code'},            
             { data : 'created_at',name:'created_at',
               render: function(data, type, row) {
