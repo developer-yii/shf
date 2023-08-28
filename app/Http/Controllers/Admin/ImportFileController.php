@@ -25,6 +25,7 @@ class ImportFileController extends Controller
             {
                 $data->where('import_files.added_by', 2);
             }
+            $data->orderBy('import_files.id', 'desc');
             return DataTables::eloquent($data)
                 ->addColumn('file_url', function ($row) {
                     return $row->getFileUrl();
