@@ -31,7 +31,7 @@
   @yield('css')
 </head>
 
-<body class="home-page inactive">
+<body class="home-page">
 <!-- Header Starts -->
 <header id="header">
       <div class="header-box">

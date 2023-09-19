@@ -220,7 +220,7 @@
     <!-- Boost Your Endurance -->
 
     <div class="discover-products">
-      <a href="" class="button blue">Discover Products</a>
+      <a href="{{ route('products.list') }}" class="button blue">Discover Products</a>
     </div>
 
     <!-- Make Your Cycle -->

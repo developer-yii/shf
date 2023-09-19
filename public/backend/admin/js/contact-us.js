@@ -22,7 +22,13 @@
             },                                            
             { data : 'email'},                   
             { data : 'country'},                   
-            { data : 'message'},                   
+            {
+            data: 'message',
+                render: function (data, type, row) {
+                    
+                    return '<pre>' + data + '</pre>';
+                }
+            },
             { data: 'action', name: 'action', orderable: false }            
         ],        
     });
