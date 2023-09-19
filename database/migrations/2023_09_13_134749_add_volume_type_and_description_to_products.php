@@ -14,7 +14,7 @@ class AddVolumeTypeAndDescriptionToProducts extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('volume_type')->after('total_volume')->nullable;
+            $table->string('volume_type')->after('total_volume')->nullable();
             $table->text('description')->after('quantity')->nullable();
         });
     }
