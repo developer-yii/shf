@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Message;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Validator;
 
 class LoginController extends Controller
 {
@@ -26,14 +27,14 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    // use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -42,60 +43,82 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        // $this->middleware('guest')->except('logout');
+    }
+    public function showLoginForm()
+    {
+        return view('frontend.home');
+    }
+    public function adminLogin()
+    {
+        return view('auth.login');
     }
 
-    public function validateLogin(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|exists:users,email',
-            'password' => 'required'
-        ]);
-    }
-
-    public function login(Request $request)
+    public function ajaxLogin(Request $request)
     {
 
-        $this->validateLogin($request);
-
-        if ($this->hasTooManyLoginAttempts($request)) {
-            $this->fireLockoutEvent($request);
-
-            return $this->sendLockoutResponse($request);
-        }
-
-        $user = User::where('email', $request->email)->first();
-        $password = $request->input('password');
-        if($user && Hash::check($password, $user->password))
+        if($request->ajax())
         {
-            
-            if(($user->role == '1') || ($user->role == '2'))
-            {  
-                $user = Auth::login($user);
-                return redirect()->route('admin.adminHome');
-            }
-            if($user->role == '3' && $user->is_active == '1' && $user->email_verified_at != null)
-            {   
-                $user = Auth::login($user);                                       
-                return redirect()->route('user.Home');               
-            }
-            if($user->role == '3' && $user->email_verified_at == null)
+            $rules=[
+                'email' => 'required|email',
+                'password' => 'required',
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if($validator->fails())
             {
-                $email=$user->email;
-                $verificationLink = route('resend.verification', ['email' => $email]);
-                $errorMsg = 'Please Verify your email <a href="'.$verificationLink.'" style="color:white; text-decoration:underline;font-weight:bold;">Verify Email</a>'; 
-                return redirect('login')->withInput()->with('error', $errorMsg);
+                $result = ['status' => false, 'errors' => $validator->errors()];
             }
             else
             {
-                return redirect('login')->withInput()->with('error','Your account is not activated');
+                $get_user = User::where('email', $request->email)->first();
+                $credentials['email'] = $request->email;
+                $credentials['password'] = $request->password;
+                if(isset($get_user) && $get_user != NULL)
+                {
+
+                    if(($get_user->role == '1') || ($get_user->role == '2'))
+                    {  
+                        if(Auth::attempt($credentials))
+                        {
+                            $route = route('admin.adminHome');
+                            $result = ['status' => true, 'message' => 'Login Successfully.', 'route' => $route];
+                        }
+                        else
+                        {
+                            $result = ['status' => false, 'message' => 'Provided credential does not match in our records.'];
+                        }
+                    }
+                    if($get_user->role == '3' && $get_user->is_active == '1' && $get_user->email_verified_at != null)
+                    {   
+                        if(Auth::attempt($credentials))
+                        {
+                            $route = route('user.Home');
+                            $result = ['status' => true, 'message' => 'Login Successfully.', 'route' => $route];
+                        }
+                        else
+                        {
+                            $result = ['status' => false, 'message' => 'Provided credential does not match in our records.'];
+                        }            
+                    }
+                    if($get_user->role == '3' && $get_user->email_verified_at == null)
+                    {
+                        $result = ['status' => false, 'message' => 'Please verify email first.'];
+                    }
+                }
+                else
+                {
+                    $result = ['status' => false, 'message' => 'Provided credential does not match in our records.'];
+                }
             }
         }
-        else 
-        {  
-            return redirect('login')->withInput()->with('error','The password is wrong.');
+        else
+        {
+            $result = ['status' => false, 'message' => 'Invalid request'];
         }
+        return response()->json($result);
+        
     }
+
     public function resendVerification(Request $request)
     {             
         $user = User::where('email', $request->email)->first(); 

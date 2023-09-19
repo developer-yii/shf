@@ -15,7 +15,12 @@ class Product extends Model
 
     public function targets()
     {
-        return $this->belongsToMany(ProductTarget::class, 'product_product_target');
+        return $this->belongsToMany(ProductTarget::class);
+    }
+
+    public function productUse()
+    {
+        return $this->belongsTo(ProductUses::class);
     }
     
     public static function getProductDetail($id)

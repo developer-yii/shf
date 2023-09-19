@@ -48,6 +48,8 @@
                                             <th>Image</th>
                                             <th>Name</th>
                                             <th>Price</th>
+                                            <th>Volume</th>
+                                            <th>Tension</th>
                                             <th>Quantity</th>
                                             <th>Action</th>
                                         </tr>
@@ -130,8 +132,18 @@
                             </div> 
 
                             <div class="form-group form-input col-md-6">
-                                <label for="volume">Volume(ml)</label>
-                                <input class="form-control" type="text" id="volume" name="volume">
+                                <label for="volume">Volume</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="volume" id="volume" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                    <div class="input-group-prepend">
+                                        <select class="btn btn-primary" name="volume_type" id="volume_type">
+                                            <option class="dropdown-item-volume d-none" value="">Type</option>
+                                            <option class="dropdown-item-volume" value="1">ml</option>
+                                            <option class="dropdown-item-volume" value="2">caps</option>
+                                            <option class="dropdown-item-volume" value="3">tabs</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -144,6 +156,13 @@
                                 <label for="quantity">Quantity<span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" id="quantity" name="quantity">
                                 <span class="text-danger error"></span>    
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group form-input col-md-12">
+                                <label for="description">Description<span class="text-danger"></span></label>
+                                <textarea class="form-control" name="description" id="description"></textarea>    
                             </div>
                         </div>
 

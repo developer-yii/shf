@@ -19,15 +19,44 @@ Route::get('/', function () {
     return view('frontend.home');
 })->name('frontend.home');
 
+Route::get('/authenticity', function () {
+    return view('frontend.authenticity');
+})->name('frontend.authenticity');
+
+Route::get('/about-us', function () {
+    return view('frontend.about');
+})->name('frontend.about');
+
+Route::post('/ajax-login', 'Auth\LoginController@ajaxLogin')->name('user-login');
+Route::post('forgot-password', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::post('success-password', 'Auth\ForgotPasswordController@successpassword')->name('password.success');
+
 // for Email verification
 Route::get('/verify-account/{token}', 'Auth\RegisterController@verifyAccount')->name('verify-account');
+Route::post('/resend/mail', 'Auth\RegisterController@resendVerificationMail')->name('resendverificationmail');
 Route::get('/resend/verification/{email}', 'Auth\LoginController@resendVerification')->name('resend.verification');
 Route::get('/send/verification/{email}', 'Auth\LoginController@varificationsend')->name('send.verification');
+Route::get('/admin-login', 'Auth\LoginController@adminLogin')->name('admin.login');
 
 Route::get('check/product','ProductCheckController@view')->name('view');
-Route::post('check/product','ProductCheckController@checkcode')->name('check.code');       
+Route::post('check/product','ProductCheckController@checkcode')->name('check.code');
+
+Route::post('/subscribe','SubscribeController@add')->name('subscribe');
+Route::get('/contact-us','ContactController@index')->name('contact');
+Route::post('/contact-us','ContactController@submit')->name('contact.submit');
+
 
 //frontend
+Route::group(['prefix' => 'product'], function () {
+    Route::get('/index', 'ProductController@index')->name('products.list');
+    Route::get('/category/{id}', 'ProductController@category')->name('products.category');      
+    Route::get('/detail/{id}', 'ProductController@detail')->name('product.detail');
+    
+}); 
+
+Route::post('/search', 'ProductController@search')->name('product.search');
+
+
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['verified_email'])->group(function () 
     {
@@ -52,6 +81,7 @@ Route::middleware(['auth'])->group(function () {
     }); 
 });
 
+
 Route::namespace('User')
 ->middleware('auth')
 ->middleware('verified_email')
@@ -71,6 +101,8 @@ Route::namespace('User')
             Route::group(['prefix' => 'product'], function () {
                 Route::get('/index', 'ProductController@index')->name('product');  
                 Route::get('/detail/{id}', 'ProductController@detail')->name('product.detail');
+                
+
 
                 //Order Module
                 Route::get('/cart', 'CartController@cart')->name('cart');
@@ -92,7 +124,7 @@ Route::get('logout-user',function(Request $request){
 
     return $request->wantsJson()
         ? new JsonResponse([], 204)
-        : redirect()->route('login')->with('message','You have been successfully logout!');
+        : redirect()->route('frontend.home')->with('message','You have been successfully logout!');
 })->name('logoutuser');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');

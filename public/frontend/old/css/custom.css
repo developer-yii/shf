@@ -1,0 +1,12 @@
+.product-code{
+    background: #fff;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 20px;
+    border-radius: 50px;
+    height: 62px;
+    padding: 36px;
+    width: 100px;
+    margin-left: 100px;
+    width: max-content;
+}

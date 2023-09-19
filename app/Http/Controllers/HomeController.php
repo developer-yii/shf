@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Auth;
 use App\Models\User;
 use App\Models\Country;
+use App\Models\ProductArt;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
@@ -28,9 +29,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    
     public function index()
     {
-        return view('frontend.home');
+        $categories = getCategories();        
+        return view('frontend.home', compact('categories'));
     }
 
     public function profile(Request $request)

@@ -36,27 +36,23 @@ class ForgotPasswordController extends Controller
 
         $user = User::where('email', $request->email)->where('is_active', 1)->first();
         if (!$user) 
-        {
-            return back()->with('error', 'Password reset link not sent. User is inactive or email not found.');
+        {            
+            return response()->json(['status' => false, 'message' => 'Password reset link not sent. User is inactive or email not found.']);
         }
         $response = Password::broker()->sendResetLink($request->only('email'));
+
+        $result = ['status' => true, 'message' => trans($response)];
+        return response()->json($result, 200);
 
     
         switch ($response) 
         {
-            case Password::RESET_LINK_SENT:
-                return back()->with('status', 'Password reset link sent to your email address.');
+            case Password::RESET_LINK_SENT:                
+                return response()->json(['status' => true, 'message' => 'Password reset link sent to your email address.']);
             case Password::INVALID_USER:
-                return back()->withErrors(['email' => trans($response)]);
-        }
+                return response()->json(['status' => true, 'message' => trans($response)]);
+        }        
         
-        $response = $this->broker()->sendResetLink(
-            $this->credentials($request)
-        );
-
-        return $response == Password::RESET_LINK_SENT
-                    ? $this->sendResetLinkResponse($request, $response)
-                    : $this->sendResetLinkFailedResponse($request, $response);
     }
     protected function validateEmail(Request $request)
     {
@@ -66,25 +62,7 @@ class ForgotPasswordController extends Controller
     {
         return $request->only('email');
     }
-    protected function sendResetLinkResponse(Request $request, $response)
-    {
-        return $request->wantsJson()
-                    ? new JsonResponse(['message' => trans($response)], 200)
-                    : back()->with('status', trans($response));
-    }
-    protected function sendResetLinkFailedResponse(Request $request, $response)
-    {
-        if ($request->wantsJson()) {
-            throw ValidationException::withMessages([
-                'email' => [trans($response)],
-            ]);
-        }
-
-        return back()
-                ->withInput($request->only('email'))
-                ->withErrors(['email' => trans($response)]);
-    }
-
+    
     public function broker()
     {
         return Password::broker();

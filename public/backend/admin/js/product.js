@@ -29,6 +29,8 @@ $(document).ready(function(){
             },
             { data : 'name', name: 'name'},
             { data : 'price', name: 'price'},
+            { data : 'total_volume_formatted', name: 'total_volume'},
+            { data : 'tension', name: 'tension'},
             { data : 'quantity', name: 'quantity'},            
             {
             searchable:false,
@@ -124,12 +126,15 @@ $(document).ready(function(){
                 
                 $('#addproduct').modal('show');
                 $('#name').val(data.name);
-                $('#price').val(data.price); // Assuming you have an input field with id 'price'
-                $('#volume').val(data.total_volume); // Assuming you have an input field with id 'volume'
-                $('#tension').val(data.tension); // Assuming you have an input field with id 'tension'
+                $('#price').val(data.price);
+                $('#volume').val(data.total_volume);
+                $('#tension').val(data.tension);
                 $('#quantity').val(data.quantity);
-                $('#hidden_image').val(data.image);
+                $('#description').val(data.description);
+                $('#hidden_image').val(data.image);   
                 
+                var volumeType = data.volume_type; 
+                $('#volume_type option[value="' + volumeType + '"]').prop('selected', true); 
 
                 var selectedArts = data.arts.map(function(art) {
                     return art.id;

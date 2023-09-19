@@ -30,7 +30,7 @@
                         <div class="col-lg-7">
                             <form class="ps-lg-4">
                                 <!-- Product title -->
-                                <h3 class="mt-0">{{ $product['name'] }} - {{ $product['total_volume'] }} <a href="javascript: void(0);" class="text-muted"></a> </h3>
+                                <h3 class="mt-0">{{ $product['name'] }}<a href="javascript: void(0);" class="text-muted"></a> </h3>
 
                                 <!-- Product description -->
                                 <div class="mt-4">
@@ -85,7 +85,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <h6 class="font-14">Volume :</h6>
-                                            <p class="text-sm lh-150">{{ $product['total_volume'] }}</p>
+                                            <p class="text-sm lh-150">{{ $product['total_volume'] }}{{ getUnitByVolumeType($product['volume_type'])['unit'] }}</p>
                                         </div>
                                         <div class="col-md-4">
                                             <h6 class="font-14">Tension :</h6>

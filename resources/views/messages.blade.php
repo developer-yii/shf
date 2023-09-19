@@ -1,41 +1,50 @@
 @php    
-    $baseUrl = asset('backend') . '/';    
+    $baseUrl = asset('frontend')."/";
 @endphp
-@extends('layouts.main')
+@extends('layouts.app-frontend')
+
+@section('title','Home')
 @section('content')
-
-    <div class="card">
-
-        <!-- Logo -->
-        <div class="card-header pt-4 pb-4 text-center bg-primary">
-            <a href="#">
-                <span><img src="{{ $baseUrl }}assets/images/logo.png" alt="" height="18"></span>
-            </a>
+<!-- Account Verified -->
+    <div id="acc-verified" class="white-popup mfp-with-anim mfp-hide onboard-journey-popup">.
+        <div class="popup-logo">
+            <img src="{{ $baseUrl }}img/form-logo.svg" alt="">
         </div>
-        
-            <div class="card-body">
-                            
-                <div class="text-center m-auto">
-                    <img src="{{ $baseUrl }}assets/images/mail_sent.svg" alt="mail sent image" height="64" />
-                    @if(Session::has('verify'))                        
-                        <h4 class="text-dark-50 text-center mt-4 fw-bold"></h4> 
-                        <p class="text-muted mb-4">                        
-                            {{ Session::get('verify') }}                             
-                        </p>
-                    @endif                    
-                </div>
 
-                <form action="{{ route('frontend.home') }}">
-                    <div class="mb-0 text-center">
-                        <button class="btn btn-primary" type="submit"><i class="mdi mdi-home me-1"></i> Back to Home</button>
-                        @if(isset($email))
-                        <a href="{{ route('resend.verification', ['email' => $email]) }}" class="btn btn-primary" type="submit"><i class="mdi mdi-mail me-1"></i> Resend Mail</a>
-                        @endif
-                    </div>
-                </form>
-
+        <div class="popup-content">
+            <div class="popup-left">
+                <h3>
+                    @if(Session::has('modalLabel'))
+                        {{ Session::get('modalLabel') }}
+                    @endif
+                </h3>
+                <div class="g-line"></div>
+                @if(Session::has('verify'))
+                <p>{{ Session::get('verify') }} Thank You!</p>
+                @endif   
             </div>
-        
+            <div class="popup-right verified-right">
+                <div class="verified-icon">
+                    <img src="{{ $baseUrl }}img/verified-icon.svg" alt="">
+                </div>
+                <a href="{{ route('frontend.home') }}"><button class="button blue">Back to Home</button></a>
+                <div class="popup-buttons">
+                    <a href="#sign-in" class="linkGoto center popup-link"><img src="{{ $baseUrl }}img/back-arrow.svg" alt=""> Go back to Sign In</a>
+                </div>
+            </div>
+        </div>
     </div>
 
+@endsection
+@section('js')
+<script type="text/javascript">
+
+    $.magnificPopup.open({
+        items: {
+            src: '#acc-verified',
+            type: 'inline'
+        },       
+    })
+    
+</script>
 @endsection
