@@ -15,14 +15,28 @@ use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
     public function index(Request $request)
-    {
-        
-        //$productArts = ProductArt::all();
-        //$productTargets = ProductTarget::all();
-        //$productUses = ProductUses::all();
-        $products = Product::all();
+    {   
         $cart = session()->get('cart', []);        
-        return view('user.products.index',['products'=>$products, 'cart'=>$cart]);
+        $productArtId = $request->input('id');
+        $productArtName = null; // Initialize the productArtName variable
+
+        $query = Product::query();
+
+        if ($productArtId) {
+            $query = Product::whereHas('arts', function ($query) use ($productArtId) {
+                $query->where('product_art_id', $productArtId);
+            });            
+            
+            $productArt = ProductArt::find($productArtId);
+            if ($productArt) {
+                $productArtName = $productArt->name;
+            }
+        }
+        
+        $products = $query->paginate(5); 
+        $products->appends($request->all());
+
+        return view('user.products.index',['products'=>$products, 'cart'=>$cart, 'productArtName' => $productArtName,]);
        
     }
     public function detail(Request $request)

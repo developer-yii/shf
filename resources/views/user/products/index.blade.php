@@ -11,8 +11,23 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                
-                <h4 class="page-title">Products</h4>
+                <div class="page-title-right">                    
+                    <div class="form-group mb-3">                        
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Filter By</label>
+                                <button class="btn btn-primary   dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</button>
+                                <div class="dropdown-menu">
+                                    @foreach(getCategories() as $category)
+                                        <a class="dropdown-item" href="{{ route('user.product', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                                    @endforeach                                    
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+
+                </div>
+                <h4 class="page-title">Products @if($productArtName) - {{ $productArtName }} @endif</h4>
             </div>
         </div>
     </div>
@@ -23,7 +38,7 @@
                     <img src="{{ $product->getImageUrl() }}" class="card-img-top product-img" alt="{{ $product->name }}" title="{{ $product->name }}">
                     <div class="card-body text-center product">
                         <h5 class="card-title">{{ $product->name }} - {{ $product->tension}}</h5>
-                        <h5 class="card-title"> <i class="mdi mdi-currency-eur"></i>{{ $product->price}} / {{ $product->total_volume}}</h5>
+                        <h5 class="card-title"> <i class="uil uil-dollar-alt"></i>{{ $product->price}} / {{ $product->total_volume}}{{ getUnitByVolumeType($product->volume_type)['unit'] }}</h5>
                         <a href="{{ route('user.product.detail', ['id' => $product->id]) }}" class="btn view-cart-button btn-info">View Details</a>
                         
                         @php
@@ -46,6 +61,12 @@
         @endforeach     
     </div>
     <!-- end page title -->
+
+    <div class="row float-right">
+        <div class="col-12">            
+            {!! $products->links('pagination::bootstrap-4') !!}
+        </div>
+    </div>
 </div>
 <!-- container -->
 @endsection
