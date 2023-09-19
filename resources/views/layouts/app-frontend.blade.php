@@ -223,9 +223,11 @@
                     <p class="bottom-line">Don’t receive the email?
                         <a href="javascript:void(0);" class="linkGoto resendlink" data-email="">Click to resend</a>
                     </p>
-                    <a href="#sign-in" class="linkGoto center"><img src="{{$baseUrl}}img/back-arrow.svg" alt=""> Go back to Sign
-                        In</a>
-                    <p class="bottom-line">Not a member yet?<a href="#" class="linkGoto">Sign Up.</a>
+                    <div class="popup-buttons">
+                        <a href="#sign-in" class="popup-link linkGoto center" data-effect="mfp-zoom-in"><img src="{{$baseUrl}}img/back-arrow.svg" alt=""> Go back to Sign In</a>                        
+                        <p class="bottom-line">Not a member yet?                            
+                            <a href="#sign-up" class="popup-link linkGoto" data-effect="mfp-zoom-in">Sign up</a>
+                    </div>
                     </p>
                 </div>
             </div>
@@ -401,6 +403,7 @@
                     $($this).find('button[type="submit"]').prop('disabled',false);
                     if (result.status == true) 
                     {
+
                         $('#email-address-placeholder').text(result.email);
                         $('.resendlink').attr('data-email', result.email);
                         $.magnificPopup.open({
@@ -410,6 +413,7 @@
                             },
                            
                         });
+                        $this[0].reset();
                     }
                     else
                     {
@@ -582,8 +586,7 @@
                     
                     if(result.status == true)
                     {   
-                        $("#subscribe-form")[0].reset();
-                        // $('#success-message').html(result.message);                        
+                        $("#subscribe-form")[0].reset();                                              
                         toastr.success(result.message);
                     }                    
                     if (result.status == false) 

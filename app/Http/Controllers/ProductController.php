@@ -68,38 +68,16 @@ class ProductController extends Controller
                     ->where('id', $request->id)
                     ->first();
 
-        // pre(count($productArt->count());
-
         if (!$productArt) 
         {
-            abort(404); // Handle the case when the productArt is not found
+            abort(404);
         }
         
         
         $artIcon = ''; 
-            
-        
-        // $groupedProducts[$productArt->id]['productArt'] = $productArt;
         $groupedProducts = $productArt->products()->paginate(3);
-        // return view('product-category', compact('groupedProducts'));        
-           
-            // $count = count($productArt->products);
-            
-    
-            
-            // $currentPage = Paginator::resolveCurrentPage('page');
-            // $productsPerPage = 2; // You can change this value to your preferred number of products per page
-
-            // $paginatedProducts = new LengthAwarePaginator(
-            //     $groupedProducts[$productArt->id]['products']->forPage($currentPage, $productsPerPage),
-            //     $count,
-            //     $productsPerPage,
-            //     $currentPage
-            // );
-
-             // pre(count($paginatedProducts));
-
-            return view('product-category', compact('groupedProducts', 'productArt'));
+       
+        return view('product-category', compact('groupedProducts', 'productArt'));
             
     }
 
