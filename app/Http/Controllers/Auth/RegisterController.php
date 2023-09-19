@@ -83,55 +83,21 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        $validator = $this->validator($request->all());
-
-        if ($validator->fails()) 
-        {
-            $result = [
-                'status' => false,
-                'errors' => $validator->errors()
-            ];            
-        }
-        else
-        {
-            $user = $this->create($request->all());         
-            if(isset($user->id) && $user->id != Null)
-            {
-
-                Mail::send('emails.emailVerificationEmail', ['user' => $user], function($message) use($user){
-                            $message->to($user->email);
-                            $message->subject('Email Verification Mail');
-                        });  
-               
-                // Session::flash('verify', 'A verification link has been send to '.$user->email.'.
-                //                 Please check an email and click on the included link to
-                //                 verify your email.');
-
-                $result = ['status' => true, 'message' => "email send successfully", 'email' => $request->email];
-                // return view("messages");
-            } 
-        }       
-        return response()->json($result);
-    }
-    public function resendVerificationMail(Request $request)
-    {
-        $user = User::where('email', $request->email)->first();                 
+        $this->validator($request->all())->validate();
+        $user = $this->create($request->all());
+     
         if(isset($user->id) && $user->id != Null)
         {
-
             Mail::send('emails.emailVerificationEmail', ['user' => $user], function($message) use($user){
                         $message->to($user->email);
                         $message->subject('Email Verification Mail');
                     });  
            
-            // Session::flash('verify', 'A verification link has been send to '.$user->email.'.
-            //                 Please check an email and click on the included link to
-            //                 verify your email.');
-
-            $result = ['status' => true, 'message' => "email send successfully", 'email' => $request->email];
-            // return view("messages");
-            return response()->json($result);
-        }  
+            Session::flash('verify', 'A verification link has been send to '.$user->email.'.
+                            Please check an email and click on the included link to
+                            verify your email.');
+            return view("messages");
+        }        
     }
     protected function create(array $data)
     {
@@ -145,12 +111,12 @@ class RegisterController extends Controller
             'role' => 3,
             'password' => Hash::make($data['password']),
             'remember_token' => $token,
-        ]);                
+        ]);           
     }
     public function verifyAccount($token)
     {
         $verifyUser = User::where('remember_token', $token)->first();
-        Session::flash('modalLabel', 'Account Verified');
+
         if (!is_null($verifyUser)) 
         {
             if (!$verifyUser->email_verified_at) 

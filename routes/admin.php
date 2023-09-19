@@ -74,18 +74,4 @@ Route::namespace('Admin')
         Route::post('update', 'UserController@update')->name('user.update');
        
     });
-
-   //Subscriber
-   Route::group(['prefix' => 'subscriber'], function () {
-        Route::get('/index','SubscriberController@index')->name('subscriber'); 
-        Route::get('/get','SubscriberController@get')->name('subscriber.list');
-        Route::post('/delete','SubscriberController@delete')->name('subscriber.delete');
-    });
-
-   //Contact Us
-   Route::group(['prefix' => 'contact-us'], function () {
-        Route::get('/index','ContactUsController@index')->name('contactus'); 
-        Route::get('/get','ContactUsController@get')->name('contactus.list');
-        Route::post('/delete','ContactUsController@delete')->name('contactus.delete');
-    });
 });

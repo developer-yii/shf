@@ -6,7 +6,6 @@ $(document).ready(function(){
     });
     
     $('#verify-product').on('submit', function(e){
-        
         e.preventDefault();
         $this = $(this);
         $('.message-box').empty();

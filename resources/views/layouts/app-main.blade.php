@@ -1,6 +1,6 @@
 
 @php
-    $baseUrl = asset('frontend/old')."/";
+    $baseUrl = asset('frontend')."/";
     $baseUrlbackend = asset('backend')."/";
 @endphp
 <!DOCTYPE html>

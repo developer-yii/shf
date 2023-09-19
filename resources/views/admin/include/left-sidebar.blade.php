@@ -94,20 +94,6 @@
                         <span> Message </span>
                     </a>
                 </li>
-
-                <li class="side-nav-item">
-                    <a href="{{ route('admin.subscriber') }}" class="side-nav-link">
-                        <i class="uil-calender"></i>
-                        <span> Subscriber</span>
-                    </a>
-                </li>
-
-                <li class="side-nav-item">
-                    <a href="{{ route('admin.contactus') }}" class="side-nav-link">
-                        <i class="uil-calender"></i>
-                        <span> Contact Us</span>
-                    </a>
-                </li>
              @endif
 
              @if($userrole== 3)

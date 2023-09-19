@@ -10,9 +10,4 @@ class ProductUses extends Model
     use HasFactory;
      protected $table = 'product_uses';
     protected $fillable = ['use'];
-
-    public function product()
-    {
-        return $this->belongsTo(Product::class, 'product_id');
-    }
 }

@@ -19,7 +19,8 @@ class ProductController extends Controller
         $productTargets = ProductTarget::all();
         $productUses = ProductUses::all();
 
-        return view('admin.products.index',['productArts'=>$productArts,'productTargets'=>$productTargets,'productUses'=>$productUses]);
+
+       return view('admin.products.index',['productArts'=>$productArts,'productTargets'=>$productTargets,'productUses'=>$productUses]);
        
     }
     public function get(Request $request)
@@ -28,12 +29,6 @@ class ProductController extends Controller
         {            
             //$data = Product::all();
             $data = Product::orderBy('id', 'desc')->get();
-            foreach ($data as $item) 
-            {
-                $unitInfo = getUnitByVolumeType($item->volume_type);
-                $item->total_volume_formatted = $item->total_volume . ' ' . $unitInfo['unit'];
-            }
-
             return DataTables::of($data)
                                 ->addColumn('action', function ($data) {
                 return '<a href="javascript:void(0);" class="btn btn-sm btn-info mr-1 edit-product"  data-id="'.$data->id.'" data-toggle="modal" data-target="#addproduct"><i class="mdi mdi-pencil" title="Edit"></i></a></a><a href="javascript:void(0);" class="btn btn-sm btn-danger mr-1 delete-product"  data-id="'.$data->id.' "title="Delete"><i class="mdi mdi-delete"></i></a>';
@@ -75,10 +70,8 @@ class ProductController extends Controller
                 $product->product_use_id = $request->input('product_use_id');        
                 $product->price = $request->input('price');
                 $product->total_volume = $request->input('volume');
-                $product->volume_type = $request->input('volume_type');
                 $product->tension = $request->input('tension');
                 $product->quantity = $request->input('quantity');
-                $product->description = $request->input('description');
                 
                 if ($request->hasFile('product_image') && $request->product_image)
                 {
@@ -108,7 +101,7 @@ class ProductController extends Controller
                 return response()->json($result);
             }
             else
-            {                 
+            {               
                 $validator = Validator::make($request->all(), [
                     'name' => 'required|string|max:255|unique:products,name',
                     'price' => 'required|numeric',
@@ -132,10 +125,8 @@ class ProductController extends Controller
                 $product->product_use_id = $request->input('product_use_id');        
                 $product->price = $request->input('price');
                 $product->total_volume = $request->input('volume');
-                $product->volume_type = $request->input('volume_type');
                 $product->tension = $request->input('tension');
                 $product->quantity = $request->input('quantity');
-                $product->description = $request->input('description');
 
                 if ($request->hasFile('product_image') && $request->product_image)
                 {

@@ -5,8 +5,6 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Auth;
-use Session;
-
 
 class IsAdmin
 {
@@ -23,8 +21,6 @@ class IsAdmin
         if(isset($user->id) && ($user->role == '1' || $user->role == '2')){
         return $next($request);
         }
-        return redirect()->route('admin.login')->with('error','You have not admin access. Please Login as admin');
-        // $result = ['status'=> false, 'error' => 'You have not admin access. Please Login as admin'];
-        // return response()->json();
+        return redirect('login')->with('error','You have not admin access');
     }
 }

@@ -18,8 +18,7 @@ class AdminController extends Controller
     {       
         $authUser=Auth::user();
        
-        $verifyUser = User::find($id);
-        Session::flash('modalLabel', 'Account Activated');         
+        $verifyUser = User::find($id);           
         if (!is_null($verifyUser)) 
         {
             if($verifyUser->email_verified_at) 
