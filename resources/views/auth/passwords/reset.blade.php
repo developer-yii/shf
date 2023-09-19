@@ -38,8 +38,9 @@
                     </div>
                     <button class="button blue">Reset your password</button>
                 </form>
-                <a href="#sign-in" class="linkGoto center"><img src="{{$baseUrl}}img/back-arrow.svg" alt=""> Go back to Sign
-                    In</a>
+                <div class="popup-buttons">                            
+                    <a href="#sign-in" class="popup-link linkGoto center" data-effect="mfp-zoom-in"><img src="{{$baseUrl}}img/back-arrow.svg" alt=""> Go back to Sign In</a>
+                </div>
             </div>
         </div>
    </div>
@@ -61,9 +62,10 @@
                 <div class="verified-icon">
                     <img src="{{$baseUrl}}img/verified-icon.svg" alt="">
                 </div>
-                <button class="button blue">Continue</button>
-                <a href="#sign-in" class="linkGoto center"><img src="{{$baseUrl}}img/back-arrow.svg" alt=""> Go back to Sign
-                    In</a>
+                <a href="{{ route('frontend.home') }}" class="button blue">Continue</a>
+                <div class="popup-buttons">                            
+                    <a href="#sign-in" class="popup-link linkGoto center" data-effect="mfp-zoom-in"><img src="{{$baseUrl}}img/back-arrow.svg" alt=""> Go back to Sign In</a>
+                </div>
             </div>
         </div>
     </div>
