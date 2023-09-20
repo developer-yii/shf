@@ -62,7 +62,7 @@
 
           <div class="descr">
             <h4>Description</h4>
-            <p><pre style="white-space: pre-wrap;">{{ $product['description'] }}<</p>
+            <p><pre style="white-space: pre-wrap;">{{ $product['description'] }}</pre></p>
           </div>
 
           <div class="share">
