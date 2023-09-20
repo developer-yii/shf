@@ -49,20 +49,20 @@
                     <img src="{{ asset('frontend/img/open-icon.svg')}}" alt="">
                   </div>
                 </div>
-              </a>
+              </a>              
               @if(Auth::user())
                 <a href="{{ route('user.product.detail', ['id' => $product->id]) }}" class="button green">Buy this product</a>
               @else
-              <div class="popup-buttons">
-                <a href="#sign-in" class="popup-link button green">Buy this product</a>
-              </div>
-            @endif
+                <div class="popup-buttons">
+                  <a href="#sign-in" data-id="{{ $product->id }}" data-route="{{ route('user.product.detail', ['id' => $product->id]) }}" class="popup-link button green">Buy this product</a>
+                </div>
+              @endif
             </div>
           </div>
 
           <div class="descr">
             <h4>Description</h4>
-            <p>{{ $product['description'] }}</p>
+            <p><pre style="white-space: pre-wrap;">{{ $product['description'] }}<</p>
           </div>
 
           <div class="share">
@@ -101,7 +101,8 @@
       type: 'image'      
     });
 
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function() 
+    {
         var shareButton = document.getElementById("shareButton");
 
         shareButton.addEventListener("click", function() {

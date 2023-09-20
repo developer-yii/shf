@@ -26,7 +26,7 @@
             data: 'message',
                 render: function (data, type, row) {
                     
-                    return '<pre>' + data + '</pre>';
+                    return '<pre style="white-space: pre-wrap;">' + data + '</pre>';
                 }
             },
             { data: 'action', name: 'action', orderable: false }            

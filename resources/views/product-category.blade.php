@@ -32,13 +32,13 @@
                               <div class="specs-icon"><img src="{{$baseUrl}}img/spec-icon.svg" alt=""></div> <span>{{ $product->tension }}</span>
                             </div>
                             <div class="specification">
-                              <div class="specs-icon"><img src="{{ $getunit['image'] }}" alt=""></div> 
+                              <div class="specs-icon mlr-3"><img src="{{ $getunit['image'] }}" alt=""></div> 
                               <span> 
                                 {{ $product->total_volume }} {{ $getunit['unit'] }}
                               </span>
                             </div>
                             <div class="specification">
-                              <div class="specs-icon"><img src="{{ getArtIcon($productArt->name)['image'] }}" alt=""></div> <span>{{ $productArt->name }}</span>
+                              <div class="specs-icon mlr-3"><img src="{{ getArtIcon($productArt->name)['image'] }}" alt=""></div> <span>{{ $productArt->name }}</span>
                             </div>
                             <div class="specification">
                               <div class="specs-icon"><img src="{{$baseUrl}}img/use.svg" alt=""></div> <span>

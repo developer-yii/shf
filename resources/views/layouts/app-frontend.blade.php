@@ -248,7 +248,8 @@
                 <div class="popup-right">
                     <form action="" method="POST" autocomplete="off" id="login-form">
                         @csrf
-                    <div id="error-message"></div>
+                        <input type="hidden" name="hidden_route" id="hidden_route">
+                        <div id="error-message"></div>
                         <div class="form-grp">
                             <input class="form-field" type="email" id="email" name="email" placeholder="your@email.com" />
                             <div class="error"></div>

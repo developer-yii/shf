@@ -15,9 +15,15 @@ class SubscribeController extends Controller
        $rules=[
             'email' => ['required', 'string', 'email', 'max:255', 'unique:subscribes'],
         ];
-        $validator = Validator::make($request->all(), $rules);        
+
+        $customMessages = [
+            'email.unique' => 'The email has already been subscribed.',
+        ];
+        
+        $validator = Validator::make($request->all(), $rules, $customMessages);
         if($validator->fails())
         {
+
             $result = ['status' => false, 'errors' => $validator->errors()];
         }
         else

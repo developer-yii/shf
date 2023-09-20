@@ -40,3 +40,17 @@
     background: #fff;
     border-radius: 50px;
 }
+.mlr-3
+{
+    margin-right: 3px;
+    margin-left: 3px;
+}
+pre{
+  color: #6F6F6F;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: -1.2px;
+}

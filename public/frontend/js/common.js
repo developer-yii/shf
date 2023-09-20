@@ -205,6 +205,7 @@ $('.popup-buttons').magnificPopup({
     callbacks: {
         beforeOpen: function () {
             this.st.mainClass = this.st.el.attr('data-effect');
+            $('#hidden_route').val(this.st.el.attr('data-route'));
         }
     },
     midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
