@@ -75,6 +75,14 @@
                                             </span>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label class="font-14"><b>Description :</b></label>
+                                            <span>
+                                                <pre style="white-space: pre-wrap;">{{ $product['description'] }}</pre>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- Product information -->
                                 <div class="mt-2">

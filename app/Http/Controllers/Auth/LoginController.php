@@ -81,6 +81,10 @@ class LoginController extends Controller
                         if(Auth::attempt($credentials))
                         {
                             $route = route('admin.adminHome');
+                            if($request->hidden_route)
+                            {
+                                $route = $request->hidden_route;
+                            }
                             $result = ['status' => true, 'message' => 'Login Successfully.', 'route' => $route];
                         }
                         else
@@ -93,6 +97,10 @@ class LoginController extends Controller
                         if(Auth::attempt($credentials))
                         {
                             $route = route('user.Home');
+                            if($request->hidden_route)
+                            {
+                                $route = $request->hidden_route;
+                            }
                             $result = ['status' => true, 'message' => 'Login Successfully.', 'route' => $route];
                         }
                         else
