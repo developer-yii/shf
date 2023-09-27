@@ -53,9 +53,9 @@
               @if(Auth::user())
                 <a href="{{ route('user.product.detail', ['id' => $product->id]) }}" class="button green">Buy this product</a>
               @else
-                <div class="popup-buttons">
-                  <a href="#sign-in" data-id="{{ $product->id }}" data-route="{{ route('user.product.detail', ['id' => $product->id]) }}" class="popup-link button green">Buy this product</a>
-                </div>
+                
+                <a href="#sign-in" data-id="{{ $product->id }}" data-route="{{ route('user.product.detail', ['id' => $product->id]) }}" class="popup-link button green">Buy this product</a>
+                
               @endif
             </div>
           </div>

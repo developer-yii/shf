@@ -1,5 +1,5 @@
 :root {
-  --header-height: 80px;
+  --header-height: 100px;
   --header-scroll-height: 70px;
   --clr: #1F7D3A;
 }
@@ -1082,6 +1082,12 @@ body {
 
 .bottom-image {
   height: 340px;
+
+  img {
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom;
+  }
 }
 
 .bottom-btns {
@@ -1268,6 +1274,28 @@ body {
 .search-field {
   width: 100%;
   margin-left: 30px;
+  position: relative;
+  max-width: 640px;
+
+  &::after {
+    content: url(../img/search.svg);
+    position: absolute;
+    left: 24px;
+    top: 18px;
+    opacity: 0.3;
+  }
+
+  &.active {
+    &::after {
+      opacity: 1;
+    }
+
+    input {
+      background: #fff;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
 
   input {
     width: 100%;
@@ -1276,12 +1304,19 @@ body {
     border-radius: 30px;
     background: #F0F0F0;
     height: 60px;
-    color: #9D9D9D;
+    color: #000;
     font-family: Montserrat;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    box-shadow: none;
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      color: #9D9D9D;
+    }
   }
 }
 
@@ -1375,4 +1410,98 @@ body {
 .expertise-content {
   margin-left: auto;
   margin-top: 40px;
+}
+
+
+.mob-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 24px;
+  padding-top: 40px;
+  gap: 20px;
+
+  .button {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+
+#search-results-list {
+  position: absolute;
+  background: #fff;
+  width: 100%;
+  // padding: 24px;
+  // padding-top: 10px;
+  border-radius: 30px;
+  margin-top: 16px;
+  max-height: 500px;
+  overflow-y: auto;
+
+  li {
+    margin-bottom: 12px;
+    margin-left: 24px;
+    font-size: 18px !important;
+
+    strong {
+      display: block;
+      margin-top: 24px;
+      color: #706A6A;
+    }
+
+
+    a {
+      color: #000;
+      font-weight: 700;
+      margin-left: 20px;
+      display: block;
+
+      & :hover {
+        opacity: 0.6;
+      }
+    }
+  }
+}
+
+.overlay {
+  display: none;
+  background: #000;
+  opacity: 0.5;
+  z-index: 3699;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.search-field {
+  z-index: 3700;
+}
+
+
+.mfp-figure figure {
+  padding: 24px;
+  background: #fff;
+  border-radius: 30px;
+}
+
+.mfp-close {
+  font-size: 0;
+  width: 45px;
+  left: 0;
+
+  &::after {
+    content: url(../img/close-popup.svg);
+    height: 45px;
+    width: 45px;
+    display: block;
+    position: absolute;
+    left: 30px;
+    background: #000;
+    opacity: 1;
+    top: 0;
+  }
 }

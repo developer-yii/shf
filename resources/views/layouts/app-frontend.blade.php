@@ -34,55 +34,89 @@
 <body class="home-page">
 <!-- Header Starts -->
 <header id="header">
-      <div class="header-box">
-      <div class="container">
-        <div class="head-left">
-          <div class="logoBox">
-            <a class="logo" href="{{ route('frontend.home') }}">
-              <img src="{{ $baseUrl }}img/logo.svg" alt="Logo" />
-            </a>
-          </div>
-          <ul class="header-list">
-            <li class="drop">
-              <a href="{{ route('products.list') }}">Products</a>
-              <ul>
-                @foreach(getCategories() as $category)
-                    <li><a href="{{ route('products.category', ['id' => $category->id]) }}">{{ $category->name }}</a></li>
-                @endforeach
-              </ul>
+    <div class="overlay"></div>
 
-            </li>
-            <li><a href="{{ route('frontend.authenticity')}}">Authenticity</a></li>
-            <li><a href="{{ route('frontend.about')}}">About Xandoz</a></li>
+<div class="header-box">
+  <div class="container">
+    <div class="head-left">
+      <div class="logoBox">
+        <a class="logo" href="{{ route('frontend.home') }}">
+          <img src="{{ $baseUrl }}img/logo.svg" alt="Logo" />
+        </a>
+      </div>
+      <ul class="header-list">
+        <li class="drop">
+          <a href="{{ route('products.list') }}">Products</a>
+          <ul>
+            @foreach(getCategories() as $category)
+                <li><a href="{{ route('products.category', ['id' => $category->id]) }}">{{ $category->name }}</a></li>
+            @endforeach
           </ul>
-        </div>
-        <div class="search-field">
-            <form action="" method="POST">
-              <input type="search" name="search" id="search" placeholder="Search Xandoz">              
-                <ul id="search-results-list">                    
-                </ul>            
-          </form>
-        </div>
-        <div class="head-right">
-          <div class="popup-buttons">
-            <a href="{{ route('contact') }}" class="button white">Contact</a>
-            <!-- <a href="./contact.html" class="button blue">Sign In</a> -->
-            @if(!Auth::user())
-                <a href="#sign-in" class="popup-link button blue" data-effect="mfp-zoom-in">Sign In</a>
-            @else
-                <a href="{{ route('logout') }}" class="button blue">Sign Out</a>
-            @endif
-            <div class="menu side-menu">
-              <a href="javascript:void(0)" class="js-nav-toggle">
-                <span></span>
-              </a>
-            </div>
-          </div>
+        </li>
+        <li><a href="{{ route('frontend.authenticity')}}">Authenticity</a></li>
+        <li><a href="{{ route('frontend.about')}}">About Xandoz</a></li>
+      </ul>
+    </div>
+    <div class="search-field">
+        <form action="" method="POST">
+            <input type="search" placeholder="Search Xandoz" class="search-input" name="search" id="search">
+            <ul id="search-results-list">                    
+            </ul> 
+        </form>
+    </div>
+    <div class="head-right">
+      <div class="menuBtn">
+        <a href="{{ route('contact') }}" class="button white">Contact</a>
+        @if(!Auth::user())                
+            <a href="#sign-in" class="button blue popup-link">Sign In</a>
+        @else
+            <a href="{{ route('logout') }}" class="button blue">Sign Out</a>
+        @endif        
+        <div class="menu side-menu">
+          <a href="javascript:void(0)" class="js-nav-toggle">
+            <span></span>
+          </a>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- Side Menu -->
+<!-- Side Menu -->
+<!-- Side Menu -->
+<div class="menuOverlay"></div>
+<div class="nav-wrapper">
+  <nav role="mob-navigation" class="mob-navigation">
+    <div class="nav-toggle">
+      <span class="nav-back"></span>
+      <span class="nav-title">
+        <!-- <img src="./img/logo.svg" alt=""> -->
+      </span>
+      <span class="nav-close"></span>
+    </div>
+    <ul>
+      <li class="has-dropdown">
+        <a href="{{ route('products.list') }}">Products</a>
+        <ul>
+        @foreach(getCategories() as $category)
+            <li><a href="{{ route('products.category', ['id' => $category->id]) }}">{{ $category->name }}</a></li>
+        @endforeach
+        </ul>
+      </li>
+      <li><a href="{{ route('frontend.authenticity')}}">Authenticity</a></li>
+      <li><a href="{{ route('frontend.about')}}">About Xandoz</a></li>
+      <div class="mob-btns">
+        <a href="{{ route('contact') }}" class="button white">Contact</a>        
+        @if(!Auth::user())                
+            <a href="#sign-in" class="button blue popup-link">Sign In</a>
+        @else
+            <a href="{{ route('logout') }}" class="button blue">Sign Out</a>
+        @endif
+      </div>
+    </ul>
+
+  </nav>
+</div>
    
 </header>
   <!-- Header Ends -->
@@ -188,16 +222,11 @@
                             <input class="form-field" type="password" id="password-confirm" name="password_confirmation"placeholder="Confirm Password" />
                         </div>
                         <button class="button blue" type="submit">Sign Up</button>
-                    </form>
-
-                    <div class="popup-buttons">
-                        <a href="#forgot-pass" class="popup-link linkGoto" data-effect="mfp-zoom-in">Forgot password</a>
-                    </div>
+                    </form>                    
+                    <a href="#forgot-pass" class="popup-link linkGoto">Forgot password?</a>                   
                     
                     <p class="bottom-line">Already a member?
-                        <div class="popup-buttons">
-                            <a href="#sign-in" class="popup-link linkGoto" data-effect="mfp-zoom-in">Sign In.</a>
-                        </div>
+                        <a href="#sign-in" class="popup-link linkGoto">Sign In.</a>
                     </p>
                 </div>
             </div>
@@ -223,11 +252,10 @@
                     <p class="bottom-line">Don’t receive the email?
                         <a href="javascript:void(0);" class="linkGoto resendlink" data-email="">Click to resend</a>
                     </p>
-                    <div class="popup-buttons">
-                        <a href="#sign-in" class="popup-link linkGoto center" data-effect="mfp-zoom-in"><img src="{{$baseUrl}}img/back-arrow.svg" alt=""> Go back to Sign In</a>                        
-                        <p class="bottom-line">Not a member yet?                            
-                            <a href="#sign-up" class="popup-link linkGoto" data-effect="mfp-zoom-in">Sign up</a>
-                    </div>
+                    
+                    <a href="#sign-in" class="popup-link linkGoto center"><img src="{{$baseUrl}}img/back-arrow.svg" alt=""> Go back to Sign In</a>                        
+                    <p class="bottom-line">Not a member yet?                            
+                        <a href="#sign-up" class="popup-link linkGoto">Sign up</a>                    
                     </p>
                 </div>
             </div>
@@ -262,13 +290,9 @@
                     </form>
 
                     <!-- <a href="" class="linkGoto">Forgot password?</a> -->
-                    <div class="popup-buttons">
-                        <a href="#forgot-pass" class="popup-link linkGoto" data-effect="mfp-zoom-in">Forgot password</a>
-                    </div>
+                    <a href="#forgot-pass" class="popup-link linkGoto">Forgot password?</a>
                     <p class="bottom-line">Not a member yet?
-                        <div class="popup-buttons">
-                            <a href="#sign-up" class="popup-link linkGoto" data-effect="mfp-zoom-in">Sign up</a>
-                        </div>
+                        <a href="#sign-up" class="popup-link linkGoto">Sign up</a>
                     </p>
                 </div>
             </div>
@@ -297,18 +321,11 @@
                         </div>
                         <button class="button blue" type="submit">Reset your password</button>
                     </form>
+                    
+                    <a href="#sign-in" class="popup-link linkGoto center"><img src="{{$baseUrl}}img/back-arrow.svg" alt=""> Go back to Sign In</a>
 
                     <p class="bottom-line">Not a member yet?
-                        <div class="popup-buttons">                            
-                            <a href="#sign-in" class="popup-link linkGoto center" data-effect="mfp-zoom-in"><img src="{{$baseUrl}}img/back-arrow.svg" alt=""> Go back to Sign
-                        In</a>
-                        </div>
-                    </p>
-
-                    <p class="bottom-line">Not a member yet?
-                        <div class="popup-buttons">
-                            <a href="#sign-up" class="popup-link linkGoto" data-effect="mfp-zoom-in">Sign up</a>
-                        </div>
+                        <a href="#sign-up" class="popup-link linkGoto">Sign up</a>
                     </p>
                 </div>
             </div>
@@ -383,7 +400,6 @@
                 }
             });
         });
-
 
 
         $('#register-form').on('submit', function(event) 
