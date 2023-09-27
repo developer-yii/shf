@@ -27,10 +27,8 @@
                 <div class="verified-icon">
                     <img src="{{ $baseUrl }}img/verified-icon.svg" alt="">
                 </div>
-                <a href="{{ route('frontend.home') }}"><button class="button blue">Back to Home</button></a>
-                <div class="popup-buttons">
-                    <a href="#sign-in" class="linkGoto center popup-link"><img src="{{ $baseUrl }}img/back-arrow.svg" alt=""> Go back to Sign In</a>
-                </div>
+                <a href="{{ route('frontend.home') }}"><button class="button blue">Back to Home</button></a>                
+                <a href="#sign-in" class="linkGoto center popup-link"><img src="{{ $baseUrl }}img/back-arrow.svg" alt=""> Go back to Sign In</a>                
             </div>
         </div>
     </div>

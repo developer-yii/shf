@@ -57,63 +57,63 @@
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Uw-.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Uw-.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 200;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr6Ew-.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr6Ew-.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCs16Ew-.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCs16Ew-.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Ew-.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Ew-.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtZ6Ew-.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtZ6Ew-.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu170w-.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu170w-.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM70w-.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM70w-.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 800;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr70w-.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr70w-.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvC70w-.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvC70w-.ttf) format('truetype');
 }
 html,
 body {
@@ -3402,17 +3402,13 @@ label.error {
   font-size: 15px;
   transition: 0.4s;
 }
-.active,
-.accordion:hover {
-  background-color: #ccc;
-}
 .panel {
   display: none;
   padding: 0 18px;
   background-color: white;
 }
 :root {
-  --header-height: 80px;
+  --header-height: 100px;
   --header-scroll-height: 70px;
   --clr: #1F7D3A;
 }
@@ -4262,6 +4258,11 @@ body.inactive .main-container {
 .bottom-image {
   height: 340px;
 }
+.bottom-image img {
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+}
 .bottom-btns {
   display: flex;
   align-items: center;
@@ -4411,6 +4412,23 @@ body.inactive .main-container {
 .search-field {
   width: 100%;
   margin-left: 30px;
+  position: relative;
+  max-width: 640px;
+}
+.search-field::after {
+  content: url(../img/search.svg);
+  position: absolute;
+  left: 24px;
+  top: 18px;
+  opacity: 0.3;
+}
+.search-field.active::after {
+  opacity: 1;
+}
+.search-field.active input {
+  background: #fff;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .search-field input {
   width: 100%;
@@ -4419,12 +4437,18 @@ body.inactive .main-container {
   border-radius: 30px;
   background: #F0F0F0;
   height: 60px;
-  color: #9D9D9D;
+  color: #000;
   font-family: Montserrat;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  box-shadow: none;
+  border: none;
+  outline: none;
+}
+.search-field input::placeholder {
+  color: #9D9D9D;
 }
 .eff-section {
   height: auto;
@@ -4498,6 +4522,82 @@ body.inactive .main-container {
   margin-left: auto;
   margin-top: 40px;
 }
+.mob-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 24px;
+  padding-top: 40px;
+  gap: 20px;
+}
+.mob-btns .button {
+  margin-left: 0;
+  width: 100%;
+}
+#search-results-list {
+  position: absolute;
+  background: #fff;
+  width: 100%;
+  border-radius: 30px;
+  margin-top: 16px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+#search-results-list li {
+  margin-bottom: 12px;
+  margin-left: 24px;
+  font-size: 18px !important;
+}
+#search-results-list li strong {
+  display: block;
+  margin-top: 24px;
+  color: #706A6A;
+}
+#search-results-list li a {
+  color: #000;
+  font-weight: 700;
+  margin-left: 20px;
+  display: block;
+}
+#search-results-list li a :hover {
+  opacity: 0.6;
+}
+.overlay {
+  display: none;
+  background: #000;
+  opacity: 0.5;
+  z-index: 3699;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.search-field {
+  z-index: 3700;
+}
+.mfp-figure figure {
+  padding: 24px;
+  background: #fff;
+  border-radius: 30px;
+}
+.mfp-close {
+  font-size: 0;
+  width: 45px;
+  left: 0;
+}
+.mfp-close::after {
+  content: url(../img/close-popup.svg);
+  height: 45px;
+  width: 45px;
+  display: block;
+  position: absolute;
+  left: 30px;
+  background: #000;
+  opacity: 1;
+  top: 0;
+}
 /* header */
 :root {
   --menuWidth: 300px;
@@ -4508,9 +4608,11 @@ body.inactive .main-container {
   left: 0;
   width: 100%;
   z-index: 999;
+  transition: 0.3s;
 }
 .head-right {
   display: flex;
+  gap: 10px;
 }
 .logo {
   display: inline-block;
@@ -4627,6 +4729,9 @@ body.inactive .main-container {
 .fixHeader .header-box .container {
   height: var(--headerFixedHeight);
 }
+.fixHeader .search-field input {
+  border: 1px solid #666;
+}
 .menuBtn .button {
   margin-left: 8px;
   font-size: 18px;
@@ -4662,7 +4767,7 @@ body.inactive .main-container {
 }
 .nav-wrapper {
   position: fixed;
-  width: 300px;
+  width: 600px;
   height: 100vh;
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
@@ -4828,13 +4933,17 @@ body.inactive .main-container {
 .mob-navigation a {
   display: block;
   position: relative;
-  padding: 1em;
+  padding: 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0);
   color: #ffffff;
   text-decoration: none;
   -webkit-transition: color 0.15s, background-color 0.15s;
   transition: color 0.15s, background-color 0.15s;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.mob-btns .button {
+  padding: 20px 0;
 }
 .mob-navigation a:hover {
   color: #aaa;
@@ -4886,7 +4995,7 @@ body.inactive .main-container {
 .mob-navigation li.nav-dropdown-open > ul {
   display: block;
 }
-@media all and (max-width: 990px) {
+@media all and (max-width: 1366px) {
   .navigation {
     display: none;
   }
@@ -4894,6 +5003,12 @@ body.inactive .main-container {
     display: block;
   }
   .header-list {
+    display: none;
+  }
+  .search-field {
+    display: none;
+  }
+  .menuBtn .button {
     display: none;
   }
   .menu {
@@ -4948,6 +5063,9 @@ body.inactive .main-container {
   .feature-icon {
     width: 300px;
     height: 300px;
+  }
+  .search-field input {
+    width: -webkit-fill-available;
   }
 }
 @media all and (max-width: 1440px) {
@@ -5045,6 +5163,9 @@ body.inactive .main-container {
   }
   .endurance-content {
     padding: 0 0;
+  }
+  .p-detail-box {
+    padding: 24px 0;
   }
 }
 @media all and (max-width: 1280px) {
@@ -5223,6 +5344,33 @@ body.inactive .main-container {
     margin-bottom: 26px;
     margin-top: 30px;
   }
+  :root {
+    --header-height: 80px;
+  }
+  .bottom-image {
+    height: 200px;
+    width: 100%;
+  }
+  .bottom-btns {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .bottom-box {
+    background: #F2F2F2;
+    padding: 100px 44px 0;
+  }
+  .p-detail-left {
+    width: 100%;
+    margin-bottom: 80px;
+  }
+  .p-detail-right {
+    width: 100%;
+  }
+  .p-detail-sec {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
 }
 @media all and (max-width: 768px) {
   .container {
@@ -5293,6 +5441,18 @@ body.inactive .main-container {
   .feature-section {
     padding: 40px 0;
   }
+  .nav-wrapper {
+    width: 400px;
+  }
+  .mob-navigation a {
+    font-size: 16px;
+  }
+  .mob-btns .button {
+    padding: 20px 0;
+  }
+  .products-wrap {
+    padding-top: 40px;
+  }
 }
 @media all and (max-width: 640px) {
   .txt-1 {
@@ -5314,6 +5474,19 @@ body.inactive .main-container {
   }
   .popup-buttons {
     padding-top: 100px;
+  }
+  .bottom-image {
+    height: auto;
+  }
+  .bottom-box {
+    background: #F2F2F2;
+    padding: 80px 30px 0;
+  }
+  .bottom-btns {
+    margin: 26px 0 50px;
+  }
+  .product-bottom-section {
+    padding: 80px 0;
   }
 }
 @media all and (max-width: 576px) {
@@ -5414,6 +5587,18 @@ body.inactive .main-container {
   .feature-img img {
     border-radius: 40px;
   }
+  .nav-wrapper {
+    width: 300px;
+  }
+  .products-wrap {
+    padding-top: 30px;
+  }
+  .product-bottom-section {
+    padding: 40px 0;
+  }
+  .product-category {
+    padding: 40px 0;
+  }
 }
 @media all and (max-width: 400px) {
   .head-1 {
@@ -5432,6 +5617,9 @@ body.inactive .main-container {
   }
   .mfp-close:active {
     top: 20px;
+  }
+  .products-wrap {
+    padding-top: 20px;
   }
 }
 /*# sourceMappingURL=main.css.map */

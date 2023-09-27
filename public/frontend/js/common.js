@@ -19,28 +19,38 @@ $(window).scroll(function (e) {
     fixedHeader();
 });
 fixedHeader();
-// /* Sticky Header Ends */
+/* Sticky Header Ends */
 
 
-// $('#header').load('header.html', function () {
-//     fixedHeader();
-//     if ($(window).outerWidth() <= 990) {
-//         var MobileMenu = new MobileNav({
-//             initElem: "nav",
-//             menuTitle: "Menu",
-//         });
-//     }
-//     const navItems = document.querySelectorAll(".nav-item");
-//     navItems.forEach((item) => {
-//         const hasDropdowns = item.querySelector(".dropdown") !== null;
-//         if (hasDropdowns) {
-//             item.classList.add("dr-icon");
-//         }
-//     });
-// });
+$('#header').ready(function () {
+    fixedHeader();
+    if ($(window).outerWidth() <= 990) {
+        var MobileMenu = new MobileNav({
+            initElem: "nav",
+            menuTitle: "Menu",
+        });
+    }
+    const navItems = document.querySelectorAll(".nav-item");
+    navItems.forEach((item) => {
+        const hasDropdowns = item.querySelector(".dropdown") !== null;
+        if (hasDropdowns) {
+            item.classList.add("dr-icon");
+        }
+    });
 
-// $('#footer').load('footer.html');
+    $(".search-field input").on('focus', function () {
+        $(".overlay").show()
+        $(this).addClass("active")
+        $(".search-field").addClass("active")
+    });
+    $(".overlay").on("click", function () {
+        $(".overlay").hide()
+        $(this).removeClass("active")
+        $(".search-field").removeClass("active")
+    });
+});
 
+$('#footer').ready();
 
 /* common tab start */
 $('.tabgroup > div').hide();
@@ -199,14 +209,15 @@ $(document).on('click', '.view-pass', function () {
 
 
 
-$('.popup-buttons').magnificPopup({
-    delegate: '.popup-link',
+
+$('.popup-link').magnificPopup({
+    // delegate: '',
     removalDelay: 500, //delay removal by X to allow out-animation
     callbacks: {
         beforeOpen: function () {
             this.st.mainClass = this.st.el.attr('data-effect');
-            $('#hidden_route').val(this.st.el.attr('data-route'));
         }
     },
     midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
 });
+
