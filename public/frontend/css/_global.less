@@ -935,11 +935,14 @@ body {
 .onboard-journey-popup {
   height: 100vh;
   max-width: 940px;
-  max-height: 800px;
+  max-height: 850px;
   width: 100%;
   border-radius: 100px;
   background: linear-gradient(to right, #055391 0 40%, #fff 40% 100%);
   padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 
@@ -962,8 +965,8 @@ body {
 
 .popup-content {
   display: flex;
+  overflow: hidden;
 }
-
 
 .popup-left {
   width: 40%;
@@ -999,6 +1002,7 @@ body {
 .popup-right {
   width: 60%;
   padding: 0 45px;
+  overflow-y: auto;
 
   .form-grp {
     margin-bottom: 20px;
@@ -1082,6 +1086,8 @@ body {
 
 .bottom-image {
   height: 340px;
+  display: flex;
+  justify-content: center;
 
   img {
     height: 100%;
@@ -1292,8 +1298,6 @@ body {
 
     input {
       background: #fff;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
     }
   }
 
@@ -1500,8 +1504,15 @@ body {
     display: block;
     position: absolute;
     left: 30px;
-    background: #000;
+    background: #fff;
     opacity: 1;
     top: 0;
+  }
+}
+
+
+.onboard-journey-popup {
+  .mfp-close {
+    display: none;
   }
 }
