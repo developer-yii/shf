@@ -48,6 +48,13 @@ $('#header').ready(function () {
         $(this).removeClass("active")
         $(".search-field").removeClass("active")
     });
+    $(".search-field input").on('input', function () {
+        $(".clear-btn").show()
+    });
+    $(".clear-btn").on("click", function () {
+        $(".search-field input").val('');
+        $(this).hide()
+    });
 });
 
 $('#footer').ready();

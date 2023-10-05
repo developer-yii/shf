@@ -3506,6 +3506,14 @@ body.inactive .main-container {
 .footer-field::placeholder {
   color: #9D9D9D;
 }
+.footer-field:focus {
+  border: 2px solid var(--clr);
+  outline: none;
+}
+.footer-field:focus-visible {
+  border: 2px solid var(--clr);
+  outline: none;
+}
 .form-grp-footer {
   position: relative;
   max-width: 605.491px;
@@ -4368,6 +4376,7 @@ body.inactive .main-container {
   margin-bottom: 20px;
   position: relative;
   overflow: hidden;
+  padding: 28px;
 }
 .small-image-box img {
   height: 100%;
@@ -4383,8 +4392,8 @@ body.inactive .main-container {
 .open-icon {
   position: absolute;
   z-index: 1;
-  right: 24px;
-  top: 24px;
+  right: 12px;
+  top: 6px;
 }
 .descr {
   padding-bottom: 38px;
@@ -4549,6 +4558,19 @@ body.inactive .main-container {
   max-height: 500px;
   overflow-y: auto;
 }
+#search-results-list::-webkit-scrollbar {
+  width: 8px;
+}
+#search-results-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+#search-results-list::-webkit-scrollbar-thumb {
+  background: #1f7d3a;
+  border-radius: 8px;
+}
+#search-results-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 #search-results-list li {
   margin-bottom: 12px;
   margin-left: 24px;
@@ -4604,6 +4626,22 @@ body.inactive .main-container {
   top: 0;
 }
 .onboard-journey-popup .mfp-close {
+  display: none;
+}
+.search-field button {
+  position: absolute;
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: #9D9D9D;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  right: 24px;
+  top: 20px;
+}
+.clear-btn {
   display: none;
 }
 /* header */
@@ -4666,8 +4704,8 @@ body.inactive .main-container {
   border-radius: 10px;
   top: 40px;
   padding: 10px;
-  left: 50%;
-  width: 270px;
+  left: 70%;
+  width: 180px;
   margin-left: -150px;
   opacity: 0;
   visibility: hidden;
@@ -4728,6 +4766,15 @@ body.inactive .main-container {
   font-weight: 600;
 }
 .header-list li a:hover {
+  color: var(--clr);
+}
+.header-nav {
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+  margin-right: 16px;
+}
+.header-nav:hover {
   color: var(--clr);
 }
 .fixHeader {
@@ -5074,6 +5121,7 @@ body.inactive .main-container {
   }
   .search-field input {
     width: -webkit-fill-available;
+    width: -moz-available;
   }
 }
 @media all and (max-width: 1440px) {
