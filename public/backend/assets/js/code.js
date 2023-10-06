@@ -94,7 +94,21 @@ $(document).ready(function(){
         },
         columns : [
             { data : 'id'},
-            { data : 'code', name:'code'},            
+            { data : 'code', name:'code'},
+            {
+                data: 'code_checked_on',
+                name: 'code_checked_on',
+                render: function(data, type, row) {
+                    if (row.filecode === null) {
+                        return ''; // Return an empty string for null filecode
+                    } else if (data === null) {
+                        return ''; // Return an empty string for null code_checked_on
+                    } else {
+                        var formattedDate = moment(data).format('D-M-Y h:mm A');
+                        return formattedDate;
+                    }
+                }
+            },
             { data : 'created_at',name:'created_at',
               render: function(data, type, row) {
                 var formattedDate = moment(data).format('D-M-Y h:mm A');
