@@ -12,4 +12,9 @@ class FileCode extends Model
     {
         return $this->belongsTo(ImportFile::class);
     }
+
+    public function productcode()
+    {
+        return $this->belongsTo(ProductCode::class, 'product_code_id');
+    }
 }

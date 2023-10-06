@@ -22,8 +22,13 @@ class CodeController extends Controller
     {
         if($request->ajax())
         {
-            $data = ProductCode::query();
-            return DataTables::eloquent($data)->toJson();
+            $data = ProductCode::query()->with('filecode');            
+            return DataTables::eloquent($data)
+                ->addColumn('code_checked_on', function ($productCode) {
+                    return $productCode->filecode ? $productCode->filecode->code_checked_on : '';
+                })
+                ->toJson();
+            
         }            
         return view('admin.code.list');
     }   

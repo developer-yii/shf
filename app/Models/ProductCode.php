@@ -10,4 +10,9 @@ class ProductCode extends Model
     use HasFactory;
 
     protected $fillable = ['code','added_by','code_checked_on'];
+
+    public function filecode()
+    {
+        return $this->hasOne(FileCode::class);
+    }
 }

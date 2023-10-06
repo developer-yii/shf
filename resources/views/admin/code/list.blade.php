@@ -44,7 +44,8 @@
                                     <thead>
                                         <tr>
                                             <th>Sr. No.</th>
-                                            <th>Code Id</th>                                            
+                                            <th>Code Id</th>                                       
+                                            <th>Code View Date</th>
                                             <th>Created Date</th>
                                         </tr>
                                     </thead>
