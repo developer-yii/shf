@@ -193,7 +193,7 @@
       </div>
 
       <div class="learn-wrap">
-        <a href="" class="button blue">Learn More</a>
+        <a href="{{ route('frontend.about') }}" class="button blue">Learn More</a>
       </div>
     </div>
     <!-- Expertise-ends -->
