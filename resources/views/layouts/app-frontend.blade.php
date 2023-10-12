@@ -558,20 +558,26 @@ $baseUrlbackend = asset('backend')."/";
                     $('#search-results-list').empty();
                     if (data.hasOwnProperty('filteredProducts')) 
                     {
+                        let resultsFound = false;
                         for (let category in data.filteredProducts) 
                         {
                             if (data.filteredProducts[category].length > 0) 
                             {
+                                resultsFound = true;
                                 $('#search-results-list').append('<li><strong>' + category + '</strong></li>');
                                 $.each(data.filteredProducts[category], function(index, product) {
                                     $('#search-results-list').append('<li style="margin-left:10px;"><a href="{{ url('product/detail') }}/' + product.id + '">' + product.name + '</a></li>');
                                 });
                             }
                         }
+                        if (!resultsFound) 
+                        {
+                            $('#search-results-list').append('<li><strong>No results found.</strong></li>');
+                        }
                     } 
                     else 
                     {
-                        $('#search-results-list').append('<li>No results found.</li>');
+                        $('#search-results-list').append('<li><strong>No results found.</strong></li>');
                     }
                 });
             } 
