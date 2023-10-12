@@ -21,10 +21,9 @@ $(window).scroll(function (e) {
 fixedHeader();
 /* Sticky Header Ends */
 
-
 $('#header').ready(function () {
     fixedHeader();
-    if ($(window).outerWidth() <= 990) {
+    if ($(window).outerWidth() <= 1200) {
         var MobileMenu = new MobileNav({
             initElem: "nav",
             menuTitle: "Menu",
@@ -53,11 +52,14 @@ $('#header').ready(function () {
     });
     $(".clear-btn").on("click", function () {
         $(".search-field input").val('');
-        $(this).hide()
+        $(this).hide();
+        $(".overlay").hide()
     });
+
 });
 
 $('#footer').ready();
+
 
 /* common tab start */
 $('.tabgroup > div').hide();

@@ -1234,6 +1234,7 @@ body {
     height: 100%;
     width: 100%;
     object-fit: contain;
+    max-height: 300px;
   }
 }
 
@@ -1448,10 +1449,12 @@ body {
 #search-results-list {
   &::-webkit-scrollbar {
     width: 8px;
+    border-radius: 8px
   }
 
   &::-webkit-scrollbar-track {
     background: #f1f1f1;
+    border-radius: 8px
   }
 
   &::-webkit-scrollbar-thumb {
@@ -1565,4 +1568,56 @@ body {
 
 .clear-btn {
   display: none;
+}
+
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 40px;
+}
+
+.page-link {
+  font-size: 30px;
+  color: #000;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+
+.page-item {
+  &.active {
+    background: #000;
+
+    .page-link {
+      color: #fff;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+  }
+
+
+}
+
+.mfp-figure {
+  figure {
+    img {
+      max-height: 80vh !important;
+      padding: 70px 0 0 !important;
+    }
+  }
+}
+
+.menuBtn {
+  margin-left: 10px;
+
+  .header-nav {
+    margin-right: 8px;
+  }
 }
