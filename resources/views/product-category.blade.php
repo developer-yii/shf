@@ -26,32 +26,34 @@ $baseUrl = asset('frontend')."/";
               $getunit = getUnitByVolumeType($product->volume_type);
               @endphp
               <div class="f-col">
-                <div class="product-box">
-                  <a href="{{ route('product.detail', ['id' => $product->id]) }}"><h4>{{ $product->name }}</h4></a>
-                  @foreach ($product->targets as $target)
-                  <p class="tag">{{$target->name}}</p>
-                  @endforeach
+                <a href="{{ route('product.detail', ['id' => $product->id]) }}">
+                  <div class="product-box">
+                    <h4>{{ $product->name }}</h4>
+                    @foreach ($product->targets as $target)
+                    <p class="tag">{{$target->name}}</p>
+                    @endforeach
 
-                  <div class="product-specs">
-                    <div class="specification">
-                      <div class="specs-icon"><img src="{{$baseUrl}}img/spec-icon.svg" alt=""></div> <span>{{ $product->tension }}</span>
-                    </div>
-                    <div class="specification">
-                      <div class="specs-icon mlr-3"><img src="{{ $getunit['image'] }}" alt=""></div> 
-                      <span> 
-                        {{ $product->total_volume }} {{ $getunit['unit'] }}
-                      </span>
-                    </div>
-                    <div class="specification">
-                      <div class="specs-icon mlr-3"><img src="{{ getArtIcon($productArt->name)['image'] }}" alt=""></div> <span>{{ $productArt->name }}</span>
-                    </div>
-                    <div class="specification">
-                      <div class="specs-icon"><img src="{{$baseUrl}}img/use.svg" alt=""></div> <span>
-                        {{ $product->productUse->use }}
-                      </span>
+                    <div class="product-specs">
+                      <div class="specification">
+                        <div class="specs-icon"><img src="{{$baseUrl}}img/spec-icon.svg" alt=""></div> <span>{{ $product->tension }}</span>
+                      </div>
+                      <div class="specification">
+                        <div class="specs-icon mlr-3"><img src="{{ $getunit['image'] }}" alt=""></div> 
+                        <span> 
+                          {{ $product->total_volume }} {{ $getunit['unit'] }}
+                        </span>
+                      </div>
+                      <div class="specification">
+                        <div class="specs-icon mlr-3"><img src="{{ getArtIcon($productArt->name)['image'] }}" alt=""></div> <span>{{ $productArt->name }}</span>
+                      </div>
+                      <div class="specification">
+                        <div class="specs-icon"><img src="{{$baseUrl}}img/use.svg" alt=""></div> <span>
+                          {{ $product->productUse->use }}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>            
               @endforeach
             @endif 
