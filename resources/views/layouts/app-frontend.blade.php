@@ -22,7 +22,7 @@ $baseUrlbackend = asset('backend')."/";
   <link rel="icon" href="{{ $baseUrl }}favicon.ico" type="image/x-icon" />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.2.0/swiper-bundle.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">  
   <link rel="stylesheet" href="{{ $baseUrl }}css/main.css" />
   <link rel="stylesheet" href="{{ $baseUrl }}css/custom.css" />
   <link rel="stylesheet" href="{{$baseUrlbackend}}assets/css/toastr.css?time()">
@@ -125,47 +125,47 @@ $baseUrlbackend = asset('backend')."/";
 
 <footer id="footer">
    <!-- Subscribe Starts -->
-   <div class="subscribe-wrap">
-    <div class="container">
-        <div class="subscribe">
-            <h3 class="head-2 center">Subscribe To Stay Tuned</h3>
-            <p class="txt-1 center">Get the latest researches, news and updates from Xandoz laboratories
-            </p>
-            <form id="subscribe-form" class="subscribe-form">
-                @csrf
-                <div class="form-grp form-grp-footer-custom">
-                    <input type="email" name="email" id="email" placeholder="your@email.com" class="footer-field"><br>
-                    <span class="error"></span>
-                </div>
-                <button class="button white" type="submit">Submit</button>
-            </form>
-        </div>
-    </div>
-    <div class="project-x-big">
-        <img src="{{$baseUrl}}img/projectx-big.png" alt="">
-    </div>
-</div>
-<!-- Subscribe Ends -->
-
-<!-- Footer Content Starts -->
-<div class="footer-wrap">
-    <div class="container">
-        <div class="footer-top">
-            <div class="footer-logo">
-                <img src="{{$baseUrl}}img/logo-2.png" alt="">
+    <div class="subscribe-wrap">
+        <div class="container">
+            <div class="subscribe">
+                <h3 class="head-2 center">Subscribe To Stay Tuned</h3>
+                <p class="txt-1 center">Get the latest researches, news and updates from Xandoz laboratories
+                </p>
+                <form id="subscribe-form" class="subscribe-form">
+                    @csrf
+                    <div class="form-grp form-grp-footer-custom">
+                        <input type="email" name="email" id="email" placeholder="your@email.com" class="footer-field"><br>
+                        <span class="error"></span>
+                    </div>
+                    <button class="button white" type="submit">Submit</button>
+                </form>
             </div>
-            <div class="footer-line"></div>
-            <p><img src="{{$baseUrl}}img/copyright.svg" alt=""> Xandoz Laboratories GmbH
-            </p>
         </div>
-        <div class="footer-bottom">
-            <a href="mailto:info@xandoz-labs.net"><img src="{{$baseUrl}}img/at.svg" alt=""> info@xandoz-labs.net</a>
-            <p><img src="{{$baseUrl}}img/location.svg" alt=""> Andreasstraße 5, 65203 Wiesbaden, Germany
-            </p>
+        <div class="project-x-big">
+            <img src="{{$baseUrl}}img/projectx-big.png" alt="">
         </div>
     </div>
+    <!-- Subscribe Ends -->
 
-</div>
+    <!-- Footer Content Starts -->
+    <div class="footer-wrap">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="{{$baseUrl}}img/logo-2.png" alt="">
+                </div>
+                <div class="footer-line"></div>
+                <p><img src="{{$baseUrl}}img/copyright.svg" alt=""> Xandoz Laboratories GmbH
+                </p>
+            </div>
+            <div class="footer-bottom">
+                <a href="mailto:info@xandoz-labs.net"><img src="{{$baseUrl}}img/at.svg" alt=""> info@xandoz-labs.net</a>
+                <p><img src="{{$baseUrl}}img/location.svg" alt=""> Andreasstraße 5, 65203 Wiesbaden, Germany
+                </p>
+            </div>
+        </div>
+
+    </div>
 <!-- Footer Content Ends -->
 <!-- SignUp -->
 <div id="sign-up" class="white-popup mfp-with-anim mfp-hide onboard-journey-popup">.
@@ -542,6 +542,16 @@ $baseUrlbackend = asset('backend')."/";
         });
 
         $('#search').on('input', function() {
+            search();
+        });
+
+        $(document).on('click', function(event) {
+            if (!$(event.target).closest('#search').length) {
+                $('#search-results-list').empty();
+            }
+        });
+
+        $('#search').on('focus', function() {
             search();
         });
 
