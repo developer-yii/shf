@@ -41,7 +41,7 @@ $baseUrlbackend = asset('backend')."/";
                 <div class="head-left">
                     <div class="logoBox">
                         <a class="logo" href="{{ route('frontend.home') }}">
-                            <img src="{{ $baseUrl }}img/logo.svg" alt="Logo" />
+                            <img src="{{ $baseUrl }}img/logo.png" alt="Logo" />
                         </a>
                     </div>
                     <ul class="header-list">
@@ -65,7 +65,7 @@ $baseUrlbackend = asset('backend')."/";
             </div>
             <div class="head-right">
               <div class="menuBtn">
-                <a href="{{ route('contact') }}" class="button white">Contact</a>
+                <a href="{{ route('contact') }}" class="header-nav">Contact</a>
                 @if(!Auth::user())                
                 <a href="#sign-in" class="button blue popup-link">Sign In</a>
                 @else
@@ -142,7 +142,7 @@ $baseUrlbackend = asset('backend')."/";
         </div>
     </div>
     <div class="project-x-big">
-        <img src="{{$baseUrl}}img/projectx-big.svg" alt="">
+        <img src="{{$baseUrl}}img/projectx-big.png" alt="">
     </div>
 </div>
 <!-- Subscribe Ends -->
@@ -152,7 +152,7 @@ $baseUrlbackend = asset('backend')."/";
     <div class="container">
         <div class="footer-top">
             <div class="footer-logo">
-                <img src="{{$baseUrl}}img/logo.svg" alt="">
+                <img src="{{$baseUrl}}img/logo-2.png" alt="">
             </div>
             <div class="footer-line"></div>
             <p><img src="{{$baseUrl}}img/copyright.svg" alt=""> Xandoz Laboratories GmbH
@@ -170,7 +170,7 @@ $baseUrlbackend = asset('backend')."/";
 <!-- SignUp -->
 <div id="sign-up" class="white-popup mfp-with-anim mfp-hide onboard-journey-popup">.
     <div class="popup-logo">
-        <img src="{{$baseUrl}}img/form-logo.svg" alt="">
+        <img src="{{$baseUrl}}img/logo.png" alt="">
     </div>
 
     <div class="popup-content">
@@ -234,7 +234,7 @@ $baseUrlbackend = asset('backend')."/";
 <!-- Email Verification -->
 <div id="email-verification" class="white-popup mfp-with-anim mfp-hide onboard-journey-popup">.
     <div class="popup-logo">
-        <img src="{{$baseUrl}}img/form-logo.svg" alt="">
+        <img src="{{$baseUrl}}img/logo.png" alt="">
     </div>
 
     <div class="popup-content">
@@ -262,7 +262,7 @@ $baseUrlbackend = asset('backend')."/";
 <!-- SignIn -->
 <div id="sign-in" class="white-popup mfp-with-anim mfp-hide onboard-journey-popup">.
     <div class="popup-logo">
-        <img src="{{$baseUrl}}img/form-logo.svg" alt="">
+        <img src="{{$baseUrl}}img/logo.png" alt="">
     </div>
 
     <div class="popup-content">
@@ -300,7 +300,7 @@ $baseUrlbackend = asset('backend')."/";
 <!-- Forgot Password -->
 <div id="forgot-pass" class="white-popup mfp-with-anim mfp-hide onboard-journey-popup">.
     <div class="popup-logo">
-        <img src="{{$baseUrl}}img/form-logo.svg" alt="">
+        <img src="{{$baseUrl}}img/logo.png" alt="">
     </div>
 
     <div class="popup-content">

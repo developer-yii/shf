@@ -8,7 +8,7 @@
 <!-- Account Verified -->
     <div id="acc-verified" class="white-popup mfp-with-anim mfp-hide onboard-journey-popup">.
         <div class="popup-logo">
-            <img src="{{ $baseUrl }}img/form-logo.svg" alt="">
+            <img src="{{ $baseUrl }}img/logo.png" alt="">
         </div>
 
         <div class="popup-content">
