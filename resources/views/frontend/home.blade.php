@@ -23,8 +23,8 @@
     </div>
 
 
-    <div class="logo-big">
-      <img src="{{ $baseUrl }}img/logo-big.svg" alt="">
+    <div class="logo-big" style="height: auto;">
+      <img src="{{ $baseUrl }}img/logo-big.png" alt="">
     </div>
 
   </div>

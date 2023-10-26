@@ -7,7 +7,7 @@
 @section('content')
 <div id="pass-reset" class="white-popup mfp-with-anim mfp-hide onboard-journey-popup">.
         <div class="popup-logo">
-            <img src="{{ $baseUrl }}img/form-logo.svg" alt="">
+            <img src="{{ $baseUrl }}img/logo.png" alt="">
         </div>
 
         <div class="popup-content">
@@ -47,7 +47,7 @@
     <!-- Pass Reset Successfull -->
     <div id="pass-reset-success" class="white-popup mfp-with-anim mfp-hide onboard-journey-popup">.
         <div class="popup-logo">
-            <img src="{{$baseUrl}}img/form-logo.svg" alt="">
+            <img src="{{$baseUrl}}img/logo.png" alt="">
         </div>
 
         <div class="popup-content">
