@@ -4382,6 +4382,7 @@ body.inactive .main-container {
   height: 100%;
   width: 100%;
   object-fit: contain;
+  max-height: 300px;
 }
 .p-detail-right {
   border-radius: 50px;
@@ -4560,9 +4561,11 @@ body.inactive .main-container {
 }
 #search-results-list::-webkit-scrollbar {
   width: 8px;
+  border-radius: 8px;
 }
 #search-results-list::-webkit-scrollbar-track {
   background: #f1f1f1;
+  border-radius: 8px;
 }
 #search-results-list::-webkit-scrollbar-thumb {
   background: #1f7d3a;
@@ -4643,6 +4646,41 @@ body.inactive .main-container {
 }
 .clear-btn {
   display: none;
+}
+.pagination {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 40px;
+}
+.page-link {
+  font-size: 30px;
+  color: #000;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+.page-item.active {
+  background: #000;
+}
+.page-item.active .page-link {
+  color: #fff;
+}
+.page-item.disabled {
+  opacity: 0.5;
+}
+.mfp-figure figure img {
+  max-height: 80vh !important;
+  padding: 70px 0 0 !important;
+}
+.menuBtn {
+  margin-left: 10px;
+}
+.menuBtn .header-nav {
+  margin-right: 8px;
 }
 /* header */
 :root {
@@ -5050,7 +5088,7 @@ body.inactive .main-container {
 .mob-navigation li.nav-dropdown-open > ul {
   display: block;
 }
-@media all and (max-width: 1366px) {
+@media all and (max-width: 1200px) {
   .navigation {
     display: none;
   }
@@ -5223,6 +5261,18 @@ body.inactive .main-container {
   .p-detail-box {
     padding: 24px 0;
   }
+  .header-list li {
+    padding: 7px 6px;
+  }
+  .drop > a:after {
+    margin-left: 4px;
+  }
+  .search-field {
+    margin-left: 10px;
+  }
+  .search-field {
+    max-width: 300px;
+  }
 }
 @media all and (max-width: 1280px) {
   .head-1 {
@@ -5245,6 +5295,11 @@ body.inactive .main-container {
   }
   .bg-section {
     height: auto;
+  }
+}
+@media all and (max-width: 1200px) {
+  .menuBtn .header-nav {
+    display: none;
   }
 }
 @media all and (max-width: 1100px) {
@@ -5330,6 +5385,7 @@ body.inactive .main-container {
   }
   .expertise-content {
     width: 100%;
+    padding-bottom: 140px;
   }
   .expertise-txt {
     display: block;
@@ -5426,6 +5482,15 @@ body.inactive .main-container {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+  }
+  .product-code {
+    margin-left: 0;
+  }
+  #review_recaptcha {
+    margin: 0 !important;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
   }
 }
 @media all and (max-width: 768px) {

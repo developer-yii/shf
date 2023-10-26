@@ -101,7 +101,6 @@ Route::namespace('User')
             Route::group(['prefix' => 'product'], function () {
                 Route::get('/index', 'ProductController@index')->name('product');  
                 Route::get('/detail/{id}', 'ProductController@detail')->name('product.detail');
-                
 
 
                 //Order Module
