@@ -2,6 +2,10 @@
 @php
 $baseUrl = asset('frontend')."/";
 $baseUrlbackend = asset('backend')."/";    
+$currentRoute = Route::currentRouteName();
+$body_class = ($currentRoute == "frontend.authenticity") ? "authenticity-page" : "home-page";
+$header_class = ($currentRoute == "contact") ? "white-header" : "";
+
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -31,9 +35,10 @@ $baseUrlbackend = asset('backend')."/";
   @yield('css')
 </head>
 
-<body class="home-page">
+
+<body class="{{ $body_class }}">
     <!-- Header Starts -->
-    <header id="header">
+    <header id="header" class="{{ $header_class }}">
         <div class="overlay"></div>
 
         <div class="header-box">
