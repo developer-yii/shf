@@ -9,8 +9,6 @@
 @section('title', 'Check Product')
 @section('css')
 <link href="{{$baseUrlbackend}}assets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style" />
-<link rel="stylesheet" href="{{ $baseUrl }}css/main.css" />
-<!-- <link rel="stylesheet" href="{{ $baseUrlold }}css/custom.css" />  -->
 @endsection
 @section('content')
 <!-- Main Container Starts -->
