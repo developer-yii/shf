@@ -27,9 +27,9 @@ $header_class = ($currentRoute == "contact") ? "white-header" : "";
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.2.0/swiper-bundle.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">  
-  <link rel="stylesheet" href="{{ $baseUrl }}css/main.css" />
   <link rel="stylesheet" href="{{ $baseUrl }}css/custom.css" />
   <link rel="stylesheet" href="{{$baseUrlbackend}}assets/css/toastr.css?time()">
+  <link rel="stylesheet" href="{{ $baseUrl }}css/main.css" />
   
 
   @yield('css')
