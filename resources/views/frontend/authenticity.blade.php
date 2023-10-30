@@ -8,9 +8,9 @@
 
 @section('title', 'Check Product')
 @section('css')
-<link rel="stylesheet" href="{{ $baseUrlold }}css/main.css" />
 <link href="{{$baseUrlbackend}}assets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style" />
-<link rel="stylesheet" href="{{ $baseUrlold }}css/custom.css" /> 
+<link rel="stylesheet" href="{{ $baseUrl }}css/main.css" />
+<!-- <link rel="stylesheet" href="{{ $baseUrlold }}css/custom.css" />  -->
 @endsection
 @section('content')
 <!-- Main Container Starts -->
@@ -73,7 +73,7 @@
 
 @endsection
 @section('js')
-<script src="{{$baseUrlold}}js/vendor.min.js"></script>
+<script src="{{$baseUrl}}js/vendor.min.js"></script>
 <script type="text/javascript">
     var review_recaptcha_widget;
     var onloadCallback = function() {
@@ -88,6 +88,6 @@
 <script>
     var checkproduct = "{{ route('check.code') }}";
 </script>
-<script src="{{ $baseUrlold}}js/check-product.js"></script>
+<script src="{{ $baseUrl}}js/check-product.js"></script>
 
 @endsection
