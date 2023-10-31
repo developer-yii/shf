@@ -52,9 +52,9 @@ function getArtIcon($artName)
 {
     $imagePaths = [
         "Inject"    => "inject.svg",
-        "Peptides"  => "inject.svg",
+        "Peptides"  => "peptides.svg",
         "Capsules"  => "capsules.svg",
-        "Sarms"     => "capsules.svg",
+        "Sarms"     => "sarms.svg",
         "Tablets"   => "tablets.svg",
         "Liquids"   => "liquid.svg",
     ];

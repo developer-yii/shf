@@ -26,36 +26,16 @@ class ProductController extends Controller
         foreach ($productArts as $productArt) 
         {
             $groupedProducts[$productArt->id]['productArt'] = $productArt;
-
-            if ($productArt->name == 'Inject' || $productArt->name == 'Peptides') 
-            {
-                $artIcon = asset('frontend/img/inject.svg');
-            } 
-            elseif ($productArt->name == 'Capsules'|| $productArt->name == 'Sarms') 
-            {
-                $artIcon = asset('frontend/img/capsules.svg');
-            }
-            elseif ($productArt->name == 'Tablets') 
-            {
-                $artIcon = asset('frontend/img/tablets.svg');
-            }
-            elseif ($productArt->name == 'Liquids') 
-            {
-                $artIcon = asset('frontend/img/liquid.svg');
-            }
-            else 
-            {
-                $artIcon = asset('frontend/img/spec-icon.svg');; // Default icon path or handle other cases here
-            }
+            
+            $artIcon = getArtIcon($productArt->name);
 
             $groupedProducts[$productArt->id]['products'] = $productArt->products->take(4)
             ->map(function ($product) use ($artIcon)
             {                
                 $product->unit = getUnitByVolumeType($product->volume_type);
-                $product->artIcon = $artIcon;
+                $product->artIcon = $artIcon;                
                 return $product;
-            });
-           
+            });           
         }        
         return view('products', compact('groupedProducts'));
        
