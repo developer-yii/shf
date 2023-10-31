@@ -114,7 +114,8 @@ $header_class = ($currentRoute == "contact") ? "white-header" : "";
     <a href="{{ route('products.list') }}">Products</a>
     <ul>
         @foreach(getCategories() as $category)
-        <li><a href="{{ route('products.category', ['id' => $category->id]) }}">{{ $category->name }}</a></li>
+        <li>
+            <a href="{{ route('products.category', ['id' => $category->id]) }}"><img src="{{ getArtIcon($category->name)['image'] }}" alt="" class="img-menu-icon-w-32">{{ $category->name }}</a></li>
         @endforeach
     </ul>
 </li>
