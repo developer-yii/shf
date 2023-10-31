@@ -51,40 +51,42 @@ $header_class = ($currentRoute == "contact") ? "white-header" : "";
                     </div>
                     <ul class="header-list">
                         <li class="drop">
-                          <a href="{{ route('products.list') }}">Products</a>
-                          <ul>
-                            @foreach(getCategories() as $category)
-                            <li><a href="{{ route('products.category', ['id' => $category->id]) }}">{{ $category->name }}</a></li>
-                            @endforeach
-                        </ul>
-                    </li>
-                    <li><a href="{{ route('frontend.authenticity')}}">Authenticity</a></li>
-                    <li><a href="{{ route('frontend.about')}}">About Xandoz</a></li>
-                </ul>
-            </div>
-            <div class="search-field">
-                <input type="search" placeholder="Search Xandoz" class="search-input" name="search" id="search">
-                <button class="clear-btn">clear</button>
-                <ul id="search-results-list">                    
-                </ul> 
-            </div>
-            <div class="head-right">
-              <div class="menuBtn">
-                <a href="{{ route('contact') }}" class="header-nav">Contact</a>
-                @if(!Auth::user())                
-                <a href="#sign-in" class="button blue popup-link">Sign In</a>
-                @else
-                <a href="{{ route('logout') }}" class="button blue">Sign Out</a>
-                @endif        
-                <div class="menu side-menu">
-                    <a href="javascript:void(0)" class="js-nav-toggle">
-                        <span></span>
-                    </a>
+                            <a href="{{ route('products.list') }}">Products</a>
+                            <ul>
+                                @foreach(getCategories() as $category)
+                                <li>
+                                    <a href="{{ route('products.category', ['id' => $category->id]) }}" ><img src="{{ getArtIcon($category->name)['image'] }}" alt="" class="img-menu-icon-w-32">{{ $category->name }}</a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li><a href="{{ route('frontend.authenticity')}}">Authenticity</a></li>
+                        <li><a href="{{ route('frontend.about')}}">About Xandoz</a></li>
+                    </ul>
+                </div>
+                <div class="search-field">
+                    <input type="search" placeholder="Search Xandoz" class="search-input" name="search" id="search">
+                    <button class="clear-btn">clear</button>
+                    <ul id="search-results-list">                    
+                    </ul> 
+                </div>
+                <div class="head-right">
+                  <div class="menuBtn">
+                    <a href="{{ route('contact') }}" class="header-nav">Contact</a>
+                    @if(!Auth::user())                
+                    <a href="#sign-in" class="button blue popup-link">Sign In</a>
+                    @else
+                    <a href="{{ route('logout') }}" class="button blue">Sign Out</a>
+                    @endif        
+                    <div class="menu side-menu">
+                        <a href="javascript:void(0)" class="js-nav-toggle">
+                            <span></span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 <!-- Side Menu -->
 <!-- Side Menu -->
