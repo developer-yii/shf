@@ -4904,6 +4904,7 @@ body.inactive .main-container {
   vertical-align: middle;
   width: 120px;
   margin-right: 32px;
+  position: static;
 }
 .head-left {
   display: flex;
