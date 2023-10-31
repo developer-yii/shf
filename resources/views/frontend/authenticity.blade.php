@@ -4,12 +4,8 @@
     $baseUrlbackend = asset('backend')."/";
 @endphp
 @extends('layouts.app-frontend')
-
-
 @section('title', 'Check Product')
-@section('css')
-<link href="{{$baseUrlbackend}}assets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style" />
-@endsection
+
 @section('content')
 <!-- Main Container Starts -->
   <div class="main-container">
