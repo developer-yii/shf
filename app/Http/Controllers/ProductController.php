@@ -55,7 +55,7 @@ class ProductController extends Controller
         
         
         $artIcon = ''; 
-        $groupedProducts = $productArt->products()->paginate(3);
+        $groupedProducts = $productArt->products()->paginate(8);
        
         return view('product-category', compact('groupedProducts', 'productArt'));
             
