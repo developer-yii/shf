@@ -5,6 +5,7 @@ $baseUrlbackend = asset('backend')."/";
 $currentRoute = Route::currentRouteName();
 $body_class = ($currentRoute == "frontend.authenticity") ? "authenticity-page" : "home-page";
 $header_class = ($currentRoute == "contact") ? "white-header" : "";
+$hidden_route = ($currentRoute == 'product.detail') ? 'product.detail' : '';
 
 @endphp
 <!DOCTYPE html>
@@ -292,7 +293,7 @@ $header_class = ($currentRoute == "contact") ? "white-header" : "";
         <div class="popup-right">
             <form action="" method="POST" autocomplete="off" id="login-form">
                 @csrf
-                <input type="hidden" name="hidden_route" id="hidden_route">
+                <input type="hidden" name="hidden_route" id="hidden_route" value="{{ $hidden_route }}">
                 <div id="error-message"></div>
                 <div class="form-grp">
                     <input class="form-field" type="email" id="email" name="email" placeholder="your@email.com" />
