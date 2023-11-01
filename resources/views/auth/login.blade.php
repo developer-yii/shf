@@ -7,11 +7,11 @@
         <div class="about-section">
           <div class="container">
             <h1 class="head-1 black">Welcome to Xandoz</h1>
-            <div class="danger">
-                You have not admin access. Please Login as admin
-            </div>
-             @if(Session::has('error'))    
-                {{ Session::get('error') }}    
+            
+            @if(Session::has('error'))    
+                <div class="danger">
+                    {{ Session::get('error') }}    
+                </div>
             @endif
           </div>      
         </div>
