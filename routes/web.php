@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 /*use App\Http\Controllers\Auth\VerificationController;*/
 
 /*
@@ -15,6 +16,15 @@ use Illuminate\Http\Request;
 |
 */
 Auth::routes();
+Route::get('/migrate-run-once', function () {
+    Artisan::call('migrate');
+    return 'Migrations have been run.';
+});
+Route::get('/storage-link-run', function () {
+    Artisan::call('storage:link');
+    return 'storage link have been run.';
+});
+
 Route::get('/', function () {
     return view('frontend.home');
 })->name('frontend.home');

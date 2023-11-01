@@ -80,7 +80,11 @@
             <h3 class="head-2 center">Find more products.</h3>
             <h3 class="head-2 center">Check authenticity.</h3>
             <div class="bottom-btns">
-              <a href="{{ route('user.product') }}" class="button blue">Discover Products </a>
+              @if(Auth::user())
+                <a href="{{ route('user.product') }}" class="button blue">Discover Products </a>
+              @else
+                <a href="{{ route('products.list') }}" class="button blue">Discover Products </a>                
+              @endif
               <a href="{{ route('frontend.authenticity')}}" class="button white">Authenticate Product</a>
             </div>
 

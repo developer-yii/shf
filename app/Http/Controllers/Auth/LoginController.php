@@ -112,6 +112,10 @@ class LoginController extends Controller
                     {
                         $result = ['status' => false, 'message' => 'Please verify email first.'];
                     }
+                    if($get_user->role == '3' && $get_user->email_verified_at != null && $get_user->is_active == '0')
+                    {
+                        $result = ['status' => false, 'message' => 'Your account is not activated'];
+                    }
                 }
                 else
                 {
