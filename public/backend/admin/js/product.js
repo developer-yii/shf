@@ -1,5 +1,6 @@
 $(document).ready(function(){
-   $.ajaxSetup({
+
+    $.ajaxSetup({
         headers : {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
@@ -23,7 +24,9 @@ $(document).ready(function(){
                 data: 'image',
                 render: function(data, type, row, meta) 
                 {
-                    return '<img src="' + data + '" class="img-thumbnail" width="75" height="75"/>';
+                    var image_title = row.name;
+                    return '<a href="' + data + '" data-lightbox="' + data + '" data-title="' + image_title + '"><img src="' + data + '" class="img-thumbnail" width="75" height="75"/></a>';
+
                 },
                 orderable: false
             },

@@ -5,7 +5,7 @@
 
 @extends('layouts.app')
 
-@section('title','Admin | Message')
+@section('title','Admin | User')
 @section('content')
 
     <div class="container-fluid">
@@ -18,7 +18,7 @@
                             <li class="breadcrumb-item active">User list</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Message list</h4>
+                    <h4 class="page-title">User list</h4>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="header-title">Message List</h4>
+                        <h4 class="header-title">User List</h4>
                         <div class="tab-content">
                             <div class="tab-pane show active" id="basic-datatable-preview">
                                 <table id="user_datatable" class="table dt-responsive nowrap w-100">
