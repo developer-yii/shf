@@ -30,6 +30,7 @@
         <link href="{{$baseUrl}}assets/css/vendor/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
         <link href="{{$baseUrl}}assets/css/vendor/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
         <link href="{{$baseUrl}}assets/css/vendor/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
         <link href="{{$baseUrl}}assets/css/custom.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="{{$baseUrl}}assets/css/toastr.css?time()">
 
@@ -116,6 +117,13 @@
         <script src="{{$baseUrl}}user/js/jquery.slimscroll.js"></script>
         <script src="{{$baseUrl}}assets/js/toastr.js?{{time()}}"></script>
         <script src="{{$baseUrl}}assets/js/sweetalert2.js?{{time()}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+        <script>
+            lightbox.option({
+                'resizeDuration': 200,
+                'wrapAround': true,                
+            });
+        </script>
         @if($userrole== 1 || $userrole == 2)
         <script type="text/javascript">            
             var viewAllUrl="{{ route('admin.message') }}";  
