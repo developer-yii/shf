@@ -71,7 +71,7 @@
                     <form class="pl-3 pr-3" id="add_productuse">
                         @csrf
                         <div class="form-group form-input">
-                            <input type="text" name="product_use_id" class="product-use-id">
+                            <input type="hidden" name="product_use_id" class="product-use-id">
                         </div>
 
                         <div class="form-group form-input">

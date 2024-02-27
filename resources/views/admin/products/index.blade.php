@@ -150,7 +150,7 @@
                         <div class="row">
                             <div class="form-group form-input col-md-6">
                                 <label for="tension">Tension(mg)</label>
-                                <input class="form-control" type="text" id="tension" name="tension">
+                                <input class="form-control" type="text" id="tension" name="tension" placeholder="500mg">
                             </div>
                             <div class="form-group form-input col-md-6">
                                 <label for="quantity">Quantity<span class="text-danger">*</span></label>
