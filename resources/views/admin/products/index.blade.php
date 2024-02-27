@@ -14,7 +14,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
                             <li class="breadcrumb-item active">Products</li>
                         </ol>
                     </div>
@@ -38,7 +38,7 @@
                                 </div>
                             @endif
                         </div>
-                        
+
                         <div class="tab-content">
                             <div class="tab-pane show active" id="basic-datatable-preview">
                                 <table id="product_datatable" class="table dt-responsive nowrap w-100">
@@ -87,7 +87,7 @@
                             <div class="form-group form-input col-md-6">
                                 <label for="productname">Product Name<span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" id="name" name="name">
-                                <span class="text-danger error"></span>    
+                                <span class="text-danger error"></span>
                             </div>
 
                             <div class="form-group form-input col-md-6">
@@ -106,7 +106,7 @@
                                     @endforeach
                                 </select>
                                 <span class="text-danger error"></span>
-                            </div> 
+                            </div>
 
                             <div class="form-group form-input col-md-6">
                                 <label for="producttarget">Select Product Target<span class="text-danger">*</span></label>
@@ -116,11 +116,11 @@
                                     @endforeach
                                 </select>
                                 <span class="text-danger error"></span>
-                            </div> 
+                            </div>
                         </div>
 
                         <div class="row">
-                            <div class="form-group form-input col-md-6">                           
+                            <div class="form-group form-input col-md-6">
                                 <label for="productuse">Product Use<span class="text-danger">*</span></label>
                                 <select class="form-control" name="product_use_id" id="product_use_id">
                                         <option value="" class="d-none">Select Use</option>
@@ -129,7 +129,7 @@
                                     @endforeach
                                 </select>
                                 <span class="text-danger error"></span>
-                            </div> 
+                            </div>
 
                             <div class="form-group form-input col-md-6">
                                 <label for="volume">Volume</label>
@@ -155,14 +155,14 @@
                             <div class="form-group form-input col-md-6">
                                 <label for="quantity">Quantity<span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" id="quantity" name="quantity">
-                                <span class="text-danger error"></span>    
+                                <span class="text-danger error"></span>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group form-input col-md-12">
                                 <label for="description">Description<span class="text-danger"></span></label>
-                                <textarea class="form-control" name="description" id="description"></textarea>    
+                                <textarea class="form-control" name="description" id="description"></textarea>
                             </div>
                         </div>
 
@@ -170,10 +170,10 @@
                             <div class="form-group form-input col-md-12">
                                 <label for="username">Product Image<span class="text-danger">*</span></label>
                                 <input type="file" name="product_image" class="form-control mb-3" id="product_image">
-                                <span class="text-danger error"></span>    
+                                <span class="text-danger error"></span>
                             </div>
                         </div>
-                          
+
                         <div class="form-group text-center">
                             <button class="btn btn-primary" type="submit">Save</button>
                         </div>
@@ -186,7 +186,7 @@
 @endsection
 @section('js')
 <script>
-    var productList = "{{ route('admin.product.list') }}"; 
+    var productList = "{{ route('admin.product.list') }}";
     var createproduct = "{{ route('admin.product.create') }}";
     var getproduct = "{{ route('admin.product.detail') }}";
     var deleteproduct = "{{ route('admin.product.delete') }}";

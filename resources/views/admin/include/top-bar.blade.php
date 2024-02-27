@@ -16,26 +16,25 @@
 
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false" >
-                <i class="dripicons-bell noti-icon"></i>                    
+                <i class="dripicons-bell noti-icon"></i>
                    <div id="noti_count">  </div>
-            </a>            
+            </a>
 
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
-                <div class="dropdown-item noti-title">                        
+                <div class="dropdown-item noti-title">
                     <h5 class="m-0">
                         <span class="float-right">
                             <a href="javascript: void(0);" id="clear_noti" class="text-dark clear_all_noti" data-user="{{ Auth::user()->id }}">
-                                
                             </a>
                         </span>Notifications
-                    </h5>                       
+                    </h5>
                 </div>
 
                 <div id="notificationContainer" class="px-3" data-simplebar>
                 </div>
 
                 <!-- All-->
-                <a href="javascript:void(0);" id="notify-item" class="dropdown-item text-center text-primary notify-item border-top border-light py-2">                    
+                <a href="javascript:void(0);" id="notify-item" class="dropdown-item text-center text-primary notify-item border-top border-light py-2">
                 </a>
             </div>
         </li>
@@ -43,12 +42,20 @@
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                 aria-expanded="false">
-                <span class="account-user-avatar"> 
+                <span class="account-user-avatar">
                     <img src="{{$baseUrl}}assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
                 </span>
                 <span>
                     <span class="account-user-name">{{$username}}</span>
-                    <span class="account-position">Founder</span>
+                    <span class="account-position">
+                        @if($user_role == 1)
+                            Superadmin
+                        @elseif($user_role == 2)
+                            Admin
+                        @else
+                            User
+                        @endif
+                    </span>
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
@@ -72,6 +79,6 @@
     </ul>
     <button class="button-menu-mobile open-left disable-btn">
         <i class="mdi mdi-menu"></i>
-    </button> 
+    </button>
 </div>
 <!-- end Topbar -->

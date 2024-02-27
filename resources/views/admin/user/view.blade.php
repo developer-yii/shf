@@ -14,7 +14,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('admin.user') }}">Users</a></li>
                             <li class="breadcrumb-item active">User Details</li>
                         </ol>
@@ -102,7 +102,7 @@
                                     </div>
                                  </div>
                             </div>
-                            
+
                         </div> <!-- end tab-content-->
                     </div> <!-- end card body-->
                 </div> <!-- end card -->
@@ -114,7 +114,7 @@
 @endsection
 @section('js')
 <script>
-    var userList = "{{ route('admin.user.list') }}";     
+    var userList = "{{ route('admin.user.list') }}";
 </script>
 <script src="{{$baseUrl}}admin/js/user.js"></script>
 

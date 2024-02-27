@@ -1,8 +1,11 @@
 <?php
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
+
 /*use App\Http\Controllers\Auth\VerificationController;*/
 
 /*
@@ -59,36 +62,36 @@ Route::post('/contact-us','ContactController@submit')->name('contact.submit');
 //frontend
 Route::group(['prefix' => 'product'], function () {
     Route::get('/index', 'ProductController@index')->name('products.list');
-    Route::get('/category/{id}', 'ProductController@category')->name('products.category');      
+    Route::get('/category/{id}', 'ProductController@category')->name('products.category');
     Route::get('/detail/{id}', 'ProductController@detail')->name('product.detail');
-    
-}); 
+
+});
 
 Route::post('/search', 'ProductController@search')->name('product.search');
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::middleware(['verified_email'])->group(function () 
+    Route::middleware(['verified_email'])->group(function ()
     {
-        Route::get('/home', 'HomeController@index')->name('user.userHome');    
-        Route::get('/profile', 'HomeController@profile')->name('profile');               
+        Route::get('/home', 'HomeController@index')->name('user.userHome');
+        Route::get('/profile', 'HomeController@profile')->name('profile');
         Route::get('/profile/edit/{id}', 'HomeController@edit')->name('profile.edit');
         Route::post('/profile/update','HomeController@update')->name('profile.update');
-               
+
     });
-    
+
     //Notofication
         Route::get('/notification','NotificationController@notification')->name('notification.getNotification');
         Route::get('/clearall', 'NotificationController@readAll')->name('notification.readAll');
 
     //order management
     Route::group(['prefix' => 'orders'], function () {
-        Route::get('/index','OrderController@index')->name('order');  
+        Route::get('/index','OrderController@index')->name('order');
         Route::get('/get','OrderController@get')->name('order.list');
         Route::post('/change_status', 'OrderController@change_status')->name('order.change_status');
         Route::get('/detail', 'OrderController@detail')->name('order.detail');
-     
-    }); 
+
+    });
 });
 
 
@@ -96,7 +99,7 @@ Route::namespace('User')
 ->middleware('auth')
 ->middleware('verified_email')
 ->as('user.')
-->group(function(){    
+->group(function(){
     Route::get('/index', 'UserController@index')->name('Home');
     Route::get('/index/message', 'MessageController@index')->name('message');
     Route::match(['get', 'post'],'/message/form', 'MessageController@view')->name('messageform');
@@ -109,7 +112,7 @@ Route::namespace('User')
 
      Route::prefix('user')->group(function () {
             Route::group(['prefix' => 'product'], function () {
-                Route::get('/index', 'ProductController@index')->name('product');  
+                Route::get('/index', 'ProductController@index')->name('product');
                 Route::get('/detail/{id}', 'ProductController@detail')->name('product.detail');
 
 
@@ -120,7 +123,7 @@ Route::namespace('User')
                 Route::delete('/remove-from-cart', 'CartController@remove')->name('remove.from.cart');
                 Route::get('/checkout', 'CartController@checkout')->name('checkout');
                 Route::get('/order/{id}', 'CartController@orderSummary')->name('summary');
-            });            
+            });
         });
 });
 

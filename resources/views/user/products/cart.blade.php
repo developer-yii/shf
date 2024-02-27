@@ -2,7 +2,7 @@
 @php
     $baseUrl = asset('storage/product_images');
 @endphp
-@section('title','User | Dashboard')
+@section('title','User | Cart')
 @section('content')
   <!-- Start Content-->
   <div class="container-fluid">
@@ -11,12 +11,12 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                
+
                 <h4 class="page-title">Products</h4>
             </div>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -35,12 +35,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @php 
+                                        @php
                                             $total = 0;
                                         @endphp
                                         @if(session('cart'))
                                             @foreach(session('cart') as $id => $details)
-                                                @php 
+                                                @php
                                                     $total += $details['price'] * $details['quantity'];
                                                 @endphp
                                                 <tr data-id="{{ $id }}">
@@ -49,9 +49,6 @@
                                                         <p class="m-0 d-inline-block align-middle font-16">
                                                             <a href="{{ route('user.product.detail', $details['id']) }}" class="text-body">{{ $details['name'] }}</a>
                                                             <br>
-                                                            <small class="me-2"><b>Size:</b> Large </small>
-                                                            <small><b>Color:</b> Light Green
-                                                            </small>
                                                         </p>
                                                     </td>
                                                     <td><i class="uil uil-dollar-alt"></i>{{ $details['price'] }}</td>
@@ -60,7 +57,7 @@
                                                     </td>
                                                     <td><i class="uil uil-dollar-alt"></i>{{ $details['price'] * $details['quantity'] }}</td>
                                                     <td>
-                                                        <button class="btn btn-danger btn-sm remove-from-cart"><i class="mdi mdi-delete"></i></button>                                  
+                                                        <button class="btn btn-danger btn-sm remove-from-cart"><i class="mdi mdi-delete"></i></button>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -95,7 +92,7 @@
                                             <tr>
                                                 <td>Grand Total :</td>
                                                 <td><i class="uil uil-dollar-alt"></i>{{ $total }}</td>
-                                            </tr>                                           
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

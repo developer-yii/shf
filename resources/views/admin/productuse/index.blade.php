@@ -14,7 +14,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
                             <li class="breadcrumb-item active">Product Uses</li>
                         </ol>
                     </div>
@@ -36,14 +36,14 @@
                                 <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#addproductuse" style="margin-bottom:1em; float: right;">Add Product Use</button>
                             </div>
                         </div>
-                        
+
                         <div class="tab-content">
                             <div class="tab-pane show active" id="basic-datatable-preview">
                                 <table id="productuse_datatable" class="table dt-responsive nowrap w-100">
                                     <thead>
                                         <tr>
                                             <!-- <th>ID</th> -->
-                                            <th width="50%">Name</th>  
+                                            <th width="50%">Name</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -71,16 +71,16 @@
                     <form class="pl-3 pr-3" id="add_productuse">
                         @csrf
                         <div class="form-group form-input">
-                            <input type="hidden" name="product_use_id" class="product-use-id">
+                            <input type="text" name="product_use_id" class="product-use-id">
                         </div>
 
                         <div class="form-group form-input">
                             <label for="username">Product Use<span class="text-danger">*</span></label>
                             <input class="form-control" type="text" id="use" name="use"
                                 placeholder="Enter product use here...">
-                                <span class="text-danger error"></span>    
+                                <span class="text-danger error"></span>
                         </div>
-                      
+
                         <div class="form-group text-center">
                             <button class="btn btn-primary" type="submit">Save</button>
                         </div>
@@ -94,7 +94,7 @@
 @endsection
 @section('js')
 <script>
-    var productuseList = "{{ route('admin.productuse.list') }}"; 
+    var productuseList = "{{ route('admin.productuse.list') }}";
     var createproductuse = "{{ route('admin.productuse.create') }}";
     var getproductuse = "{{ route('admin.productuse.detail') }}";
     var deleteproductuse = "{{ route('admin.productuse.delete') }}";

@@ -14,7 +14,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
                             <li class="breadcrumb-item active"><a href="">Message list</a></li>
                         </ol>
                     </div>
@@ -69,13 +69,13 @@
                             <div class="row">
                                 <label class="col-md-3">User Name :</label>
                                 <div class="col-md-9"><div id="user_name"></div></div>
-                            </div>  
+                            </div>
 
                             <div class="row">
                                 <label class="col-md-3">Topic :</label>
                                 <div class="col-md-9"><div id="message_topic"></div></div>
-                            </div>                            
-                            
+                            </div>
+
                             <div class="row">
                                 <label class="col-md-3">Title :</label>
                                 <div class="col-md-9"><div id="message_title"></div></div>
@@ -107,8 +107,8 @@
 @endsection
 @section('js')
 <script>
-    var adminmessagelist = "{{ route('admin.message') }}";   
-    var changeStatusUrl = "{{ route('admin.message.change_status') }}"; 
+    var adminmessagelist = "{{ route('admin.message') }}";
+    var changeStatusUrl = "{{ route('admin.message.change_status') }}";
 </script>
 <script src="{{$baseUrl}}admin/js/message.js"></script>
 

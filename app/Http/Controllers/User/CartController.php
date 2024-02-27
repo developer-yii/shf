@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Notification;
 
 class CartController extends Controller
-{    
+{
     public function cart()
     {
         return view('user.products.cart');
@@ -25,15 +25,15 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         $product = Product::findOrFail($request->id);
-          
+
         $id=$product->id;
         $cart = session()->get('cart', []);
 
-        if(isset($cart[$id])) 
+        if(isset($cart[$id]))
         {
             $cart[$id]['quantity']++;
         }
-        else 
+        else
         {
             $cart[$id] = [
                 "id" => $product->id,
@@ -47,9 +47,9 @@ class CartController extends Controller
         session()->put('cart', $cart);
 
         $cartImageUrl = asset('storage/product_images');
-        
+
         $cartHtml = view('include.cart', compact('cart', 'cartImageUrl'))->render();
-        
+
         $response = [
             'message' => 'Product added to cart successfully!',
             'cartHtml' => $cartHtml,
@@ -59,30 +59,30 @@ class CartController extends Controller
         return response()->json($response);
 
     }
-    
+
     public function update(Request $request)
-    {        
+    {
         if($request->id && $request->quantity)
         {
             $cart = session()->get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
             session()->put('cart', $cart);
             $cartImageUrl = asset('storage/product_images');
-        
+
             $cartHtml = view('include.cart', compact('cart', 'cartImageUrl'))->render();
-            
+
             $response = [
                 'message' => 'Cart updated successfully!',
                 'cartHtml' => $cartHtml,
                 'cart' => $cart,
-            ];            
-            return response()->json($response);            
+            ];
+            return response()->json($response);
         }
     }
 
     public function remove(Request $request)
     {
-        if($request->id) 
+        if($request->id)
         {
             $cart = session()->get('cart');
             if(isset($cart[$request->id])) {
@@ -100,25 +100,25 @@ class CartController extends Controller
 
         $cart = session()->get('cart');
         $totalPrice = 0;
-        if ($cart) 
+        if ($cart)
         {
             $order = Order::create([
             'user_id' => $user->id,
             ]);
-            
-            foreach ($cart as $orderDetail) 
+
+            foreach ($cart as $orderDetail)
             {
                 $orderDetail = OrderDetail::create([
                     'order_id' => $order->id,
                     'product_id' => $orderDetail['id'],
                     'quantity' => $orderDetail['quantity'],
-                    'price' => $orderDetail['price'],                    
+                    'price' => $orderDetail['price'],
                 ]);
 
                 $totalPrice += $orderDetail['price'] * $orderDetail['quantity'];
             }
 
-            foreach ($emailRecipients as $recipient) 
+            foreach ($emailRecipients as $recipient)
             {
                 $notification=new Notification;
                 $notification->notification_type=3;
@@ -127,11 +127,11 @@ class CartController extends Controller
                 $notification->to_user_id=$recipient->id;
                 $notification->save();
 
-                Mail::send('emails.orderEmail', ['user' => $user, 'order' => $order, 'totalPrice' => $totalPrice], function ($message) use ($recipient) 
+                Mail::send('emails.orderEmail', ['user' => $user, 'order' => $order, 'totalPrice' => $totalPrice], function ($message) use ($recipient)
                     {
                         $message->to($recipient->email);
                         $message->subject('New Order');
-                    }); 
+                    });
 
             }
 

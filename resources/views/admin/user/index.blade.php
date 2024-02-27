@@ -14,7 +14,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
                             <li class="breadcrumb-item active">User list</li>
                         </ol>
                     </div>
@@ -34,8 +34,8 @@
                                 <table id="user_datatable" class="table dt-responsive nowrap w-100">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>                                            
-                                            <th>Name</th>                                            
+                                            <th>ID</th>
+                                            <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone No.</th>
                                             <th>User Type</th>
@@ -56,7 +56,7 @@
 @endsection
 @section('js')
 <script>
-    var userList = "{{ route('admin.user.list') }}"; 
+    var userList = "{{ route('admin.user.list') }}";
     var userdelete = "{{ route('admin.user.delete') }}";
     var are_you_sure ="Are you sure want to delete?";
 </script>

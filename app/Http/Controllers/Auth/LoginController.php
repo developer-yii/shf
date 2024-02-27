@@ -3,16 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Auth;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use App\Models\Message;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -77,7 +74,7 @@ class LoginController extends Controller
                 {
 
                     if(($get_user->role == '1') || ($get_user->role == '2'))
-                    {  
+                    {
                         if(Auth::attempt($credentials))
                         {
                             $route = route('admin.adminHome');
@@ -93,7 +90,7 @@ class LoginController extends Controller
                         }
                     }
                     if($get_user->role == '3' && $get_user->is_active == '1' && $get_user->email_verified_at != null)
-                    {   
+                    {
                         if(Auth::attempt($credentials))
                         {
                             $route = route('user.Home');
@@ -106,7 +103,7 @@ class LoginController extends Controller
                         else
                         {
                             $result = ['status' => false, 'message' => 'Provided credential does not match in our records.'];
-                        }            
+                        }
                     }
                     if($get_user->role == '3' && $get_user->email_verified_at == null)
                     {
@@ -128,33 +125,33 @@ class LoginController extends Controller
             $result = ['status' => false, 'message' => 'Invalid request'];
         }
         return response()->json($result);
-        
+
     }
 
     public function resendVerification(Request $request)
-    {             
-        $user = User::where('email', $request->email)->first(); 
-        
+    {
+        $user = User::where('email', $request->email)->first();
+
         if(isset($user->id) && $user->id != Null)
         {
             $email=$user->email;
             Mail::send('emails.emailVerificationEmail', ['user' => $user], function($message) use($user){
                         $message->to($user->email);
                         $message->subject('Email Verification Mail');
-                    });          
-           
-            return redirect()->route('send.verification', $email);            
+                    });
+
+            return redirect()->route('send.verification', $email);
         }
         else
         {
             return redirect('login')->withInput()->with('error','Invalid Email');
-        }        
+        }
     }
 
     public function varificationsend(Request $request)
     {
         $email=$request->email;
-        $user = User::where('email', $request->email)->first(); 
+        $user = User::where('email', $request->email)->first();
         if($user)
         {
             Session::flash('verify', 'A verification link has been send to '.$email.'.
@@ -169,7 +166,7 @@ class LoginController extends Controller
         }
     }
 
-    public function logout(Request $request) 
+    public function logout(Request $request)
     {
       Auth::logout();
       return redirect('/home')->with('message','You have been successfully logout!');

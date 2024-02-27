@@ -1,6 +1,6 @@
 $(document).ready(function()
 {
-   
+
     $.ajaxSetup({
         headers : {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -20,13 +20,14 @@ $(document).ready(function()
             { data : 'topic'},
             { data : 'title'},
             { data : 'created_at',
-                render: function (data, type, row) 
-                {                        
+                render: function (data, type, row)
+                {
                     var createdAt = new Date(data);
                     return createdAt.toLocaleString();
                 }
             },
-            { data: 'action', name: 'action'}            
+            { data: 'status', name: 'status'},
+            { data: 'action', name: 'action'}
         ],
     });
 

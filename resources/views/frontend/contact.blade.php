@@ -1,4 +1,4 @@
-@php    
+@php
 $baseUrl = asset('frontend')."/";
 @endphp
 @extends('layouts.app-frontend')
@@ -25,13 +25,9 @@ $baseUrl = asset('frontend')."/";
     <div class="container">
       <div class="contact-wrap">
         <h3 class="head-2 center">Contact us</h3>
-        <p class="txt-1 center">Connect with the experts at Xandoz Laboratories today. Submit your information using
-          our
-          online
-          contact form.
-          The future of health is clear. <br />
-          Join us on the journey. Reach out now to start your personalized path to peak performance with Xandoz
-        Laboratories as your dedicated guide. The first step begins when you engage with our team.</p>
+        <p class="txt-1 center">
+          Connect with the experts at SHF Laboratories today. Submit your information using our online contact form. The future of health is clear. <br /> Join us on the journey. Reach out now to start your personalized path to peak performance with SHF Laboratories as your dedicated guide. The first step begins when you engage with our team.
+        </p>
         <div class="contact-form">
           <form id="contactform">
             @csrf
@@ -50,10 +46,10 @@ $baseUrl = asset('frontend')."/";
             <div class="form-grp">
               <select id="country" name="country" class="form-field">
                 <option value="" class="d-none">Select Country</option>
-                @foreach(getcountries() as $country)                             
+                @foreach(getcountries() as $country)
                     <option value="{{$country->id}}" {{ old('country') == $country->id ? 'selected' : '' }}>{{$country->name}}</option>
-                @endforeach                                
-              </select>              
+                @endforeach
+              </select>
               <div class="error"></div>
             </div>
             <div class="form-grp">
@@ -85,18 +81,18 @@ $baseUrl = asset('frontend')."/";
             'sitekey' : "{{ env('RECAPTCHAV3_SITEKEY') }}"
           });
       }
-    };      
+    };
 </script>
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 
 <script type="text/javascript">
 
   var contactUrl ="{{ route('contact.submit')}}";
-  $(document).ready(function() 
+  $(document).ready(function()
   {
 
-    $('#contactform').submit(function(event) 
-    {        
+    $('#contactform').submit(function(event)
+    {
       event.preventDefault();
       var $this = $(this);
 
@@ -105,24 +101,24 @@ $baseUrl = asset('frontend')."/";
         type: 'POST',
         data: $('#contactform').serialize(),
         dataType: 'json',
-        beforeSend: function() 
-        {          
-          $($this).find('button[type="submit"]').prop('disabled', true);            
+        beforeSend: function()
+        {
+          $($this).find('button[type="submit"]').prop('disabled', true);
         },
-        success: function(response) 
+        success: function(response)
         {
           $($this).find('button[type="submit"]').prop('disabled', false);
-          if (response.status == true) 
+          if (response.status == true)
           {
             $this[0].reset();
             toastr.success(response.message);
             $('.error').html("");
-          } 
-          else 
+          }
+          else
           {
             first_input = "";
             $('.error').html("");
-            $.each(response.errors, function(key) 
+            $.each(response.errors, function(key)
             {
               if(first_input=="") first_input=key;
               if(key=="g-recaptcha-response"){
@@ -135,16 +131,16 @@ $baseUrl = asset('frontend')."/";
           }
 
         },
-        error: function(error) 
+        error: function(error)
         {
           $($this).find('button[type="submit"]').prop('disabled', false);
-          alert('Something went wrong!', 'error');                
+          alert('Something went wrong!', 'error');
         }
       });
     });
 
     $.ajaxSetup({
-      headers: 
+      headers:
       {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }

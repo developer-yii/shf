@@ -13,7 +13,7 @@
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
                         <li class="breadcrumb-item active"><a href="">Chatboard</a></li>
                     </ol>
                 </div>
@@ -43,7 +43,7 @@
                                      <div class="col-md-6">{{ $model->title}}</div>
                                   </div>
                                </div>
-                               
+
                             </div>
                             <div class="row">
 
@@ -52,47 +52,47 @@
                                      <div class="col-md-6"><label>Message</label>:</div>
                                      <div class="col-md-6">{!! $model->message !!}</div>
                                   </div>
-                                </div>    
-                                
+                                </div>
+
                                <div class="col-md-6">
                                     <div class="row">
                                      <div class="col-md-6"><label>Date</label>:</div>
                                      <div class="col-md-6">{{ $model->created_at}}</div>
                                   </div>
-                                </div>                                                         
+                                </div>
                             </div>
                             <div class="row">
-                                                           
-                            </div>                          
+
+                            </div>
                          </div>
                       </div>
                       <div class="col-xl-12 col-lg-12 order-lg-2 order-xl-1">
                         <div class="card">
                            <div class="card-body">
-                              <ul class="conversation-list" data-simplebar style="max-height: 537px"> 
+                              <ul class="conversation-list" data-simplebar style="max-height: 537px">
 
-                                 @php $lastmessageid = ''; @endphp 
+                                 @php $lastmessageid = ''; @endphp
                                  @foreach($chat as $chatmessage)
-                                 @php  
+                                 @php
                                     $class='';
                                     $status='';
-                                                         
+
                                     if($chatmessage->is_read=='0')
                                     {
                                        $status="font-weight-bold";
-                                    }  
-                                    if ($chatmessage->sender_id == $userid) 
+                                    }
+                                    if ($chatmessage->sender_id == $userid)
                                     {
-                                       $class='odd';  
-                                       $status='';                                    
-                                    }                                 
+                                       $class='odd';
+                                       $status='';
+                                    }
 
-                                 $lastmessageid=$chatmessage->id;           
+                                 $lastmessageid=$chatmessage->id;
                                  @endphp
                                  <li class="clearfix {{$class}} {{$status}}" data_id="{{ $chatmessage->id}}" data-sender-id="{{ $chatmessage->sender_id }}" data-user-id="{{ $userid }}" data-message-id="{{ $chatmessage->message_id }}">
                                     <div class="chat-avatar">
                                        <img src="{{ $baseUrl}}assets/images/blank.png" alt="user-image" class="rounded-circle">
-                                    </div>                                    
+                                    </div>
                                     <div class="conversation-text">
                                        <div class="ctext-wrap">
                                           <i style="font-size: 15px;">{{ $chatmessage->user_name }}</i>
@@ -104,8 +104,8 @@
                                        </div>
                                     </div>
                                  </li>
-                                 @endforeach                                 
-                              </ul>  
+                                 @endforeach
+                              </ul>
                                <div class="row">
                                   <div class="col">
                                      <div class="mt-2 bg-light p-3 rounded">
@@ -114,7 +114,7 @@
                                            <input type="hidden" name="message_id" value="{{ $model->id}}" id="message_id">
                                            <input type="hidden" name="last_message_id" value="{{$lastmessageid}}" id="last_message_id">
 
-                                           
+
                                           <div class="row">
                                               <div class="col mb-2 mb-sm-0 fv-row">
                                                  <input type="text" name="message" id="message" class="form-control border-0 " placeholder="Enter your text" autocomplete="off">
@@ -123,7 +123,7 @@
                                               </div>
                                               <div class="col-sm-auto">
                                                  <div class="btn-group">
-                                                    
+
                                                     <button type="submit" class="btn btn-success chat-send btn-block"><i class="uil uil-message"></i></button>
                                                  </div>
                                               </div>
@@ -151,10 +151,10 @@
 
 @endsection
 @section('js')
-<script>    
-    var chatUrl = "{{ route('user.chat.message') }}"; 
+<script>
+    var chatUrl = "{{ route('user.chat.message') }}";
     var fetchData="{{ route('user.chat.fetchData') }}";
-    
+
 </script>
 <!-- <script src="{{$baseUrl}}assets/js/chat.js"></script> -->
 

@@ -2,7 +2,7 @@
 @php
     $baseUrl = asset('storage/product_images');
 @endphp
-@section('title','User | Dashboard')
+@section('title','User | Order Details')
 @section('content')
   <!-- Start Content-->
   <div class="container-fluid">
@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                
+
                 <h4 class="page-title">Checkout</h4>
             </div>
         </div>
@@ -27,8 +27,8 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <span id="success">
-                                        <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">                                        
-                                        <strong>Your order has been successfully placed. </strong> 
+                                        <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+                                        <strong>Your order has been successfully placed. </strong>
                                         </div>
                                     </span>
                                     <p class="text-muted mb-4"></p>
@@ -72,7 +72,7 @@
                                         <!-- end table-responsive -->
                                     </div> <!-- end .border-->
 
-                                </div> <!-- end col -->            
+                                </div> <!-- end col -->
                             </div> <!-- end row-->
                         </div>
                         <!-- End Billing Information Content-->

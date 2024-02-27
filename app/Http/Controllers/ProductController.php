@@ -18,51 +18,51 @@ use Illuminate\Pagination\Paginator;
 class ProductController extends Controller
 {
     public function index(Request $request)
-    { 
+    {
         $productArts = ProductArt::with(['products.targets', 'products.productUse'])->get();
 
         $groupedProducts = [];
-            
-        foreach ($productArts as $productArt) 
+
+        foreach ($productArts as $productArt)
         {
             $groupedProducts[$productArt->id]['productArt'] = $productArt;
-            
+
             $artIcon = getArtIcon($productArt->name);
 
-            $groupedProducts[$productArt->id]['products'] = $productArt->products->take(4)
+            $groupedProducts[$productArt->id]['products'] = $productArt->products->take(14)
             ->map(function ($product) use ($artIcon)
-            {                
+            {
                 $product->unit = getUnitByVolumeType($product->volume_type);
-                $product->artIcon = $artIcon;                
+                $product->artIcon = $artIcon;
                 return $product;
-            });           
-        }        
+            });
+        }
         return view('products', compact('groupedProducts'));
-       
+
     }
-    
+
 
     public function category(Request $request)
-    {         
+    {
         $productArt = ProductArt::with(['products.targets', 'products.productUse'])
                     ->where('id', $request->id)
                     ->first();
 
-        if (!$productArt) 
+        if (!$productArt)
         {
             abort(404);
         }
-        
-        
-        $artIcon = ''; 
+
+
+        $artIcon = '';
         $groupedProducts = $productArt->products()->paginate(8);
-       
+
         return view('product-category', compact('groupedProducts', 'productArt'));
-            
+
     }
 
     public function detail(Request $request)
-    { 
+    {
         $product = Product::getProductDetail($request->id);
 
         if($product)
@@ -72,7 +72,7 @@ class ProductController extends Controller
             return view('product-detail',['product'=>$product, 'cart'=>$cart,'productUse' => $productUse]);
         }
         else
-        {            
+        {
             return redirect()->back();
         }
     }
@@ -84,7 +84,7 @@ class ProductController extends Controller
         // Initialize an empty array to store filtered products
         $filteredProducts = [];
 
-        foreach ($productArts as $productArt) 
+        foreach ($productArts as $productArt)
         {
             // Filter products by product art and keyword
             $filteredProducts[$productArt->name] = $productArt->products()

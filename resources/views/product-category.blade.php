@@ -1,4 +1,4 @@
-@php    
+@php
 $baseUrl = asset('frontend')."/";
 @endphp
 @extends('layouts.app-frontend')
@@ -13,12 +13,12 @@ $baseUrl = asset('frontend')."/";
     <div class="container">
       <div class="products-wrap">
 
-        <h3 class="head-2">{{ $productArt->name }}</h3>       
-        <div class="product-category no-border">            
+        <h3 class="head-2">{{ $productArt->name }}</h3>
+        <div class="product-category no-border">
           <div class="f-row f-4 f-1600-3 f-1366-2 f-990-1">
             @if($groupedProducts->isEmpty())
-            <div class="f-col">              
-              <h1>No products available.</h1>         
+            <div class="f-col">
+              <h1>No products available.</h1>
             </div>
             @else
               @foreach($groupedProducts as $product)
@@ -34,19 +34,23 @@ $baseUrl = asset('frontend')."/";
                     @endforeach
 
                     <div class="product-specs">
-                      <div class="specification">
-                        <div class="specs-icon"><img src="{{$baseUrl}}img/spec-icon.svg" alt=""></div> <span>{{ $product->tension }}</span>
-                      </div>
-                      <div class="specification">
-                        <div class="specs-icon mlr-3"><img src="{{ $getunit['image'] }}" alt=""></div> 
-                        <span> 
-                          {{ $product->total_volume }} {{ $getunit['unit'] }}
-                        </span>
-                      </div>
+                      @if($product->tension)
+                        <div class="specification">
+                          <div class="specs-icon"><img src="{{$baseUrl}}img/spec-icon.svg" alt=""></div> <span>{{ $product->tension }}</span>
+                        </div>
+                      @endif
+                      @if($product->total_volume)
+                        <div class="specification">
+                          <div class="specs-icon mlr-3"><img src="{{ $getunit['image'] }}" alt=""></div>
+                          <span>
+                            {{ $product->total_volume }} {{ $getunit['unit'] }}
+                          </span>
+                        </div>
+                      @endif
                       <div class="specification">
                         <div class="specs-icon mlr-3"><img src="{{ getArtIcon($productArt->name)['image'] }}" alt=""></div> <span>{{ $productArt->name }}</span>
                       </div>
-                      <div class="specification">
+                      <div class="specification" style="width: 100%;">
                         <div class="specs-icon"><img src="{{$baseUrl}}img/use.svg" alt=""></div> <span>
                           {{ $product->productUse->use }}
                         </span>
@@ -54,14 +58,14 @@ $baseUrl = asset('frontend')."/";
                     </div>
                   </div>
                 </a>
-              </div>            
+              </div>
               @endforeach
-            @endif 
+            @endif
 
           </div>
         </div>
 
-        <div class="pagination">              
+        <div class="pagination">
           {!! $groupedProducts->links('pagination::bootstrap-4') !!}
         </div>
 

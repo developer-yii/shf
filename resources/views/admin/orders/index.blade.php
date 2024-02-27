@@ -14,7 +14,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
                             <li class="breadcrumb-item active">Orders</li>
                         </ol>
                     </div>
@@ -34,13 +34,13 @@
                                 <table id="order_datatable" class="table dt-responsive nowrap w-100">
                                     <thead>
                                         <tr>
-                                            <th>Order No.</th>                                            
-                                            <th>Date</th>                                            
+                                            <th>Order No.</th>
+                                            <th>Date</th>
                                             <th>Name</th>
                                             <th>Total</th>
-                                            <th width="20%">Status</th>               
+                                            <th width="20%">Status</th>
                                             <th width="10%">Actions</th>
-                                            
+
                                         </tr>
                                     </thead>
                                 </table>
@@ -56,7 +56,7 @@
 
 @section('js')
 <script>
-    var orderList = "{{ route('order.list') }}"; 
+    var orderList = "{{ route('order.list') }}";
     //var createproduct = "{{ route('admin.product.create') }}";
     var detailOrder = "{{ route('order.detail') }}";
     var changeStatusUrl = "{{ route('order.change_status') }}";

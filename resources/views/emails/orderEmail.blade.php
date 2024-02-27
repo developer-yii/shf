@@ -41,7 +41,7 @@
                             style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; padding: 25px 0; text-align: center;">
                             <a href=""
                                 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 19px; font-weight: bold; text-decoration: none; display: inline-block;">
-                                Project-x
+                                SHF
                             </a>
                         </td>
                     </tr>
@@ -63,11 +63,11 @@
                                         <h2>You have receive new order</h2>
                                         <p
                                             style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">
-                                                <b>Order Id : {{ $order->id }}</b> 
+                                                <b>Order Id : {{ $order->id }}</b>
                                                 <br>
-                                                <b>Total Amount : {{ $totalPrice }}</b> 
+                                                <b>Total Amount : $ {{ $totalPrice }}</b>
                                                 <br>
-                                                <b>Date : {{ $order->created_at->format('d-m-Y') }}</b> 
+                                                <b>Date : {{ $order->created_at->format('d-m-Y') }}</b>
                                         </p>
                                         <table class="action" align="center" width="100%" cellpadding="0"
                                             cellspacing="0" role="presentation"
@@ -96,11 +96,11 @@
                                                 </td>
                                             </tr>
                                         </table>
-                                        
+
                                         <p
                                             style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">
                                             Regards,<br>
-                                            Project-x</p>
+                                            SHF</p>
                                     </td>
                                 </tr>
                             </table>
@@ -118,7 +118,7 @@
                                         style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding: 32px;">
                                         <p
                                             style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; line-height: 1.5em; margin-top: 0; color: #b0adc5; font-size: 12px; text-align: center;">
-                                            © 2023 Project-x. All rights reserved.</p>
+                                            © 2023 SHF. All rights reserved.</p>
 
                                     </td>
                                 </tr>

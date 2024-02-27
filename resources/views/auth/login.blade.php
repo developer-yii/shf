@@ -1,4 +1,4 @@
-@php    
+@php
     $baseUrl = asset('frontend')."/";
 @endphp
 @extends('layouts.app-frontend')
@@ -6,14 +6,14 @@
     <div class="main-container">
         <div class="about-section">
           <div class="container">
-            <h1 class="head-1 black">Welcome to Xandoz</h1>
-            
-            @if(Session::has('error'))    
+            <h1 class="head-1 black">Welcome to SHF</h1>
+
+            @if(Session::has('error'))
                 <div class="danger">
-                    {{ Session::get('error') }}    
+                    {{ Session::get('error') }}
                 </div>
             @endif
-          </div>      
+          </div>
         </div>
     </div>
 @endsection
@@ -24,8 +24,8 @@
         items: {
             src: '#sign-in',
             type: 'inline'
-        },       
+        },
     })
-    
+
 </script>
 @endsection

@@ -14,7 +14,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
                             <li class="breadcrumb-item active">Product Targets</li>
                         </ol>
                     </div>
@@ -36,14 +36,14 @@
                                 <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#addproducttarget" style="margin-bottom:1em; float: right;">Add Product Target</button>
                             </div>
                         </div>
-                        
+
                         <div class="tab-content">
                             <div class="tab-pane show active" id="basic-datatable-preview">
                                 <table id="producttarget_datatable" class="table dt-responsive nowrap w-100">
                                     <thead>
                                         <tr>
                                             <!-- <th>ID</th> -->
-                                            <th width="50%">Name</th>  
+                                            <th width="50%">Name</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -78,9 +78,9 @@
                             <label for="username">Product Target<span class="text-danger">*</span></label>
                             <input class="form-control" type="text" id="name" name="name"
                                 placeholder="Enter product target here...">
-                                <span class="text-danger error"></span>    
+                                <span class="text-danger error"></span>
                         </div>
-                      
+
                         <div class="form-group text-center">
                             <button class="btn btn-primary" type="submit">Save</button>
                         </div>
@@ -94,7 +94,7 @@
 @endsection
 @section('js')
 <script>
-    var producttargetList = "{{ route('admin.producttarget.list') }}"; 
+    var producttargetList = "{{ route('admin.producttarget.list') }}";
     var createproducttarget = "{{ route('admin.producttarget.create') }}";
     var getproducttarget = "{{ route('admin.producttarget.detail') }}";
     var deleteproducttarget = "{{ route('admin.producttarget.delete') }}";

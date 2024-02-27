@@ -85,45 +85,45 @@ class RegisterController extends Controller
     {
         $validator = $this->validator($request->all());
 
-        if ($validator->fails()) 
+        if ($validator->fails())
         {
             $result = [
                 'status' => false,
                 'errors' => $validator->errors()
-            ];            
+            ];
         }
         else
         {
-            $user = $this->create($request->all());         
+            $user = $this->create($request->all());
             if(isset($user->id) && $user->id != Null)
             {
 
                 Mail::send('emails.emailVerificationEmail', ['user' => $user], function($message) use($user){
                             $message->to($user->email);
                             $message->subject('Email Verification Mail');
-                        });  
-               
+                        });
+
                 // Session::flash('verify', 'A verification link has been send to '.$user->email.'.
                 //                 Please check an email and click on the included link to
                 //                 verify your email.');
 
                 $result = ['status' => true, 'message' => "email send successfully", 'email' => $request->email];
                 // return view("messages");
-            } 
-        }       
+            }
+        }
         return response()->json($result);
     }
     public function resendVerificationMail(Request $request)
     {
-        $user = User::where('email', $request->email)->first();                 
+        $user = User::where('email', $request->email)->first();
         if(isset($user->id) && $user->id != Null)
         {
 
             Mail::send('emails.emailVerificationEmail', ['user' => $user], function($message) use($user){
                         $message->to($user->email);
                         $message->subject('Email Verification Mail');
-                    });  
-           
+                    });
+
             // Session::flash('verify', 'A verification link has been send to '.$user->email.'.
             //                 Please check an email and click on the included link to
             //                 verify your email.');
@@ -131,7 +131,7 @@ class RegisterController extends Controller
             $result = ['status' => true, 'message' => "email send successfully", 'email' => $request->email];
             // return view("messages");
             return response()->json($result);
-        }  
+        }
     }
     protected function create(array $data)
     {
@@ -145,19 +145,18 @@ class RegisterController extends Controller
             'role' => 3,
             'password' => Hash::make($data['password']),
             'remember_token' => $token,
-        ]);                
+        ]);
     }
     public function verifyAccount($token)
     {
         $verifyUser = User::where('remember_token', $token)->first();
         Session::flash('modalLabel', 'Account Verified');
-        if (!is_null($verifyUser)) 
+        if (!is_null($verifyUser))
         {
-            if (!$verifyUser->email_verified_at) 
+            if (!$verifyUser->email_verified_at)
             {
                 $verifyUser->email_verified_at = Carbon::now();
-
-                if ($verifyUser->save()) 
+                if ($verifyUser->save())
                 {
                     $users = User::roleType2()->get();
                     foreach($users as $user)
@@ -168,24 +167,27 @@ class RegisterController extends Controller
                         });
                     }
 
-                    /*return redirect("register")->with('message','Your e-mail is verified successfully. you will get mail when your account is activated.');*/
                     Session::flash('verify', 'Your e-mail is verified successfully. you will get mail when your account is activated.');
                     return view("messages");
                 }
-                else 
+                else
                 {
                     Session::flash('verify', 'Something went wrong.');
                     return view("messages");
                 }
             }
-            else 
+            else
             {
                 Session::flash('verify', 'Your e-mail is already verified.');
                 return view("messages");
             }
         }
-        Session::flash('verify', 'Sorry your email cannot be identified.');
-        return view("messages");
+        else
+        {
+            Session::flash('modalLabel', 'Account Unverified');
+            Session::flash('un-verify', 'Sorry your email cannot be identified.');
+            return view("messages");
+        }
     }
-    
+
 }

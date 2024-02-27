@@ -20,7 +20,7 @@ class CountrySeeder extends Seeder
         $sql = File::get($filePath);
 
         // Execute the SQL query
-        DB::statement($sql);       
+        DB::statement($sql);
 
         \Log::info('SQL file executed successfully.');
     }

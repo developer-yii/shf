@@ -1,4 +1,4 @@
-@php    
+@php
     $baseUrl = asset('frontend')."/";
 @endphp
 @extends('layouts.app-frontend')
@@ -7,7 +7,7 @@
 @section('content')
 <div id="pass-reset" class="white-popup mfp-with-anim mfp-hide onboard-journey-popup">.
         <div class="popup-logo">
-            <img src="{{ $baseUrl }}img/logo.png" alt="">
+            <img src="{{ $baseUrl }}img/logo.svg" alt="">
         </div>
 
         <div class="popup-content">
@@ -17,7 +17,7 @@
                 <div class="g-line"></div>
                 <p>Your new password must be different to previously used password</p>
             </div>
-            <div class="popup-right verified-right">                    
+            <div class="popup-right verified-right">
                 <form action="" method="POST" autocomplete="off" id="reset-password">
                     @csrf
                     <div id="error-message"></div>
@@ -37,9 +37,9 @@
                         <div class="error"></div>
                     </div>
                     <button class="button blue">Reset your password</button>
-                </form>                                       
+                </form>
                 <a href="#sign-in" class="popup-link linkGoto center"><img src="{{$baseUrl}}img/back-arrow.svg" alt=""> Go back to Sign In</a>
-                
+
             </div>
         </div>
    </div>
@@ -47,7 +47,7 @@
     <!-- Pass Reset Successfull -->
     <div id="pass-reset-success" class="white-popup mfp-with-anim mfp-hide onboard-journey-popup">.
         <div class="popup-logo">
-            <img src="{{$baseUrl}}img/logo.png" alt="">
+            <img src="{{$baseUrl}}img/logo.svg" alt="">
         </div>
 
         <div class="popup-content">
@@ -61,9 +61,9 @@
                 <div class="verified-icon">
                     <img src="{{$baseUrl}}img/verified-icon.svg" alt="">
                 </div>
-                <a href="{{ route('frontend.home') }}" class="button blue">Continue</a>                                           
+                <a href="{{ route('frontend.home') }}" class="button blue">Continue</a>
                 <a href="#sign-in" class="popup-link linkGoto center"><img src="{{$baseUrl}}img/back-arrow.svg" alt=""> Go back to Sign In</a>
-                
+
             </div>
         </div>
     </div>
@@ -76,53 +76,53 @@
         items: {
             src: '#pass-reset',
             type: 'inline'
-        },       
+        },
     })
 
     var resetPasswordUrl = "{{ route('password.update') }}";
-    $('#reset-password').on('submit', function(event) 
+    $('#reset-password').on('submit', function(event)
     {
         event.preventDefault();
         $.ajax({
             type: 'POST',
             url: resetPasswordUrl,
             data: $(this).serialize(),
-            success: function(result) 
-            {   
+            success: function(result)
+            {
                 $('.error').html("");
                 $('.error-message').html("");
                 if(result.status == true)
                 {
                     $.magnificPopup.close({
                         items: {
-                            src: '#pass-reset',                    
+                            src: '#pass-reset',
                         },
-                       
-                    }); 
+
+                    });
 
                     $.magnificPopup.open({
                         items: {
                             src: '#pass-reset-success',
                             type: 'inline'
                         },
-                       
+
                     });
-                }            
+                }
             },
-            error: function(response) 
-            {    
+            error: function(response)
+            {
                 first_input = "";
                 $('.error').html("");
                 $('.error-message').html("");
 
-                $.each(response.responseJSON.errors, function(key) 
+                $.each(response.responseJSON.errors, function(key)
                 {
                     if(first_input=="") first_input=key;
                     if(!key.includes("[]"))
                         $('#'+key).closest('.form-grp').find('.error').html(response.responseJSON.errors[key]);
-                });            
-                
-                if(response.responseJSON.messages) 
+                });
+
+                if(response.responseJSON.messages)
                 {
                     $('#error-message').html(response.responseJSON.messages);
                 }

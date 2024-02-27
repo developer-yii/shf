@@ -27,7 +27,7 @@ class ReCaptcha implements Rule
     public function passes($attribute, $value)
     {
         $response = Http::get("https://www.google.com/recaptcha/api/siteverify", [
-            'secret' => env('RECAPTCHAV3_SECRET'), 
+            'secret' => env('RECAPTCHAV3_SECRET'),
             'response' => $value
         ]);
 

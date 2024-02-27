@@ -15,7 +15,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
                             <li class="breadcrumb-item active"><a href="{{ route('admin.code.list') }}">Code list</a></li>
                         </ol>
                     </div>
@@ -37,14 +37,14 @@
                                 <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#showimport" style="margin-bottom:1em; float: right;">Import Excel</button>
                             </div>
                         </div>
-                        
+
                         <div class="tab-content">
                             <div class="tab-pane show active" id="basic-datatable-preview">
                                 <table id="code_datatable" class="table dt-responsive nowrap w-100">
                                     <thead>
                                         <tr>
                                             <th>Sr. No.</th>
-                                            <th>Code Id</th>                                       
+                                            <th>Code Id</th>
                                             <th>Code View Date</th>
                                             <th>Created Date</th>
                                         </tr>
@@ -63,7 +63,7 @@
     </div>
 @endsection
 @section('modal')
-    
+
      <div id="showimport" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -81,12 +81,12 @@
                             <label for="username">Choose File</label>
                             <input class="form-control" type="file" id="excelfile" name="excelfile" placeholder="Enter Maximum of 30 digit code here...">
                             <span class="text-danger error invalid-feedback error-excelfile" id="error-excelfile">
-                            </span>  
+                            </span>
                         </div>
-                        
+
                         <div class="from-group">
                             <label for="samplefile"><strong>Note : </strong><a href="{{ asset('samplefile/productsample.xlsx') }}" download>Download Sample Code File</a></label>
-                             
+
                         </div>
                         <div class="form-group text-center">
                             <button class="btn btn-primary" type="submit">Import Code</button>
@@ -102,7 +102,7 @@
 @section('js')
 
 <script>
-    var codelist = "{{ route('admin.code.list') }}";    
+    var codelist = "{{ route('admin.code.list') }}";
     var importcode = "{{ route('admin.code.import') }}"
 </script>
 <script src="{{$baseUrl}}assets/js/code.js"></script>

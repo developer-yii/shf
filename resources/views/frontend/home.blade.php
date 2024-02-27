@@ -1,4 +1,4 @@
-@php    
+@php
     $baseUrl = asset('frontend')."/";
 @endphp
 @extends('layouts.app-frontend')
@@ -18,13 +18,13 @@
         <img src="{{ $baseUrl }}img/intro-logo.svg" alt="">
       </div>
       <h1 class="head-1 center">
-        Steroids made in Germany
+        Sience from Switzerland
       </h1>
     </div>
 
 
     <div class="logo-big" style="height: auto;">
-      <img src="{{ $baseUrl }}img/logo-big.png" alt="">
+      <img src="{{ $baseUrl }}img/logo-big.svg" alt="">
     </div>
 
   </div>
@@ -56,8 +56,9 @@
                 <img src="{{ $baseUrl }}img/banner-2.jpg" alt="">
               </div>
               <div class="banner-head">
-                <h2 class="head-1 white">With Xandoz Together
-                  Against Cancer</h2>
+                <h2 class="head-shf white">Somaheal </h2>
+                <h3 class="head-1 white">Recombinant Human Growth Hormone
+                  for injection </h3>
               </div>
             </div>
           </div>
@@ -78,7 +79,7 @@
     <!-- Banner Swiper -->
 
 
-    <!-- Welcome to Xandoz Laboratories -->
+    <!-- Welcome to SHF Laboratories -->
     <div class="welcome-section">
       <div class="welcome-bg">
         <img src="{{ $baseUrl }}img/welcome.jpg" alt="">
@@ -86,25 +87,30 @@
       <div class="container">
         <div class="welcome-content">
           <div class="welcome-title">
-            <h3 class="head-2 center">Welcome to Xandoz Laboratories</h3>
+            <h3 class="head-2 center">Welcome to SHF Laboratories</h3>
           </div>
           <div class="welcome-txt">
-            <p>Our utmost commitment is improving the quality of life for each and every individual. It is through this
-              commitment that we constantly strive to innovate, improve and increase the availability of cost-efficient
-              generic medicines to the global market.
+            <p>Our utmost commitment is improving the quality of life for each and every individual. It is through
+              this commitment that we constantly strive to innovate, improve and increase the availability of
+              cost-efficient generic rHGH to the global market.
             </p>
 
-
             <ul>
-              <li><img src="{{ $baseUrl }}img/wc-icon-1.svg" alt=""> Advanced technology</li>
-              <li><img src="{{ $baseUrl }}img/wc-icon-2.svg" alt=""> Trusted by doctors</li>
-              <li><img src="{{ $baseUrl }}img/wc-icon-3.svg" alt=""> Used in hospitals</li>
+              <li><img src="{{ $baseUrl }}img/wc-icon-1.svg" alt=""> Authenticity Check Available</li>
+              <li><img src="{{ $baseUrl }}img/wc-icon-2.svg" alt=""> New Product Formula</li>
+              <li><img src="{{ $baseUrl }}img/wc-icon-3.svg" alt=""> Wide Range of Application</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-    <!-- Welcome to Xandoz Laboratories -->
+    <!-- Welcome to SHF Laboratories -->
+
+    <!-- Video -->
+    <video width="100%" height="100%" autoplay playsinline muted loop>
+      <source src="{{ $baseUrl }}video/shf-video.mp4" type="video/mp4">
+    </video>
+    <!-- Video -->
 
     <!-- Features Starts -->
     <div class="feature-section">
@@ -113,9 +119,10 @@
           <div class="feature-icon">
             <img src="{{ $baseUrl }}img/feature-icon-1.svg" alt="">
           </div>
-          <h3 class="head-2">Advanced technology</h3>
-          <p class="txt-1">Our laboratories use advanced processing and production technologies for producing clean and
-            safe products
+          <h3 class="head-2">Authenticity Check</h3>
+          <p class="txt-1">Our authenticity check protects customers from counterfeits by verifying the originality of
+            our product. This gives buyers confidence that they are purchasing a genuine high-quality item directly from
+            our sellers.
           </p>
         </div>
         <div class="feature-img">
@@ -127,9 +134,10 @@
           <div class="feature-icon">
             <img src="{{ $baseUrl }}img/feature-icon-2.svg" alt="">
           </div>
-          <h3 class="head-2">Trusted by doctors</h3>
-          <p class="txt-1">Our products are carefully researched under independent clinical trials and show outstanding
-            proven results
+          <h3 class="head-2">New Product Formula</h3>
+          <p class="txt-1">Somaheal™ uses the most innovative Protein Secretion Technology to manufacture recombinant
+            human growth hormone (rHGH). This advanced system allows for high-quality and consistent production of rHGH.
+            GenhealTM leverages the latest biomanufacturing techniques to ensure the finest rHGH product.
           </p>
         </div>
         <div class="feature-img">
@@ -141,9 +149,11 @@
           <div class="feature-icon">
             <img src="{{ $baseUrl }}img/feature-icon-3.svg" alt="">
           </div>
-          <h3 class="head-2">Used in hospitals</h3>
-          <p class="txt-1">Our clients are leading hospitals all over Asia and South America, private clinics in North
-            America and Europe
+          <h3 class="head-2">Wide Range of Application</h3>
+          <p class="txt-1">Somaheal™ has a broad range of therapeutic uses for both adults and children, pending
+            physician approval. Patients should always consult their doctor before using Somaheal to ensure appropriate
+            and safe usage for their condition. Though it has wide applications, Somaheal™ should only be taken under
+            medical supervision for approved indications.
           </p>
         </div>
         <div class="feature-img">
@@ -182,13 +192,12 @@
           <h2 class="head-1 white">
             Leading Through Expertise
           </h2>
-          <h3 class="head-2 white">Researched and Produced in Germany</h3>
-          <p class="txt-2 white">Born from German engineering and crafted with passion - our supplements are the result
-            of
-            tireless research
-            and development. We take immense pride in the quality and efficacy of our products. Our experts meticulously
-            select only proven ingredients in precise dosages, rigorously testing each formula. This commitment to
-            excellence yields steroids you can trust completely, designed to elevate your performance.</p>
+          <h3 class="head-2 white">Researched and Produced in Switzerland</h3>
+          <p class="txt-2 white">Born from Swiss engineering and crafted with passion - our rHGH is the result of
+            tireless research and development. We take immense pride in the quality and efficacy of our products. Our
+            experts meticulously select only proven ingredients in precise dosages, rigorously testing each formula.
+            This commitment to excellence yields rHGH you can trust completely, designed to elevate your performance and
+            for therapeutic usage.</p>
         </div>
       </div>
 
@@ -206,14 +215,20 @@
       <div class="container">
         <div class="endurance-content">
           <h2 class="head-1 green center">
-            Boost Your Endurance
+            Boost Your IGF Level
           </h2>
-          <h3 class="head-2 white">Accomplish your Target</h3>
-          <p class="txt-1 white">Push past your limits with our advanced endurance supplements. Scientifically
-            formulated
-            to boost stamina and energy, our products help you maintain intense focus while challenging your body and
-            mind. Stay strong throughout your toughest workouts and races with our innovative endurance line.
-          </p>
+          <div class="endurance-txt">
+            <h3 class="head-2 white">Accomplish your Target</h3>
+            <p class="txt-1 white">Experience a transformative journey towards enhanced health and optimal fitness with
+              Somaheal™. Our revolutionary product is designed to address a range of health concerns, promoting growth
+              and
+              well-being in various conditions.
+            </p>
+            <p class="txt-1 white">
+              Somaheal™ is not just a product; it's a commitment to your well-being and
+              fitness goals. Elevate your health, embrace growth, and achieve your fitness milestones with SomaHeal
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -234,12 +249,10 @@
             Make Your Cycle
           </h2>
           <h3 class="head-2 white">Discover your Product</h3>
-          <p class="txt-1 white">Our high-potency formulations utilize researched compounds like testosterone,
-            trenbolone
-            and nandrolone to rapidly augment strength, accelerate muscle protein synthesis, and maximize hypertrophic
-            gains. With precise dosing and enhanced bioavailability, our body-sculpting supplements facilitate
-            accelerated
-            recovery while amplifying muscle mass.
+          <p class="txt-1 white">Somaheal™ (somatropin [rDNA origin] for injection) is one of the leading rHGH in South
+            America that has been widely used in more than 300 Class A hospitals for pediatric, burn, surgery,
+            epidemiology and other areas of clinical treatment. Somaheal™ conform both domestic and international
+            quality standards and is one of the best rHGH products on the market today.
           </p>
         </div>
       </div>
@@ -248,5 +261,4 @@
 
   </div>
   <!-- Main Container Ends -->
-
 @endsection

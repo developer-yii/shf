@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\ImportFile;
 use App\Models\FileCode;
 use App\Models\ProductCode;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
-use Illuminate\Support\Facades\Storage;
-use Auth;
+
 
 class ImportFileController extends Controller
 {
@@ -19,9 +20,10 @@ class ImportFileController extends Controller
         {
             $userRole = Auth::user()->role;
 
-            $data = ImportFile::select('import_files.*', \DB::raw('CONCAT(users.first_name, " ", users.last_name) as username'))
+            $data = ImportFile::select('import_files.*', DB::raw('CONCAT(users.first_name, " ", users.last_name) as username'))
             ->leftJoin('users', 'import_files.added_by', '=', 'users.id');
-            if ($userRole == 2) 
+
+            if ($userRole == 2)
             {
                 $data->where('import_files.added_by', 2);
             }
@@ -42,13 +44,13 @@ class ImportFileController extends Controller
         {
             $codes = FileCode::where('import_file_id', $request->id)->pluck('product_code_id');
             foreach($codes->chunk(100) as $code_chunks)
-            {            
+            {
                 $uniquecodes = FileCode::selectRaw('COUNT(product_code_id) AS code_count, product_code_id')
                 ->whereIn('product_code_id', $code_chunks)
                 ->groupBy('product_code_id')
                 ->havingRaw('code_count = 1')
                 ->get();
-                
+
                 $uniqueCodeIdsToDelete = $uniquecodes->pluck('product_code_id')->toArray();
                 ProductCode::whereIn('id', $uniqueCodeIdsToDelete)->delete();
             }
@@ -60,7 +62,7 @@ class ImportFileController extends Controller
             return response()->json($result);
         }
         else
-        {            
+        {
             $result = ["error" => "File Not found"];
             return response()->json($result, 404);
         }

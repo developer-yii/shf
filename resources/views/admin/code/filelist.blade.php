@@ -15,7 +15,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
                             <li class="breadcrumb-item active"><a href="{{ route('admin.file.list') }}">File list</a></li>
                         </ol>
                     </div>
@@ -32,9 +32,9 @@
                         <div class="row">
                             <div class="col-4">
                                 <h4 class="header-title">Imported File List</h4>
-                            </div>                            
+                            </div>
                         </div>
-                        
+
                         <div class="tab-content">
                             <div class="tab-pane show active" id="basic-datatable-preview">
                                 <table id="file_datatable" class="table dt-responsive nowrap w-100">
@@ -44,7 +44,7 @@
                                             <th>File Name</th>
                                             <th>Total Code</th>
                                             <th>Added By</th>
-                                            <th>Created Date</th>                       
+                                            <th>Created Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -65,7 +65,7 @@
 <script>
     var filelist = "{{ route('admin.file.list') }}";
     var deletefile = "{{ route('admin.file.delete') }}";
-    
+
 </script>
 <script src="{{$baseUrl}}assets/js/importfile.js"></script>
 @endsection

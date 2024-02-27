@@ -1,4 +1,4 @@
-@php    
+@php
     $baseUrl = asset('frontend')."/";
     $baseUrlold = asset('frontend/old')."/";
     $baseUrlbackend = asset('backend')."/";
@@ -33,7 +33,7 @@
                 <!-- <a href="" class="button white">Type your productcode</a> -->
                 <input type="text" name="product_code" class="product-code"
                     placeholder="Type your product code">
-                
+
                     <div id="review_recaptcha" style="margin-left:8rem; margin-top:2rem;"></div>
                 </form>
             </div>
@@ -55,12 +55,12 @@
             <div class="modal-header" style="border: 0;">
                 <div class="elements-wrap">
                     <div class="message-box green">
-                        
+
                     </div>
-            
+
                 </div>
             </div>
-            
+
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
@@ -76,7 +76,7 @@
             'sitekey' : "{{ env('RECAPTCHAV3_SITEKEY') }}"
           });
       }
-    };      
+    };
 </script>
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 <script>

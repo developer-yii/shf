@@ -17,7 +17,7 @@ $baseUrl = asset('backend')."/";
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('order') }}">Order</a></li>
                         <li class="breadcrumb-item active">Order Details</li>
                     </ol>
@@ -26,7 +26,7 @@ $baseUrl = asset('backend')."/";
             </div>
         </div>
     </div>
-    <!-- end page title --> 
+    <!-- end page title -->
 
     <div class="row justify-content-center">
         <div class="col-lg-7 col-md-10 col-sm-11">
@@ -53,24 +53,24 @@ $baseUrl = asset('backend')."/";
         </div>
     </div>
 
-    <!-- end row -->    
+    <!-- end row -->
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title mb-3">Billing Information</h4>                    
+                    <h4 class="header-title mb-3">Billing Information</h4>
                     <ul class="list-unstyled mb-0">
                         <li>
                             <p class="mb-2"><span class="fw-bold me-2">Name : </span>{{ $user->first_name }} {{ $user->last_name }}</p>
                             <p class="mb-2"><span class="fw-bold me-2">Phone No : </span> {{ $user->phone_number }}</p>
                             <p class="mb-2"><span class="fw-bold me-2">Order Date : </span> {{ $user->phone_number }}</p>
                             <p class="mb-2"><span class="fw-bold me-2">Country : </span> {{ $user->country_name }}</p>
-                            
+
                         </li>
                     </ul>
                 </div>
             </div>
-        </div> <!-- end col -->        
+        </div> <!-- end col -->
     </div>
 
     <div class="row">
@@ -91,12 +91,12 @@ $baseUrl = asset('backend')."/";
                                 </tr>
                             </thead>
                             <tbody>
-                                @php 
-                                    $total = 0;                                    
+                                @php
+                                    $total = 0;
                                 @endphp
-                                
+
                                 @foreach($orderDetail as $id => $details)
-                                @php 
+                                @php
                                     $total += $details['price'] * $details['quantity'];
                                 @endphp
                                 <tr>
@@ -106,7 +106,7 @@ $baseUrl = asset('backend')."/";
                                     <td><i class="uil uil-dollar-alt"></i>{{ $details['price'] }}</td>
                                     <td><i class="uil uil-dollar-alt"></i>{{ $details['price'] * $details['quantity'] }}</td>
                                 </tr>
-                                @endforeach  
+                                @endforeach
 
                             </tbody>
                         </table>
@@ -116,7 +116,7 @@ $baseUrl = asset('backend')."/";
                 </div>
             </div>
         </div> <!-- end col -->
-        
+
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
@@ -134,7 +134,7 @@ $baseUrl = asset('backend')."/";
                                 <tr>
                                     <td>Grand Total :</td>
                                     <td><i class="uil uil-dollar-alt"></i>{{ $total }}</td>
-                                </tr>                               
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -165,18 +165,18 @@ $baseUrl = asset('backend')."/";
 @endsection
 @section('js')
 <script>
-    
-    var orderList = "{{ route('order.list') }}";     
+
+    var orderList = "{{ route('order.list') }}";
     var detailOrder = "{{ route('order.detail') }}";
     var changeStatusUrl = "{{ route('order.change_status') }}";
     var imgUrl="{{ asset('product_images/') }}";
     var usertype ="{{ Auth::user()->role }}";
 
     $(document).ready(function() {
-        
-        var orderStatus = "{{ $order->status }}";        
+
+        var orderStatus = "{{ $order->status }}";
         var stepItems = $(".horizontal-steps-content .step-item");
-        var processLine = $(".process-line");        
+        var processLine = $(".process-line");
         if (orderStatus == "Pending") {
             stepItems.removeClass("current");
             stepItems.eq(0).addClass("current");
@@ -189,7 +189,7 @@ $baseUrl = asset('backend')."/";
             stepItems.removeClass("current");
             stepItems.eq(2).addClass("current");
             processLine.css("width", "100%");
-        }        
+        }
         $('[data-bs-toggle="tooltip"]').tooltip();
     });
 

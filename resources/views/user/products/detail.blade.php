@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@php    
+@php
     $baseUrl = asset('storage/product_images');
 @endphp
 @section('title','User | Dashboard')
@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                
+
                 <h4 class="page-title">Product Details</h4>
             </div>
         </div>
@@ -53,9 +53,9 @@
                                             </a>
                                         @endif
                                             <input type="number" min="1" value="{{ $quantity }}" class="form-control quantity update-qty" data-product-id="{{ $product->id }}" placeholder="Qty" style="width: 90px; {{ $quantity == 0 ? 'display: none;' : '' }}">
-                                            
+
                                             <a href="{{ route('user.cart') }}" data-product-id="{{ $product->id }}" class="btn btn-primary ms-2 buy-now" style=" {{ $quantity == 0 ? 'display: none;' : '' }}"><i class="mdi mdi-cart me-1"></i> Buy Now</a>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="mt-4">
@@ -79,7 +79,7 @@
                                         <div class="col-md-12">
                                             <label class="font-14"><b>Description :</b></label>
                                             <span>
-                                                <pre style="white-space: pre-wrap;">{{ $product['description'] }}</pre>
+                                                <pre class="pre-font">{{ $product['description'] }}</pre>
                                             </span>
                                         </div>
                                     </div>

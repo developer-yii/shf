@@ -13,7 +13,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
                             <li class="breadcrumb-item active">User Update</li>
                         </ol>
                     </div>
@@ -26,47 +26,47 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-body col-8">                                                            
+                    <div class="card-body col-8">
                         <form method="post" class="" id="update_user_form">
                             @csrf
                             <input type="hidden" name="id" value="{{ $data->id }}">
                             <div class="form-group mb-3 form-input">
-                                <label for="first_name" class="form-label">First Name <span class="text-danger">*</span></label>                     
+                                <label for="first_name" class="form-label">First Name <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" id="first_name" name="first_name"
                                    @if(old('_token')) value="{{ old('first_name') }}" @else value="{{ $data->first_name }}" @endif">
-                               <span class="error text-danger"></span>     
+                               <span class="error text-danger"></span>
                             </div>
 
                             <div class="form-group mb-3 form-input">
-                                <label for="last_name" class="form-label">Last Name <span class="text-danger">*</span></label>                      
+                                <label for="last_name" class="form-label">Last Name <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" id="last_name" name="last_name"
-                                  value="{{ old('last_name') ?: $data->last_name }}">      
-                                <span class="error text-danger"></span>     
+                                  value="{{ old('last_name') ?: $data->last_name }}">
+                                <span class="error text-danger"></span>
                             </div>
 
                             <div class="form-group mb-3 form-input">
-                                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>                         
+                                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" id="email" name="email"
                                    value="{{ $data->email}}">
-                                <span class="error text-danger"></span>     
+                                <span class="error text-danger"></span>
                             </div>
 
                             <div class="form-group mb-3 form-input">
                                 <label for="phone_number" class="form-label">Phone Number <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" id="phone_number" name="phone_number"
                                    value="{{ $data->phone_number}}">
-                                <span class="error text-danger"></span>     
+                                <span class="error text-danger"></span>
                             </div>
 
                             <div class="form-group form-input">
-                                <label for="country" class="form-label">Select Country <span class="text-danger">*</span></label>                                
+                                <label for="country" class="form-label">Select Country <span class="text-danger">*</span></label>
 
                                 <select id="country" name="country" class="form-control @error('country') is-invalid @enderror" {{ $errors->has('country') ? 'autofocus' : '' }}>
                                     @foreach ($countries as $country)
                                         <option value="{{$country->id}}" {{ $data->country_id == $country->id ? 'selected' : '' }}>{{$country->name}}</option>
                                     @endforeach
                                 </select>
-                                <span class="error text-danger"></span>     
+                                <span class="error text-danger"></span>
                             </div>
 
                             <div class="form-group mb-3 form-input">
@@ -75,8 +75,8 @@
                                     @foreach($rolesMap as $roleId => $roleName)
                                         <option value="{{ $roleId }}" @if($data->role == $roleId) selected @endif>{{ $roleName }}</option>
                                     @endforeach
-                                </select>                                
-                                <span class="error text-danger"></span>     
+                                </select>
+                                <span class="error text-danger"></span>
                             </div>
 
                             <div class="form-group mb-3 form-input">
@@ -93,26 +93,26 @@
                                     @foreach($statusMap as $statusId => $userstatus)
                                         <option value="{{ $statusId }}" @if($data->is_active == $statusId) selected @endif>{{ $userstatus }}</option>
                                     @endforeach
-                                </select>                                
-                                <span class="error text-danger"></span>     
+                                </select>
+                                <span class="error text-danger"></span>
                             </div>
-                                                     
+
                             <div class="form-group text-center">
                                 <button class="btn btn-primary" type="submit">Update</button>
                                 <a href="{{ route('admin.user') }}" class="btn btn-danger" type="submit">Cancel</a>
                             </div>
-                        </form>                        
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>   
+        </div>
     </div>
 @endsection
 @section('js')
-<script>   
-    var userList = "{{ route('admin.user.list') }}";  
-    var userupdate = "{{ route('admin.user.update') }}"; 
-    var redirectroute = "{{ route('admin.user') }}";    
+<script>
+    var userList = "{{ route('admin.user.list') }}";
+    var userupdate = "{{ route('admin.user.update') }}";
+    var redirectroute = "{{ route('admin.user') }}";
 </script>
 <script src="{{$baseUrl}}admin/js/user.js"></script>
 @endsection

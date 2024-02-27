@@ -14,7 +14,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
                             <li class="breadcrumb-item active">Product Arts</li>
                         </ol>
                     </div>
@@ -36,14 +36,14 @@
                                 <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#addproductart" style="margin-bottom:1em; float: right;">Add Product Art</button>
                             </div>
                         </div>
-                        
+
                         <div class="tab-content">
                             <div class="tab-pane show active" id="basic-datatable-preview">
                                 <table id="productart_datatable" class="table dt-responsive nowrap w-100">
                                     <thead>
                                         <tr>
                                             <!-- <th>ID</th> -->
-                                            <th width="50%">Name</th>  
+                                            <th width="50%">Name</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -78,9 +78,9 @@
                             <label for="username">Product Art<span class="text-danger">*</span></label>
                             <input class="form-control" type="text" id="name" name="name"
                                 placeholder="Enter product art here...">
-                                <span class="text-danger error"></span>    
+                                <span class="text-danger error"></span>
                         </div>
-                      
+
                         <div class="form-group text-center">
                             <button class="btn btn-primary" type="submit">Save</button>
                         </div>
@@ -94,7 +94,7 @@
 @endsection
 @section('js')
 <script>
-    var productartList = "{{ route('admin.productart.list') }}"; 
+    var productartList = "{{ route('admin.productart.list') }}";
     var createproductart = "{{ route('admin.productart.create') }}";
     var getproductart = "{{ route('admin.productart.detail') }}";
     var deleteproductart = "{{ route('admin.productart.delete') }}";

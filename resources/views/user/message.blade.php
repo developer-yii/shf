@@ -14,7 +14,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Project-X</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
                             <li class="breadcrumb-item active"><a href="">Message list</a></li>
                         </ol>
                     </div>
@@ -28,9 +28,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">                            
+                        <div class="row">
                             <div class="col-12">
-                                <a class="btn btn-primary btn-sm" type="button" href="{{ route('user.messageform')}}" 
+                                <a class="btn btn-primary btn-sm" type="button" href="{{ route('user.messageform')}}"
                                     style="margin-bottom:1em; float: right;">Create Message</a>
                             </div>
                         </div>
@@ -44,6 +44,7 @@
                                             <th>Topic</th>
                                             <th>Title</th>
                                             <th>Date</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -62,8 +63,8 @@
 @endsection
 @section('js')
 <script>
-    var messagelist = "{{ route('user.message') }}";    
-        
+    var messagelist = "{{ route('user.message') }}";
+
 </script>
 <script src="{{$baseUrl}}user/js/message.js"></script>
 
