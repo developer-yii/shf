@@ -14,9 +14,9 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.user') }}">Users</a></li>
-                            <li class="breadcrumb-item active">User Details</li>
+                           <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Dashboard</a></li>
+                           <li class="breadcrumb-item"><a href="{{ route('admin.user') }}">Users</a></li>
+                           <li class="breadcrumb-item active">User Details</li>
                         </ol>
                     </div>
                     <h4 class="page-title">User Details</h4>

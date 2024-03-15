@@ -14,7 +14,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Dashboard</a></li>
                             <li class="breadcrumb-item active">Products</li>
                         </ol>
                     </div>
@@ -161,16 +161,56 @@
 
                         <div class="row">
                             <div class="form-group form-input col-md-12">
-                                <label for="description">Description<span class="text-danger"></span></label>
-                                <textarea class="form-control" name="description" id="description"></textarea>
+                                <label for="product_ingredient">Ingredient</label>
+                                <select class="select2 form-control select2-multiple" name="product_ingredient[]" id="product_ingredient" data-toggle="select2" multiple="multiple">
+                                    @foreach($productIngredients as $productIngredient)
+                                        <option value="{{ $productIngredient->id }}">{{ $productIngredient->ingredient_name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group form-input col-md-12">
-                                <label for="username">Product Image<span class="text-danger">*</span></label>
-                                <input type="file" name="product_image" class="form-control mb-3" id="product_image">
+                                <label for="description">Description<span class="text-danger"></span></label>
+                                <textarea name="description" id="description" rows="10" cols="80"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group form-input col-md-6">
+                                <label for="product_image_big">Product Image Big<span class="text-danger">*</span></label>
+                                {{-- <input type="file" name="product_image" class="form-control mb-3" id="product_image"> --}}
+                                <input type="file" name="product_image_big" class="form-control mb-3" id="product_image_big" onchange="displaySelectedImages(this)" accept=".png, .jpg, .jpeg .svg">
                                 <span class="text-danger error"></span>
+                            </div>
+                            <div class="form-group form-input col-md-6">
+                                <label for="images"></label>
+                                <div id="selectedBigImageContainer"></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group form-input col-md-6">
+                                <label for="product_image_small">Product Image Small<span class="text-danger">*</span></label>
+                                <input type="file" name="product_image_small" class="form-control mb-3" id="product_image_small" onchange="displaySelectedImages(this)" accept=".png, .jpg, .jpeg .svg">
+                                <span class="text-danger error"></span>
+                            </div>
+                            <div class="form-group form-input col-md-6">
+                                <label for="images"></label>
+                                <div id="selectedSmallImageContainer"></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group form-input col-md-6">
+                                <label for="product_image_banner">Product Image Banner<span class="text-danger">*</span></label>
+                                <input type="file" name="product_image_banner" class="form-control mb-3" id="product_image_banner" onchange="displaySelectedImages(this)" accept=".png, .jpg, .jpeg .svg">
+                                <span class="text-danger error"></span>
+                            </div>
+                            <div class="form-group form-input col-md-6">
+                                <label for="images"></label>
+                                <div id="selectedBannerImageContainer"></div>
                             </div>
                         </div>
 
@@ -185,6 +225,7 @@
     </div><!-- /.modal -->
 @endsection
 @section('js')
+<script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
 <script>
     var productList = "{{ route('admin.product.list') }}";
     var createproduct = "{{ route('admin.product.create') }}";
@@ -192,7 +233,7 @@
     var deleteproduct = "{{ route('admin.product.delete') }}";
     var imgUrl="{{ asset('product_images/') }}";
     var usertype ="{{ Auth::user()->role }}";
+    CKEDITOR.replace('description');
 </script>
 <script src="{{$baseUrl}}admin/js/product.js?{{ time() }}"></script>
-
 @endsection

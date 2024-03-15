@@ -41,6 +41,39 @@ class ProductController extends Controller
 
     }
 
+    public function singleProduct(Request $request)
+    {
+        $product = Product::where('name', 'Somaheal')->first();
+        // return view('product', compact('product'));
+        $productArts = ProductArt::with(['products' => function($query) {
+            $query->where('name', 'Somaheal')->with('targets', 'productUse');
+        }])->get();
+
+        $groupedProducts = [];
+
+        foreach ($productArts as $productArt)
+        {
+            // Filter out ProductArts without products after the condition is applied
+            if ($productArt->products->isEmpty()) {
+                continue;
+            }
+
+            $groupedProducts[$productArt->id]['productArt'] = $productArt;
+
+            $artIcon = getArtIcon($productArt->name);
+
+            $groupedProducts[$productArt->id]['products'] = $productArt->products->take(1) // Assuming there's only one "Somaheal" product per ProductArt, but adjust as needed
+            ->map(function ($product) use ($artIcon)
+            {
+                $product->unit = getUnitByVolumeType($product->volume_type);
+                $product->artIcon = $artIcon;
+                return $product;
+            });
+        }
+        return view('product', compact('groupedProducts'));
+
+    }
+
 
     public function category(Request $request)
     {
@@ -53,7 +86,6 @@ class ProductController extends Controller
             abort(404);
         }
 
-
         $artIcon = '';
         $groupedProducts = $productArt->products()->paginate(8);
 
@@ -64,7 +96,6 @@ class ProductController extends Controller
     public function detail(Request $request)
     {
         $product = Product::getProductDetail($request->id);
-
         if($product)
         {
             $cart = session()->get('cart', []);

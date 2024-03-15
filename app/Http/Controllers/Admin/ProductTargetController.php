@@ -14,29 +14,29 @@ class ProductTargetController extends Controller
 {
     public function index(Request $request)
     {
-        return view('admin.producttarget.index');   
+        return view('admin.producttarget.index');
     }
     public function get(Request $request)
     {
-        
+
         if($request->ajax())
-        {            
+        {
             $data = ProductTarget::select('id', 'name')->get();
             return DataTables::of($data)
                                 ->addColumn('action', function ($data) {
                 return '<a href="javascript:void(0);" class="btn btn-sm btn-info mr-1 edit-producttarget"  data-id="'.$data->id.'" data-toggle="modal" data-target="#addproductarget"><i class="mdi mdi-pencil" title="Edit"></i></a></a><a href="javascript:void(0);" class="btn btn-sm btn-danger mr-1 delete-producttarget"  data-id="'.$data->id.' "title="Delete"><i class="mdi mdi-delete"></i></a>';
-            }) 
+            })
              ->addColumn('hidden_value', function ($data) {
                 return '<input type="hidden" class="hidden-value" value="'.$data->id.'">';
             })
             ->rawColumns(['action', 'hidden_value'])
-            ->toJson();                         
+            ->toJson();
         }
     }
     public function create(Request $request)
     {
 
-        $validator = Validator::make($request->all(), [            
+        $validator = Validator::make($request->all(), [
             'name' => 'required|unique:product_targets,name,' . $request->product_target_id,
         ]);
 
@@ -49,7 +49,7 @@ class ProductTargetController extends Controller
 
         $insert_data = [];
         $insert_data['name'] = $request->name;
-        
+
         $insert_data['updated_at'] = ($update_id != "") ? NOW() : "";
 
         if($update_id)
@@ -68,7 +68,7 @@ class ProductTargetController extends Controller
 
         return response()->json($result);
 
-        
+
     }
     public function detail(Request $request)
     {

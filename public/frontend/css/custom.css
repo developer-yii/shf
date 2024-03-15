@@ -33,7 +33,7 @@
 .form-grp-footer-custom {
     position: relative;
     max-width: 605.491px;
-    margin: auto;    
+    margin: auto;
     align-items: center;
     justify-content: center;
     margin-bottom: 50px;
@@ -44,6 +44,10 @@
 {
     margin-right: 3px;
     margin-left: 3px;
+}
+.m-l-3
+{
+    margin-left: 5px;
 }
 pre
 {

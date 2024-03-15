@@ -1,4 +1,8 @@
 <?php
+
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+
 if (!function_exists('isAdmin')) {
     function isAdmin($user)
     {
@@ -54,7 +58,7 @@ if (!function_exists('getArtIcon')) {
     function getArtIcon($artName)
     {
         $imagePaths = [
-            "Inject"    => "inject.svg",
+            "Injection"    => "inject.svg",
             "Peptides"  => "peptides.svg",
             "Capsules"  => "capsules.svg",
             "Sarms"     => "sarms.svg",
@@ -65,6 +69,16 @@ if (!function_exists('getArtIcon')) {
         $imageName = $imagePaths[$artName] ?? 'spec-icon.svg';
 
         return ['image' => asset("frontend/img/{$imageName}")];
+    }
+}
+
+if (!function_exists('storeProductImage')) {
+    function storeProductImage($imageFile, $prefix) {
+        $dir = "public/product_images/";
+        $extension = $imageFile->getClientOriginalExtension();
+        $filename = $prefix . uniqid() . "_" . time() . "." . $extension;
+        Storage::disk("local")->put($dir . $filename, File::get($imageFile));
+        return $filename;
     }
 }
 

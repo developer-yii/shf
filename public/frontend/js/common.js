@@ -219,7 +219,7 @@ $(document).on('click', '.view-pass', function () {
 
 
 
-$('.popup-link').magnificPopup({
+$('.popup-link1').magnificPopup({
     // delegate: '',
     removalDelay: 500, //delay removal by X to allow out-animation
     callbacks: {

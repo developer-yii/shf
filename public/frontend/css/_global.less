@@ -29,7 +29,7 @@ body {
 }
 
 .container {
-  max-width: 1700px;
+  max-width: 1800px;
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -173,7 +173,7 @@ body {
 
 .footer-wrap {
   background: #FFFFFF;
-  padding: 190px 0 40px;
+  padding: 40px 0;
   position: relative;
 }
 
@@ -996,6 +996,14 @@ body {
   font-weight: 600;
 }
 
+.p-detail-right {
+  .popup-link {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
 
 .onboard-journey-popup {
   height: 100vh;
@@ -1242,7 +1250,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   row-gap: 40px;
-  column-gap: 80px;
+  column-gap: 70px;
   padding-left: 50px;
 }
 
@@ -1303,15 +1311,23 @@ body {
     height: 100%;
     width: 100%;
     object-fit: contain;
-    max-height: 300px;
-    margin-top: 40px;
-
-
+    // max-height: 300px;
+    margin-top: 0px;
   }
 
   .open-icon {
-    img {
+
+    img,
+    svg {
       margin-top: 0;
+    }
+
+    &:hover {
+      svg {
+        path {
+          fill: #1F7D3A;
+        }
+      }
     }
   }
 }
@@ -1352,6 +1368,14 @@ body {
     line-height: normal;
     letter-spacing: -1.2px;
     margin-bottom: 8px;
+  }
+
+  &:hover {
+    svg {
+      path {
+        fill: #1F7D3A;
+      }
+    }
   }
 }
 
@@ -1512,6 +1536,7 @@ body {
 
 .expertise-content {
   width: max-content;
+  margin: auto;
 }
 
 .expertise-content {
@@ -2079,4 +2104,16 @@ body {
 
 .empower-section .container {
   height: auto;
+}
+
+.details-share {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.empower-bottom {
+  width: 50%;
+  display: flex;
+  justify-content: center;
 }

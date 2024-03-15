@@ -139,7 +139,7 @@
           <h2 class="head-1 yellow">
             Leading Through Expertise
           </h2>
-          <h3 class="head-2 white">Researched and Produced in Germany</h3>
+          <h3 class="head-2 white">Researched and Produced in Switzerland</h3>
           <p class="txt-2 white">Born from switzerland engineering and crafted with passion - our medications are the
             result of tireless research and development. We take immense pride in the quality and efficacy of our
             products. Our experts meticulously select only proven ingredients in precise dosages, rigorously testing

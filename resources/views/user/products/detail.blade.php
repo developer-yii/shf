@@ -79,7 +79,7 @@
                                         <div class="col-md-12">
                                             <label class="font-14"><b>Description :</b></label>
                                             <span>
-                                                <pre class="pre-font">{{ $product['description'] }}</pre>
+                                                <pre class="pre-font">{!! $product['description'] !!}</pre>
                                             </span>
                                         </div>
                                     </div>

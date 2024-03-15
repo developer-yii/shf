@@ -14,8 +14,8 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
-                            <li class="breadcrumb-item active">User list</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Subscriber</li>
                         </ol>
                     </div>
                     <h4 class="page-title">Subscriber list</h4>

@@ -5,8 +5,7 @@
 
 @extends('layouts.app')
 
-@section('title', 'Code')
-
+@section('title','Admin | Product Ingredient')
 @section('content')
 
     <div class="container-fluid">
@@ -16,10 +15,10 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active"><a href="{{ route('admin.code.list') }}">Code list</a></li>
+                            <li class="breadcrumb-item active">Product Ingredient</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Code list</h4>
+                    <h4 class="page-title">Product Ingredient List</h4>
                 </div>
             </div>
         </div>
@@ -31,67 +30,60 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-4">
-                                <h4 class="header-title">Product Code List</h4>
+                                <h4 class="header-title">Product Ingredient List</h4>
                             </div>
                             <div class="col-8">
-                                <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#showimport" style="margin-bottom:1em; float: right;">Import Excel</button>
+                                <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#addproductingredient" style="margin-bottom:1em; float: right;">Add Product Ingredient</button>
                             </div>
                         </div>
 
                         <div class="tab-content">
                             <div class="tab-pane show active" id="basic-datatable-preview">
-                                <table id="code_datatable" class="table dt-responsive nowrap w-100">
+                                <table id="productingredient_datatable" class="table dt-responsive nowrap w-100">
                                     <thead>
                                         <tr>
-                                            <th>Sr. No.</th>
-                                            <th>Code Id</th>
-                                            <th>Code View Date</th>
-                                            <th>Created Date</th>
+                                            <!-- <th>ID</th> -->
+                                            <th width="50%">Name</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                 </table>
                             </div> <!-- end preview-->
-
                         </div> <!-- end tab-content-->
-
                     </div> <!-- end card body-->
                 </div> <!-- end card -->
             </div><!-- end col-->
         </div>
         <!-- end row-->
-
     </div>
 @endsection
 @section('modal')
-
-     <div id="showimport" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="addproductingredient" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-
                 <div class="modal-body">
                     <div class="text-center mt-2 mb-4">
-                    <h5 class="modal-title" id="exampleModalLabel">Import Code<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title"><span id="exampleModalLabel">Add Product Ingredient</span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button></h5>
                     </div>
-                    <form class="pl-3 pr-3" id="importcode" enctype="multipart/form-data">
+                    <form class="pl-3 pr-3" id="add_productingredient">
                         @csrf
-                        <input type="hidden" name="user_id" value="{{ $userid }}">
-                        <div class="form-group">
-                            <label for="username">Choose File</label>
-                            <input class="form-control" type="file" id="excelfile" name="excelfile" placeholder="Enter Maximum of 30 digit code here...">
-                            <span class="text-danger error invalid-feedback error-excelfile" id="error-excelfile">
-                            </span>
+                        <div class="form-group form-input">
+                            <input type="hidden" name="product_ingredient_id" class="product-ingredient-id">
                         </div>
 
-                        <div class="from-group">
-                            <label for="samplefile"><strong>Note : </strong><a href="{{ asset('samplefile/productsample.xlsx') }}" download>Download Sample Code File</a></label>
-
+                        <div class="form-group form-input">
+                            <label for="username">Product Ingredient Name<span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" id="name" name="name"
+                                placeholder="Enter product ingredient name here...">
+                                <span class="text-danger error"></span>
                         </div>
+
                         <div class="form-group text-center">
-                            <button class="btn btn-primary" type="submit">Import Code</button>
+                            <button class="btn btn-primary" type="submit">Save</button>
                         </div>
-
                     </form>
 
                 </div>
@@ -100,12 +92,11 @@
     </div><!-- /.modal -->
 @endsection
 @section('js')
-
-<script>
-    var codelist = "{{ route('admin.code.list') }}";
-    var importcode = "{{ route('admin.code.import') }}"
-</script>
-<script src="{{$baseUrl}}assets/js/code.js"></script>
-
-
+    <script>
+        var productingredientList = "{{ route('admin.productingredient.list') }}";
+        var createproductingredient = "{{ route('admin.productingredient.create') }}";
+        var getproductingredient = "{{ route('admin.productingredient.detail') }}";
+        var deleteproductingredient = "{{ route('admin.productingredient.delete') }}";
+    </script>
+    <script src="{{$baseUrl}}admin/js/productingredient.js"></script>
 @endsection

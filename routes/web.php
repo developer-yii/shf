@@ -60,13 +60,14 @@ Route::post('/contact-us','ContactController@submit')->name('contact.submit');
 
 
 //frontend
-Route::group(['prefix' => 'product'], function () {
+Route::group(['prefix' => 'products'], function () {
     Route::get('/index', 'ProductController@index')->name('products.list');
     Route::get('/category/{id}', 'ProductController@category')->name('products.category');
     Route::get('/detail/{id}', 'ProductController@detail')->name('product.detail');
-
 });
 
+Route::get('/product', 'ProductController@singleProduct')->name('product.singleproduct');
+Route::get('/product-detail/{id}', 'ProductController@detail')->name('product.detail');
 Route::post('/search', 'ProductController@search')->name('product.search');
 
 

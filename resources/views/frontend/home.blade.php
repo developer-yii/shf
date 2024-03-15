@@ -18,7 +18,7 @@
         <img src="{{ $baseUrl }}img/intro-logo.svg" alt="">
       </div>
       <h1 class="head-1 center">
-        Sience from Switzerland
+        Science from Switzerland
       </h1>
     </div>
 
@@ -45,7 +45,7 @@
             <div class="banner-wrap">
               <div class="banner-bg"></div>
               <div class="banner-head">
-                <h2 class="head-1 black">Moving Forward With Sience
+                <h2 class="head-1 black">Moving Forward With Science
                   For Best Results</h2>
               </div>
             </div>
@@ -235,7 +235,7 @@
     <!-- Boost Your Endurance -->
 
     <div class="discover-products">
-      <a href="{{ route('products.list') }}" class="button blue">Discover Products</a>
+      <a href="{{ route('product.singleproduct') }}" class="button blue">Discover Products</a>
     </div>
 
     <!-- Make Your Cycle -->

@@ -31,7 +31,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">SHF</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.adminHome') }}">Dashboard</a></li>
                             <li class="breadcrumb-item active"><a href="{{ route('admin.code.list') }}">Message create</a></li>
                         </ol>
                     </div>

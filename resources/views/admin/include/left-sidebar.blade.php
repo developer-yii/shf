@@ -77,7 +77,9 @@
                         <li>
                             <a href="{{ route('admin.productuse') }}"><i class="uil-calender"></i> Product Use</a>
                         </li>
-
+                        <li>
+                            <a href="{{ route('admin.productingredient') }}"><i class="uil-calender"></i> Product Ingredient</a>
+                        </li>
                     </ul>
                 </li>
 

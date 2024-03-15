@@ -10,7 +10,7 @@
 @endphp
 @extends('layouts.app-frontend')
 
-@section('title','Home')
+@section('title','Products')
 @section('content')
  <div class="main-container">
 
