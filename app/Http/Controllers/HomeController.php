@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Session;
-use Auth;
 use App\Models\User;
 use App\Models\Country;
-use App\Models\ProductArt;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
@@ -29,26 +25,26 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    
+
     public function index()
     {
-        $categories = getCategories();        
+        $categories = getCategories();
         return view('frontend.home', compact('categories'));
     }
 
     public function profile(Request $request)
     {
         $user=Auth::user();
-        
+
         $rolesMap = [
                 1 => 'Superdmin',
                 2 => 'Admin',
-                3 => 'User',                
+                3 => 'User',
             ];
 
         $country = Country::where('id', $user->country_id)->first();
         $countryName = $country ? $country->name : null;
-         
+
         return view('admin.profile', ["user" => $user,"rolesMap" => $rolesMap, "countryName" => $countryName]);
     }
 
@@ -56,7 +52,7 @@ class HomeController extends Controller
     {
         $data = User::where("id", $request->id)->first();
 
-        if ($data) 
+        if ($data)
         {
             $countries = Country::all();
             $rolesMap = [
@@ -66,9 +62,9 @@ class HomeController extends Controller
             ];
             $statusMap = [
                 1 => 'Active',
-                0 => 'Inactive',                
+                0 => 'Inactive',
             ];
-        
+
             return view("admin.editprofile", ["data" => $data, "countries" => $countries, "rolesMap" => $rolesMap, "statusMap" => $statusMap]);
         }
         else
@@ -82,7 +78,7 @@ class HomeController extends Controller
         $user = User::find($request->id);
       /*   echo "<pre>";
         print_r($user); exit;
-*/        
+*/
 
         if(!isset($user->id))
         {
@@ -97,7 +93,7 @@ class HomeController extends Controller
             'country' => ['required'],
         );
         $validator = Validator::make($request->all(), $rules);
-        
+
         if($validator->fails())
         {
             $result = ['status' => false, 'message' => $validator->errors(), 'data' => []];
@@ -107,7 +103,7 @@ class HomeController extends Controller
             $user->first_name = $request->input('first_name');
             $user->last_name = $request->input('last_name');
             $user->email = $request->input('email');
-            $user->phone_number = $request->input('phone_number');           
+            $user->phone_number = $request->input('phone_number');
             $user->country_id = $request->input('country');
 
             if($user->role == 1 || $user->role == 2)
@@ -115,8 +111,8 @@ class HomeController extends Controller
                 $user->role = $request->input('role');
                 $user->is_active = $request->input('userstatus');
             }
-            
-            
+
+
             if($user->save())
             {
                 $result = ['status' => true, 'message' => 'User update successfully.', 'data' => []];
@@ -127,7 +123,7 @@ class HomeController extends Controller
             }
         }
         return response()->json($result);
-       
+
     }
 
     public function checkproduct()

@@ -115,6 +115,13 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvC70w-.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/orbitron/v31/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1ny_Cmxpg.ttf) format('truetype');
+}
 html,
 body {
   font-family: "Montserrat";
@@ -3657,7 +3664,7 @@ body.inactive .main-container {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   /* ContentBig */
   font-family: Montserrat;
-  font-size: 30px;
+  font-size: 27px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -3666,9 +3673,31 @@ body.inactive .main-container {
   align-items: center;
   margin-bottom: 24px;
   padding-bottom: 24px;
+  position: relative;
+}
+.welcome-txt ul li:after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  background: #fff;
+  width: 55%;
+  left: 0;
+  bottom: 0;
+}
+.welcome-txt ul li:nth-child(even):after {
+  right: 0;
+  left: auto;
 }
 .welcome-txt ul li img {
   margin-right: 32px;
+}
+.video-wrap {
+  overflow: hidden;
+}
+.video-wrap video {
+  height: 100%;
+  width: 100%;
+  transform: scale(1.02);
 }
 .feature-img {
   width: 50%;
@@ -4773,6 +4802,7 @@ body.inactive .main-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 80px;
 }
 .bg-img {
   height: 100%;
@@ -4856,15 +4886,8 @@ body.inactive .main-container {
   left: 0;
   padding: 80px;
 }
-.check-txt h2 {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 125px;
-  line-height: 123px;
-  color: #000000;
-  margin-bottom: 44px;
-  max-width: 1103px;
+.check-txt h1 {
+  margin-bottom: 100px;
 }
 .check-txt p {
   font-family: "Montserrat";
@@ -5046,6 +5069,40 @@ body.inactive .main-container {
   width: 50%;
   display: flex;
   justify-content: center;
+}
+.authenticity-list {
+  max-width: 505px;
+  margin: 0 auto;
+  margin-bottom: 64px;
+}
+.authenticity-list li {
+  display: flex;
+  align-items: center;
+  color: #000;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+}
+.authenticity-list li img {
+  margin-right: 12px;
+}
+.authenticity-txt {
+  max-width: 600px;
+}
+.banner-head h2 {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.banner-head h3 {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.3px;
 }
 /* header */
 :root {
@@ -5504,6 +5561,12 @@ body.inactive .main-container {
   .about-section {
     padding-top: 150px;
   }
+  .welcome-txt ul li img {
+    margin-right: 20px;
+  }
+  .welcome-title {
+    margin-bottom: 70px;
+  }
 }
 @media all and (max-width: 1600px) {
   .main-txt h2 {
@@ -5760,10 +5823,23 @@ body.inactive .main-container {
   .p-detail-box {
     padding: 24px 20px;
   }
+  .check-txt {
+    padding: 50px;
+  }
+  .check-txt h1 {
+    margin-bottom: 40px;
+  }
 }
 @media all and (max-width: 1200px) {
   .menuBtn .header-nav {
     display: none;
+  }
+  .check-bg-wrap {
+    right: -140px;
+    width: 790px;
+  }
+  .check-bg {
+    height: 810px;
   }
 }
 @media all and (max-width: 1100px) {
@@ -5864,7 +5940,7 @@ body.inactive .main-container {
     padding-bottom: 60px;
   }
   .welcome-bg {
-    opacity: 0.35;
+    opacity: 0.15;
   }
   .popup-right {
     width: 60%;
@@ -5951,6 +6027,7 @@ body.inactive .main-container {
   .feature-txt h3 {
     margin-bottom: 26px;
     margin-top: 30px;
+    text-align: center;
   }
   :root {
     --header-height: 80px;
@@ -5991,6 +6068,22 @@ body.inactive .main-container {
   }
   .small-image-box {
     min-height: 400px;
+  }
+  .check-bg-wrap {
+    position: static;
+  }
+  .check-txt {
+    position: static;
+  }
+  .main-wrap {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+  .check-bg-wrap {
+    height: 400px;
+  }
+  .check-bg img {
+    object-fit: cover;
   }
 }
 @media all and (max-width: 768px) {
@@ -6332,6 +6425,9 @@ body.inactive .main-container {
   .share {
     padding-left: 0;
   }
+  .subscribe h3 {
+    font-size: 48px;
+  }
 }
 @media all and (max-width: 400px) {
   .main-txt h2 {
@@ -6376,6 +6472,9 @@ body.inactive .main-container {
   }
   .products-wrap {
     padding-top: 20px;
+  }
+  .subscribe h3 {
+    font-size: 40px;
   }
 }
 /*# sourceMappingURL=main.css.map */

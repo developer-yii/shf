@@ -107,9 +107,11 @@
     <!-- Welcome to SHF Laboratories -->
 
     <!-- Video -->
-    <video width="100%" height="100%" autoplay playsinline muted loop>
-      <source src="{{ $baseUrl }}video/shf-video.mp4" type="video/mp4">
-    </video>
+    <div class="video-wrap">
+      <video width="100%" height="100%" autoplay playsinline muted loop>
+        <source src="{{ $baseUrl }}video/shf-video.mp4" type="video/mp4">
+      </video>
+    </div>
     <!-- Video -->
 
     <!-- Features Starts -->

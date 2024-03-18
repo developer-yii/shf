@@ -307,7 +307,7 @@ body {
       text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       /* ContentBig */
       font-family: Montserrat;
-      font-size: 30px;
+      font-size: 27px;
       font-style: normal;
       font-weight: 700;
       line-height: normal;
@@ -316,11 +316,39 @@ body {
       align-items: center;
       margin-bottom: 24px;
       padding-bottom: 24px;
+      position: relative;
+
+      &:after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        background: #fff;
+        width: 55%;
+        left: 0;
+        bottom: 0;
+      }
+
+      &:nth-child(even) {
+        &:after {
+          right: 0;
+          left: auto;
+        }
+      }
 
       img {
         margin-right: 32px;
       }
     }
+  }
+}
+
+.video-wrap {
+  overflow: hidden;
+
+  video {
+    height: 100%;
+    width: 100%;
+    transform: scale(1.02);
   }
 }
 
@@ -1791,6 +1819,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 80px;
 }
 
 .bg-img {
@@ -1886,15 +1915,8 @@ body {
   padding: 80px;
 }
 
-.check-txt h2 {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 125px;
-  line-height: 123px;
-  color: #000000;
-  margin-bottom: 44px;
-  max-width: 1103px;
+.check-txt h1 {
+  margin-bottom: 100px;
 }
 
 .check-txt p {
@@ -2116,4 +2138,46 @@ body {
   width: 50%;
   display: flex;
   justify-content: center;
+}
+
+.authenticity-list {
+  max-width: 505px;
+  margin: 0 auto;
+  margin-bottom: 64px;
+
+  li {
+    display: flex;
+    align-items: center;
+    color: #000;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.6px;
+    margin-bottom: 8px;
+
+    img {
+      margin-right: 12px;
+    }
+  }
+}
+
+.authenticity-txt {
+  max-width: 600px;
+}
+
+.banner-head {
+  h2 {
+    font-family: 'Orbitron';
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+
+  h3 {
+    font-family: 'Orbitron';
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
 }
