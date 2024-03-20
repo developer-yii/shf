@@ -70,8 +70,16 @@ pre
   height: 26px;
   width: 26px;
 }
-.custom-desc ul
+.custom-desc
 {
-  list-style-type: unset !important;
-  margin-left: 50px;
+  list-style: unset !important;
+  margin:10px 0px 30px 50px;
+  max-width: 900px;
+  color: #6F6F6F;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: -1.2px;
 }

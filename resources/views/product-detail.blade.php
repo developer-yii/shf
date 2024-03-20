@@ -91,7 +91,49 @@
 
                     <div class="descr">
                         <h4>{{ $product['name'] }} has the following pharmacological actions:</h4>
-                        <div class="custom-desc">{!! $product['description'] !!}</div>
+                        <hr>
+                        <!-- <p>{!! $product['description'] !!}</p> -->
+                        <p><b>Linear and skeletal growth (Primary action):</b>
+                            <br>Somaheal&trade; operates by activating specific growth hormone receptors present in chondrocytes, osteoblasts, hepatocytes, adipocytes, and fibroblasts. These receptors are also found in other tissues, including the brain and gastrointestinal tract, where the role of growth hormone remains unclear. The Growth Hormone stimulates skeletal and soft tissue growth by facilitating cell division, amino acid uptake, and protein synthesis. Its effects are primarily mediated by hepatic and peripheral insulin-like growth factor-1 (IGF-1) production, resulting in:
+                        </p>
+
+                        <ul class="custom-desc">
+                            <li>Skeletal growth in pediatric patients with growth hormone deficiency, impacting the epiphyseal growth plates of long bones and increasing the growth rate and IGF-1 levels comparable to human growth hormone.</li>
+                            <li>An increase in the number and size of muscle cells.</li>
+                            <li>Augmentation of internal organ size and red cell mass.</li>
+                            <li>Elevated cellular protein synthesis, leading to a positive nitrogen balance, as evidenced by a decrease in urinary nitrogen excretion and blood urea nitrogen (BUN).</li>
+                        </ul>
+
+                        <p><b>Carbohydrate metabolism:</b>
+                            <br>Somaheal&#39;s actions are primarily mediated by hepatic and peripheral insulin-like growth factor-1 (IGF-1) production, resulting in immediate but brief insulin-like effects followed by more substantial anti-insulin-like effects. These include decreased glucose utilization (hyperglycemia) and lipolysis within 2-4 hours. While large doses of Somaheal&trade; may impair glucose tolerance and induce insulin resistance, the exact mechanism is not fully understood. In children with hypopituitarism, fasting hypoglycemia may be improved by growth hormone therapy. In non-growth hormone-deficient short children, Somaheal&trade; may induce hyperinsulinemia without impairing glucose tolerance.
+                        </p>
+                        <p>&nbsp;</p>
+
+                        <p><b>Lipid metabolism:</b>
+                            <br>Somaheal&trade; administration leads to a reduction in body fat stores, mobilization of lipid stores, and an increase in plasma fatty acids due to its anti-insulin-like effect. This lipolytic effect is observed in growth hormone-deficient children during the initial months of treatment, resulting in the loss of subcutaneous fat. Patients receiving Somaheal&trade; may experience a decrease in mean cholesterol levels. Mineral Metabolism: Somaheal&trade; induces the retention of sodium, potassium, and phosphates, believed to be linked to cell growth. Growth-hormone deficient patients exhibit an increase in serum inorganic phosphate after Somaheal&trade; administration, attributed to metabolic activity associated with bone growth and increased tubular reabsorption of phosphate by the kidneys. Serum calcium remains largely unaffected, with an increase in urinary calcium excretion offset by a simultaneous rise in its absorption from the intestine.
+                        </p>
+                        <p>&nbsp;</p>
+
+                        <p><b>Connective tissue metabolism:</b>
+                            <br>Somaheal&trade; stimulates the synthesis of chondroitin sulfate and collagen, along with increased urinary excretion of hydroxyproline.
+                        </p>
+                        <p>&nbsp;</p>
+
+                        <p><b>Product efficiency:</b></p>
+
+                        <ul class="custom-desc">
+                            <li>Nurture healthy growth in children with growth hormone deficiency, ensuring a promising future with our long-term treatment approach.</li>
+                            <li>Combat metabolic diseases and AIDS-related wasting, providing a holistic solution to promote overall well-being.</li>
+                            <li>Address Prader-Willi syndrome in children with growth deficiencies, fostering a balanced and healthier lifestyle.</li>
+                            <li>Tackle intrauterine growth retardation and short stature, supporting continued growth and development after birth.</li>
+                            <li>Empower adults dealing with growth hormone deficiency (GHD), enabling them to lead an active and fulfilling life.</li>
+                            <li>Facilitate long-term treatment for patients with Turner syndrome, promoting comprehensive care and well-being.</li>
+                            <li>Support individuals with idiopathic short stature, addressing growth concerns and enhancing self-confidence.</li>
+                            <li>Provide relief for those dealing with short bowel syndrome, contributing to improved digestive health.</li>
+                            <li>Aid in pediatric renal transplantation cases by addressing growth-related concerns before renal failure.</li>
+                            <li>Combat SHOX gene deficiency, offering targeted solutions for improved growth and overall health.</li>
+                        </ul>
+
                     </div>
                 </div>
             </div>
