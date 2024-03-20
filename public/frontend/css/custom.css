@@ -70,3 +70,8 @@ pre
   height: 26px;
   width: 26px;
 }
+.custom-desc ul
+{
+  list-style-type: unset !important;
+  margin-left: 50px;
+}

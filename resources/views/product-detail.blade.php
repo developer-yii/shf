@@ -30,7 +30,6 @@
                                     <div class="detail">
                                         <h4>Ingredient</h4>
                                         <h5>{{$product->ingredients->implode('ingredient_name', ', ')}}</h5>
-                                        <h5>{{$product->targets->implode('name', ', ')}}</h5>
                                     </div>
                                     <div class="detail">
                                         <h4>Volume</h4>
@@ -92,7 +91,7 @@
 
                     <div class="descr">
                         <h4>{{ $product['name'] }} has the following pharmacological actions:</h4>
-                        <p>{!! $product['description'] !!}</p>
+                        <div class="custom-desc">{!! $product['description'] !!}</div>
                     </div>
                 </div>
             </div>
